@@ -3,7 +3,7 @@
 Filas são estruturas de dados do tipo FIFO (First-In, First-Out), onde o primeiro elemento inserido é o primeiro a ser removido. Assim, itens são adicionados no final da fila e removidos do início.
 
 <div align="center">
-    <img src="../imgs/fila.png" width="30%" style="max-height: 80vh;"/>
+    <img src="../imgs/fila.png" width="30%" style="max-height: 100vh;"/>
     <p>Figura 2.1: Fila.</p>
 </div>
 

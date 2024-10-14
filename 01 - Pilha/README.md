@@ -4,7 +4,7 @@ Pilhas são estruturas de dados do tipo LIFO (Last-In, First-Out), nas quais o �
 
 <div align="center">
     <img src="../imgs/pilha.png" width="30%" style="max-height: 80vh;"/>
-    <p>Figura 1: Pilha.</p>
+    <p>Figura 1.1: Pilha.</p>
 </div>
 
 Exemplos de uso de pilhas em sistemas incluem:
@@ -30,7 +30,7 @@ Supondo uma pilha com capacidade para 5 elementos (5 nós).
 
 <div align="center">
     <img src="../imgs/exemplo_empilhar_desempilhar.png" width="90%" style="max-height: 80vh;"/>
-    <p>Figura 2: Pilha com capacidade para 5 elementos.</p>
+    <p>Figura 1.2: Pilha com capacidade para 5 elementos.</p>
 </div>
 
 Essas operações podem ser visualizadas de maneira semelhante ao uso de uma pilha de pratos em um restaurante ou a manipulação de cartas em um jogo de baralho.

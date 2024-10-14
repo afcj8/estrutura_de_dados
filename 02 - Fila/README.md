@@ -14,6 +14,8 @@ Exemplos de uso de filas em sistemas incluem:
 
 A implementação de filas pode ser realizada por meio de vetores, com alocação contígua de memória para os elementos, ou por listas encadeadas.
 
+## 2.1. Operações com Fila
+
 As operações comuns em uma fila incluem:
 
 - **Criação da fila:** Definição da capacidade, no caso de implementação sequencial por vetor;

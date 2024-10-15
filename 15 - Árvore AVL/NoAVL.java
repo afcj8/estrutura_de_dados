@@ -1,19 +1,19 @@
-public class No {
-    private No pai, fd, fe;
+public class NoAVL {
+    private NoAVL pai, fd, fe;
     private Object obj;
     private int fb;
-    public No(No pai, Object obj) {
+    public NoAVL(NoAVL pai, Object obj) {
         this.setElement(obj);
         this.setPai(pai);
         this.setFb(0);
     }
-    public No getPai() {
+    public NoAVL getPai() {
         return pai;
     }
-    public No getFilhoDireito() {
+    public NoAVL getFilhoDireito() {
         return fd;
     }
-    public No getFilhoEsquerdo() {
+    public NoAVL getFilhoEsquerdo() {
         return fe;
     }
     public Object getElement() {
@@ -22,13 +22,13 @@ public class No {
     public int getFb() {
         return fb;
     }
-    public void setPai(No pai) {
+    public void setPai(NoAVL pai) {
         this.pai = pai;
     }
-    public void setFilhoDireito(No fd) {
+    public void setFilhoDireito(NoAVL fd) {
         this.fd = fd;
     }
-    public void setFilhoEsquerdo(No fe) {
+    public void setFilhoEsquerdo(NoAVL fe) {
         this.fe = fe;
     }
     public void setElement(Object obj) {

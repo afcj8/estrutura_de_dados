@@ -35,4 +35,26 @@ public class ArvoreAVL {
     public boolean isInternal(NoAVL no) {
         return no.getFilhoDireito() != null || no.getFilhoEsquerdo() != null;
     }
+
+    public NoAVL pesquisar(NoAVL no, Object key) {
+        if (isExternal(no)) {
+            return no;
+        }
+        if ((int)key == (int)no.getElement()) {
+            return no;
+        }
+        if (c.compare(key, no.getElement()) < 0) {
+            if (no.getFilhoEsquerdo() != null) {
+                return pesquisar(no.getFilhoEsquerdo(), key);
+            } else {
+                return no;
+            }
+        } else {
+            if (no.getFilhoDireito() != null) {
+                return pesquisar(no.getFilhoDireito(), key);
+            } else {
+                return no;
+            }
+        }
+    }
 }

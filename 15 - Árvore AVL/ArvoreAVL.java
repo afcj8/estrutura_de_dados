@@ -15,4 +15,16 @@ public class ArvoreAVL {
         this.raiz = new NoAVL(null, obj);
         this.tamanho = 1;
     }
+
+    public NoAVL getRaiz() {
+        return raiz;
+    }
+
+    public void setRaiz(NoAVL raiz) {
+        this.raiz = raiz;
+    }
+
+    public boolean isRoot(NoAVL no) {
+        return no == this.raiz;
+    }
 }

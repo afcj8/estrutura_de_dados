@@ -3,7 +3,7 @@
 Pilhas são estruturas de dados do tipo LIFO (Last-In, First-Out), nas quais o último elemento inserido é o primeiro a ser removido. Assim, em uma pilha, o acesso é permitido apenas ao último item adicionado. Para acessar o penúltimo elemento, é necessário remover o item mais recente.
 
 <div align="center">
-    <img src="../imgs/pilha.png" width="30%" style="max-height: 60vh;"/>
+    <img src="../imgs/pilha.png" width="50%" style="max-height: 60vh;"/>
     <p>Figura 1.1: Pilha.</p>
 </div>
 
@@ -29,7 +29,7 @@ As operações típicas de uma pilha incluem:
 Supondo uma pilha com capacidade para 5 elementos (5 nós).
 
 <div align="center">
-    <img src="../imgs/exemplo_empilhar_desempilhar.png" width="60%" style="max-height: 60vh;"/>
+    <img src="../imgs/exemplo_empilhar_desempilhar.png" width="90%" style="max-height: 60vh;"/>
     <p>Figura 1.2: Pilha com capacidade para 5 elementos.</p>
 </div>
 

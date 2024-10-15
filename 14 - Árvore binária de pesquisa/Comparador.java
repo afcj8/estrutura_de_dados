@@ -11,7 +11,7 @@ public class Comparador {
                 return 0;
             }
         } catch(Exception e) {
-            System.out.println("Deu erro, coleguinha!");
+            System.out.println("Deu erro: " + e);
         }
         return 0;
     }

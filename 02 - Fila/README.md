@@ -3,7 +3,7 @@
 Filas são estruturas de dados do tipo FIFO (First-In, First-Out), onde o primeiro elemento inserido é o primeiro a ser removido. Assim, itens são adicionados no final da fila e removidos do início.
 
 <div align="center">
-    <img src="../imgs/fila.png" width="30%" style="max-height: 80vh;"/>
+    <img src="../imgs/fila.png" width="30%" style="max-height: 100vh;"/>
     <p>Figura 2.1: Fila.</p>
 </div>
 
@@ -13,6 +13,8 @@ Exemplos de uso de filas em sistemas incluem:
 - Troca de mensagens entre computadores em uma rede.
 
 A implementação de filas pode ser realizada por meio de vetores, com alocação contígua de memória para os elementos, ou por listas encadeadas.
+
+## 2.1. Operações com Fila
 
 As operações comuns em uma fila incluem:
 

@@ -28,7 +28,7 @@ As operações comuns em uma fila incluem:
 Supondo uma fila com capacidade para 5 elementos (5 nós).
 
 <div align="center">
-    <img src="../imgs/exemplo_enqueue_dequeue.png" width="30%" style="max-height: 100vh;"/>
+    <img src="../imgs/exemplo_enqueue_dequeue.png" width="40%" style="max-height: 100vh;"/>
     <p>Figura 2.2: Fila com capacidade para 5 elementos.</p>
 </div>
 

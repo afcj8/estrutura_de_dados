@@ -27,4 +27,12 @@ public class ArvoreAVL {
     public boolean isRoot(NoAVL no) {
         return no == this.raiz;
     }
+
+    public boolean isExternal(NoAVL no) {
+        return no.getFilhoDireito() == null && no.getFilhoEsquerdo() == null;
+    }
+
+    public boolean isInternal(NoAVL no) {
+        return no.getFilhoDireito() != null || no.getFilhoEsquerdo() != null;
+    }
 }

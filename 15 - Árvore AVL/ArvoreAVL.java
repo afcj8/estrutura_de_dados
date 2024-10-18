@@ -92,7 +92,7 @@ public class ArvoreAVL {
 
     // ------------------ Rotações ------------------
 
-    private NoAVL rotacaoEsquerda(NoAVL no) {
+    public NoAVL rotacaoEsquerda(NoAVL no) {
         NoAVL novoNo = no.getFilhoDireito();
         novoNo.setPai(no.getPai());
 
@@ -114,7 +114,6 @@ public class ArvoreAVL {
             }
         }
 
-        // Atualize os fatores de balanceamento
         no.setFb(fatorBalanceamento(no));
         novoNo.setFb(fatorBalanceamento(novoNo));
 
@@ -144,7 +143,6 @@ public class ArvoreAVL {
             }
         }
 
-        // Atualize os fatores de balanceamento
         no.setFb(fatorBalanceamento(no));
         novoNo.setFb(fatorBalanceamento(novoNo));
 
@@ -248,6 +246,7 @@ public class ArvoreAVL {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
 

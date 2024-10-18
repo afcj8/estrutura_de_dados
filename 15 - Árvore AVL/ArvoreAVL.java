@@ -79,4 +79,27 @@ public class ArvoreAVL {
         int hDireita = height(no.getFilhoDireito());
         return hEsquerda - hDireita;
     }
+
+    private NoAVL balancear(NoAVL no) {
+        int fb = fatorBalanceamento(no);
+
+        // Rotação simples à esquerda
+        if (fb < -1 && fatorBalanceamento(no.getFilhoDireito()) <= 0) {
+            no = rotacaoEsquerda(no);
+        }
+        // Rotação simples à direita
+        else if (fb > 1 && fatorBalanceamento(no.getFilhoEsquerdo()) >= 0) {
+            no = rotacaoDireita(no);
+        }
+        // Rotação dupla á esquerda
+        else if (fb > 1 && fatorBalanceamento(no.getFilhoEsquerdo()) < 0) {
+            no = rotacaoDuplaEsquerda(no);
+        } 
+        // Rotação dupla à direita
+        else if (fb < -1 && fatorBalanceamento(no.getFilhoDireito()) > 0) {
+            no = rotacaoDuplaDireita(no);
+        }
+
+        return no;
+    }
 }

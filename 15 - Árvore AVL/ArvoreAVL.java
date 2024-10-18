@@ -4,7 +4,6 @@ public class ArvoreAVL {
     private NoAVL raiz;
     Comparador c = new Comparador();
     private int tamanho;
-    private ArrayList<NoAVL> aux = new ArrayList<NoAVL>();
 
     public ArvoreAVL() {
         this.raiz = null;
@@ -56,5 +55,28 @@ public class ArvoreAVL {
                 return no;
             }
         }
+    }
+
+    public int height(NoAVL no) {
+        if (no == null) {
+            return 0;
+        }
+        if (isExternal(no)) {
+            return 0;
+        }
+        int h = 0;
+        if (no.getFilhoEsquerdo() != null) {
+            h = Math.max(h, height(no.getFilhoEsquerdo()));
+        }
+        if (no.getFilhoDireito() != null) {
+            h = Math.max(h, height(no.getFilhoDireito()));
+        }
+        return 1 + h;
+    }
+
+    public int fatorBalanceamento(NoAVL no) {
+        int hEsquerda = height(no.getFilhoEsquerdo());
+        int hDireita = height(no.getFilhoDireito());
+        return hEsquerda - hDireita;
     }
 }

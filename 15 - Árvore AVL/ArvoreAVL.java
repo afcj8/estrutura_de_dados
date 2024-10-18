@@ -80,9 +80,88 @@ public class ArvoreAVL {
         }
         
         tamanho++;
+        
+        while (pai != null) {
+            pai.setFb(fatorBalanceamento(pai));
+            pai = balancear(pai);
+            pai = pai.getPai();
+        }
         return novo;
     }
 
+
+    // ------------------ Rotações ------------------
+
+    private NoAVL rotacaoEsquerda(NoAVL no) {
+        NoAVL novoNo = no.getFilhoDireito();
+        novoNo.setPai(no.getPai());
+
+        no.setFilhoDireito(novoNo.getFilhoEsquerdo());
+
+
+        if (no.getFilhoDireito() != null) {
+            no.getFilhoDireito().setPai(no);
+        }
+
+        novoNo.setFilhoEsquerdo(no);
+        no.setPai(novoNo);
+
+        if (novoNo.getPai() != null) {
+            if (novoNo.getPai().getFilhoDireito() == no) {
+                novoNo.getPai().setFilhoDireito(novoNo);
+            } else if (novoNo.getPai().getFilhoEsquerdo() == no) {
+                novoNo.getPai().setFilhoEsquerdo(novoNo);
+            }
+        }
+
+        // Atualize os fatores de balanceamento
+        no.setFb(fatorBalanceamento(no));
+        novoNo.setFb(fatorBalanceamento(novoNo));
+
+        System.out.println("Rotação simples à esquerda");
+
+        return novoNo;
+    }
+
+    public NoAVL rotacaoDireita(NoAVL no) {
+        NoAVL novoNo = no.getFilhoEsquerdo();
+        novoNo.setPai(no.getPai());
+
+        no.setFilhoEsquerdo(novoNo.getFilhoDireito());
+
+        if (no.getFilhoEsquerdo() != null) {
+            no.getFilhoEsquerdo().setPai(no);
+        }
+
+        novoNo.setFilhoDireito(no);
+        no.setPai(novoNo);
+
+        if (novoNo.getPai() != null) {
+            if (novoNo.getPai().getFilhoDireito() == no) {
+                novoNo.getPai().setFilhoDireito(novoNo);
+            } else if (novoNo.getPai().getFilhoEsquerdo() == no) {
+                novoNo.getPai().setFilhoEsquerdo(novoNo);
+            }
+        }
+
+        // Atualize os fatores de balanceamento
+        no.setFb(fatorBalanceamento(no));
+        novoNo.setFb(fatorBalanceamento(novoNo));
+
+        System.out.println("Rotação simples à direita");
+
+        return novoNo;
+    }
+
+    public NoAVL rotacaoDuplaEsquerda(NoAVL no) {
+        no.setFilhoDireito(rotacaoDireita(no.getFilhoDireito()));
+        return rotacaoEsquerda(no);
+    }
+
+    public NoAVL rotacaoDuplaDireita(NoAVL no) {
+        no.setFilhoEsquerdo(rotacaoEsquerda(no.getFilhoEsquerdo()));
+        return rotacaoDireita(no);
+    }
 
     public int height(NoAVL no) {
         if (no == null) {
@@ -111,34 +190,66 @@ public class ArvoreAVL {
         return hEsquerda - hDireita;
     }
 
+    private NoAVL balancear(NoAVL no) {
+        int fb = fatorBalanceamento(no);
+
+        // Rotação simples à esquerda
+        if (fb < -1 && fatorBalanceamento(no.getFilhoDireito()) <= 0) {
+            no = rotacaoEsquerda(no);
+        }
+        // Rotação simples à direita
+        else if (fb > 1 && fatorBalanceamento(no.getFilhoEsquerdo()) >= 0) {
+            no = rotacaoDireita(no);
+        }
+        // Rotação dupla á esquerda
+        else if (fb > 1 && fatorBalanceamento(no.getFilhoEsquerdo()) < 0) {
+            no = rotacaoDuplaEsquerda(no);
+        } 
+        // Rotação dupla à direita
+        else if (fb < -1 && fatorBalanceamento(no.getFilhoDireito()) > 0) {
+            no = rotacaoDuplaDireita(no);
+        }
+
+        if (no.getPai() == null) {
+            raiz = no;
+        }
+
+        return no;
+    }
+
     public void mostrar() {
         if (raiz == null) {
             System.out.println("Árvore vazia");
             return;
         } 
 
-        Object[][] matriz = new Object[height(raiz) + 1][tamanho];
-        aux = new ArrayList();
+        aux = new ArrayList<>();
         emOrdem(raiz);
 
+        int h = height(raiz); // Altura da árvore
+        Object[][] matriz = new Object[h + 1][aux.size()];
+
+        // Popular a matriz com nós
         for (int i = 0; i < aux.size(); i++) {
-            Object obj = ((NoAVL)aux.get(i)).getElement();
-            matriz[depth((NoAVL)aux.get(i))][i] = obj;
+            NoAVL no = aux.get(i);
+            int profundidade = depth(no);
+            matriz[profundidade][i] = no.getElement();
         }
 
-        for (int i = 0; i < height(raiz) + 1; i++) {
-            for (int j = 0; j < tamanho; j++) {
-                int fb = fatorBalanceamento((NoAVL)aux.get(j));
+        // Imprimir a árvore
+        for (int i = 0; i <= h; i++) {
+            for (int j = 0; j < aux.size(); j++) {
                 if (matriz[i][j] == null) {
                     System.out.print("\t");
                 } else {
-                    System.out.printf("\t%d" + "[" + fb + "]", matriz[i][j]);
+                    NoAVL no = aux.get(j);
+                    System.out.printf("\t%d" + "[" + no.getFb() + "]", no.getElement());
                 }
             }
             System.out.println();
-        } 
-            
+        }
     }
+
 
     public void emOrdem(NoAVL no) {
         if (isInternal(no)) {

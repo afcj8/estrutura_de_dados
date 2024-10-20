@@ -28,8 +28,6 @@ A alocação de memória para uma lista pode ser realizada de duas formas:
     <p>Figura 7.1: Lista linear sequencial.</p>
 </div>
 
-A representação por vetor explora a sequencialidade da memória de tal forma que os nós de uma lista sejam armazenados em endereços contíguos.
-
 - **Encadeada:** Os nós estão ligados por referências, mas não necessariamente armazenados de forma contígua na memória, preservando a ordem lógica entre eles.
 
 ## 7.3. Operações com Listas
@@ -60,7 +58,13 @@ A distinção entre esses tipos de listas é definida pelas operações permitid
 
 Em listas lineares encadeadas, ao contrário das listas lineares sequenciais (ou contíguas), os elementos não estão necessariamente armazenados em locais consecutivos na memória. Para manter a ordem lógica dos elementos, as listas encadeadas podem ser implementadas de duas formas:
 
-- **Simplesmente encadeada (lista ligada):** Cada elemento contém, além do espaço para armazenar sua informação, uma referência à localização do próximo elemento da lista (ou do anterior).
+- **Simplesmente encadeada (lista ligada):** Cada elemento contém, além do espaço para armazenar sua informação, uma referência à localização do próximo elemento da lista.
+
+<div align="center">
+    <img src="../imgs/lista_simplismente_encadeada.png" width="70%" style="max-height: 45vh;"/>
+    <p>Figura 7.2: Lista simplismente encadeada.</p>
+</div>
+
 - **Duplamente encadeada (lista duplamente ligada):** Cada elemento armazena, além da informação, uma referência tanto para o próximo quanto para o elemento anterior da lista.
 
 A principal vantagem da lista duplamente encadeada sobre a simplesmente encadeada é a facilidade de navegação em ambos os sentidos (do início para o fim e vice-versa), o que facilita operações como inclusão e remoção de nós, reduzindo a quantidade de variáveis auxiliares necessárias.

@@ -1,6 +1,21 @@
 # 7. Listas Lineares 
 
-Uma lista linear é uma estrutura de dados onde os elementos de um mesmo tipo estão organizados de maneira sequencial, refletindo uma ordem lógica, embora não necessariamente armazenados de forma contígua na memória. Um exemplo seria a fila de espera de um consultório médico, onde, apesar de as pessoas estarem em diferentes locais, existe uma ordem definida de atendimento. Portanto, listas lineares permitem organizar dados relacionados, preservando a ordem entre os elementos. Cada elemento de uma lista é chamado de nó, ou nodo.
+Uma lista linear é uma estrutura de dados onde os elementos de um mesmo tipo estão organizados de maneira sequencial, refletindo uma ordem lógica, embora não necessariamente armazenados de forma contígua na memória. Um exemplo seria a fila de espera de um consultório médico, onde, apesar das pessoas estarem em diferentes locais, existe uma ordem definida de atendimento. Portanto, listas lineares permitem organizar dados relacionados, preservando a ordem entre os elementos. Cada elemento de uma lista é chamado de nó, ou nodo.
+
+## 7.1 Definição
+
+Uma lista linear é composta por um conjunto de N nós, onde N ≥ 0, organizados de forma a refletir a posição relativa de cada elemento. O primeiro nó é denotado por $𝑥_1$ e, para qualquer nó $𝑥_𝑘$, com 1 < 𝑘 < 𝑛, ele é precedido pelo nó $𝑥_{𝑘−1}$ e seguido pelo nó $𝑥_{𝑘+1}$, sendo $𝑥_𝑛$ o último. Quando N = 0, a lista está vazia.
+
+Exemplos de listas lineares:
+
+- Pessoas em uma fila de banco;
+- Letras em uma palavra;
+- Notas de alunos em uma turma;
+- Itens de estoque de uma empresa;
+- Dias da semana;
+- Vagões de um trem;
+- Pilha de pratos;
+- Cartas de baralho.
 
 Em listas lineares encadeadas, ao contrário das listas lineares sequenciais (ou contíguas), os elementos não estão necessariamente armazenados em locais consecutivos na memória. Para manter a ordem lógica dos elementos, as listas encadeadas podem ser implementadas de duas formas:
 

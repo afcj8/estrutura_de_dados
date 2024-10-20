@@ -17,6 +17,13 @@ Exemplos de listas lineares:
 - Pilha de pratos;
 - Cartas de baralho.
 
+## 7.2. Alocação de uma Lista
+
+A alocação de memória para uma lista pode ser realizada de duas formas:
+
+- **Sequencial ou Contígua:** Os nós estão organizados logicamente e fisicamente em sequência, como em um vetor.
+- **Encadeada:** Os nós estão ligados por referências, mas não necessariamente armazenados de forma contígua na memória, preservando a ordem lógica entre eles.
+
 Em listas lineares encadeadas, ao contrário das listas lineares sequenciais (ou contíguas), os elementos não estão necessariamente armazenados em locais consecutivos na memória. Para manter a ordem lógica dos elementos, as listas encadeadas podem ser implementadas de duas formas:
 
 - **Simplesmente encadeada (lista ligada):** Cada elemento contém, além do espaço para armazenar sua informação, uma referência à localização do próximo elemento da lista (ou do anterior).

@@ -86,3 +86,10 @@ As operações de inserção e remoção de elementos em uma lista simplesmente 
     <img src="../imgs/lista_encadeada_insercao.png" width="70%" style="max-height: 45vh;"/>
     <p>Figura 7.4: Lista simplismente encadeada (Inserção).</p>
 </div>
+
+- **Remoção:**
+
+<div align="center">
+    <img src="../imgs/lista_encadeada_remocao.png" width="70%" style="max-height: 45vh;"/>
+    <p>Figura 7.5: Lista simplismente encadeada (Remoção).</p>
+</div>

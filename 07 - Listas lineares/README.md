@@ -36,6 +36,20 @@ As operações comuns em listas lineares incluem:
 - Cópia da lista;
 - Localização de um nó.
 
+## 7.4. Tipos de Listas Lineares
+
+Os tipos mais comuns de listas lineares são:
+
+- **Pilhas:** Estruturas LIFO (Last In, First Out), onde o último elemento inserido é o primeiro a sair. As operações ocorrem em um único ponto de acesso, chamado de topo. Exemplo: pilha de pratos, pilha de livros.
+
+- **Filas:** Estruturas FIFO (First In, First Out), onde o primeiro elemento a entrar é o primeiro a sair. A inserção ocorre em uma extremidade e a remoção em outra. Exemplo: fila de banco, fila de espera.
+
+- **Deques:** Estruturas que permitem inserção e remoção de elementos em ambas as extremidades, sendo uma generalização das filas.
+
+A distinção entre esses tipos de listas é definida pelas operações permitidas, e todas podem ser implementadas com alocação sequencial ou encadeada.
+
+## 7.5 Listas Lineares Encadeadas
+
 Em listas lineares encadeadas, ao contrário das listas lineares sequenciais (ou contíguas), os elementos não estão necessariamente armazenados em locais consecutivos na memória. Para manter a ordem lógica dos elementos, as listas encadeadas podem ser implementadas de duas formas:
 
 - **Simplesmente encadeada (lista ligada):** Cada elemento contém, além do espaço para armazenar sua informação, uma referência à localização do próximo elemento da lista (ou do anterior).

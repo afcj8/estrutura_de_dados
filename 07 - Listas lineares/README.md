@@ -22,6 +22,14 @@ Exemplos de listas lineares:
 A alocação de memória para uma lista pode ser realizada de duas formas:
 
 - **Sequencial ou Contígua:** Os nós estão organizados logicamente e fisicamente em sequência, como em um vetor.
+
+<div align="center">
+    <img src="../imgs/lista_linear_sequencial.png" width="70%" style="max-height: 45vh;"/>
+    <p>Figura 7.1: Lista linear sequencial.</p>
+</div>
+
+A representação por vetor explora a sequencialidade da memória de tal forma que os nós de uma lista sejam armazenados em endereços contíguos.
+
 - **Encadeada:** Os nós estão ligados por referências, mas não necessariamente armazenados de forma contígua na memória, preservando a ordem lógica entre eles.
 
 ## 7.3. Operações com Listas

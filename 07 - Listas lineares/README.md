@@ -75,3 +75,14 @@ Em listas lineares encadeadas, ao contrário das listas lineares sequenciais (ou
 A principal vantagem da lista duplamente encadeada sobre a simplesmente encadeada é a facilidade de navegação em ambos os sentidos (do início para o fim e vice-versa), o que facilita operações como inclusão e remoção de nós, reduzindo a quantidade de variáveis auxiliares necessárias.
 
 Em comparação com as listas sequenciais, as listas encadeadas apresentam uma vantagem significativa em termos de desempenho para inserção e remoção de elementos. Em listas contíguas, é necessário deslocar todos os elementos para realizar essas operações. Já nas listas encadeadas, como os elementos não precisam estar em posições contíguas na memória, basta ajustar as referências entre os nós, tornando a inserção ou remoção mais rápida e eficiente. Essa estrutura é ideal para listas com grande quantidade de nós, onde operações em listas contíguas podem resultar em perdas notáveis de desempenho.
+
+### 7.5.1. Rotinas de Manipulação de Lista Simplesmente Encadeada
+
+As operações de inserção e remoção de elementos em uma lista simplesmente encadeada são realizadas por meio da manipulação das referências ao próximo nó da lista.
+
+- **Inserção:**
+
+<div align="center">
+    <img src="../imgs/lista_encadeada_insercao.png" width="70%" style="max-height: 45vh;"/>
+    <p>Figura 7.4: Lista simplismente encadeada (Inserção).</p>
+</div>

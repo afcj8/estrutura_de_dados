@@ -151,15 +151,15 @@ public class ArvoreAVL {
     }
 
     public NoAVL rotacaoDuplaEsquerda(NoAVL no) {
-        rotacaoEsquerda(no.getFilhoEsquerdo());
+        rotacaoDireita(no.getFilhoDireito());
         System.out.println("Rotação dupla à esquerda");
-        return rotacaoDireita(no);
+        return rotacaoEsquerda(no);
     }
 
     public NoAVL rotacaoDuplaDireita(NoAVL no) {
-        rotacaoDireita(no.getFilhoDireito());
+        rotacaoEsquerda(no.getFilhoEsquerdo());
         System.out.println("Rotação dupla à direita");
-        return rotacaoEsquerda(no);
+        return rotacaoDireita(no);;
     }
 
     public int height(NoAVL no) {
@@ -200,14 +200,14 @@ public class ArvoreAVL {
         else if (fb > 1 && fatorBalanceamento(no.getFilhoEsquerdo()) >= 0) {
             no = rotacaoDireita(no);
         }
-        // Rotação dupla á esquerda
-        else if (fb > 1 && fatorBalanceamento(no.getFilhoEsquerdo()) < 0) {
-            no = rotacaoDuplaEsquerda(no);
-        } 
-        // Rotação dupla à direita
+        // Rotação dupla à esquerda
         else if (fb < -1 && fatorBalanceamento(no.getFilhoDireito()) > 0) {
-            no = rotacaoDuplaDireita(no);
+            no = rotacaoDuplaEsquerda(no);
         }
+        // Rotação dupla á direita
+        else if (fb > 1 && fatorBalanceamento(no.getFilhoEsquerdo()) < 0) {
+            no = rotacaoDuplaDireita(no);
+        } 
 
         if (no.getPai() == null) {
             raiz = no;

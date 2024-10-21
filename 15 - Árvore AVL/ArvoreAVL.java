@@ -89,7 +89,6 @@ public class ArvoreAVL {
         return novo;
     }
 
-
     // ------------------ Rotações ------------------
 
     public NoAVL rotacaoEsquerda(NoAVL no) {
@@ -152,13 +151,15 @@ public class ArvoreAVL {
     }
 
     public NoAVL rotacaoDuplaEsquerda(NoAVL no) {
-        no.setFilhoDireito(rotacaoDireita(no.getFilhoDireito()));
-        return rotacaoEsquerda(no);
+        rotacaoEsquerda(no.getFilhoEsquerdo());
+        System.out.println("Rotação dupla à esquerda");
+        return rotacaoDireita(no);
     }
 
     public NoAVL rotacaoDuplaDireita(NoAVL no) {
-        no.setFilhoEsquerdo(rotacaoEsquerda(no.getFilhoEsquerdo()));
-        return rotacaoDireita(no);
+        rotacaoDireita(no.getFilhoDireito());
+        System.out.println("Rotação dupla à direita");
+        return rotacaoEsquerda(no);
     }
 
     public int height(NoAVL no) {
@@ -234,7 +235,6 @@ public class ArvoreAVL {
             matriz[profundidade][i] = no.getElement();
         }
 
-        // Imprimir a árvore
         for (int i = 0; i <= h; i++) {
             for (int j = 0; j < aux.size(); j++) {
                 if (matriz[i][j] == null) {
@@ -248,7 +248,6 @@ public class ArvoreAVL {
         }
         System.out.println();
     }
-
 
     public void emOrdem(NoAVL no) {
         if (isInternal(no)) {

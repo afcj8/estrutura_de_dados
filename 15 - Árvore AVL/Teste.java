@@ -3,15 +3,17 @@ public class Teste {
         ArvoreAVL avl = new ArvoreAVL(10);
         NoAVL noA = avl.incluir(5);
         avl.mostrar();
-        NoAVL noB = avl.incluir(15);
+        NoAVL noB = avl.incluir(3);
         avl.mostrar();
-        NoAVL noC = avl.incluir(12);
-        avl.mostrar();
-        // NoAVL noD = avl.incluir(17);
+        // NoAVL noC = avl.incluir(12);
+        // avl.mostrar();
+        // NoAVL noD = avl.incluir(18);
         // avl.mostrar();
 
-        avl.remover(15);
-        avl.mostrar();
+        // avl.remover(10);
+        // avl.mostrar();
+        // avl.remover(5);
+        // avl.mostrar();
         // NoAVL noD = avl.incluir(40);
         // avl.mostrar();
         // NoAVL noE = avl.incluir(30);

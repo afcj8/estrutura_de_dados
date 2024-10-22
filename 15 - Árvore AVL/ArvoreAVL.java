@@ -110,6 +110,18 @@ public class ArvoreAVL {
         else if (isInternal(no)) {
 
             if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() == null) {
+                if (pai.getFilhoEsquerdo() == no) {
+                    pai.setFilhoEsquerdo(no.getFilhoEsquerdo());
+                }
+                no.getFilhoEsquerdo().setPai(pai);
+            } else if (no.getFilhoDireito() != null && no.getFilhoEsquerdo() == null) {
+                if (pai.getFilhoDireito() == no) {
+                    pai.setFilhoDireito(no.getFilhoDireito());
+                }
+                no.getFilhoDireito().setPai(pai);
+            } 
+
+            if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() == null) {
                 pai.setFilhoDireito(no.getFilhoEsquerdo());
                 no.getFilhoEsquerdo().setPai(pai);
             } else if (no.getFilhoDireito() != null && no.getFilhoEsquerdo() == null) {
@@ -163,8 +175,14 @@ public class ArvoreAVL {
             }
         }
 
-        no.setFb(fatorBalanceamento(no));
-        novoNo.setFb(fatorBalanceamento(novoNo));
+        int FB_no = no.getFb() + 1 - Math.min(novoNo.getFb(), 0);
+        int FB_novoNo = novoNo.getFb() + 1 + Math.max(FB_no, 0);
+
+        no.setFb(FB_no);
+        novoNo.setFb(FB_novoNo);
+
+        // no.setFb(fatorBalanceamento(no));
+        // novoNo.setFb(fatorBalanceamento(novoNo));
 
         System.out.println("Rotação simples à esquerda");
 
@@ -192,8 +210,14 @@ public class ArvoreAVL {
             }
         }
 
-        no.setFb(fatorBalanceamento(no));
-        novoNo.setFb(fatorBalanceamento(novoNo));
+        int FB_no = no.getFb() - 1 - Math.max(novoNo.getFb(), 0);
+        int FB_novoNo = novoNo.getFb() - 1 + Math.min(FB_no, 0);
+
+        no.setFb(FB_no);
+        novoNo.setFb(FB_novoNo);
+
+        // no.setFb(fatorBalanceamento(no));
+        // novoNo.setFb(fatorBalanceamento(novoNo));
 
         System.out.println("Rotação simples à direita");
 

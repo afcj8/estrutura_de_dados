@@ -1,0 +1,7 @@
+Aula 01 - avl
+
+- Inserção no lado direito, o fb do pai vai para -1
+- Inserção no lado esquerdo, o fb do pai vai para 1
+
+- Remoção do lado direito, soma 1 ao fb do pai
+- Remoção do lado esquerdo, subtrai 1 do fb do pai

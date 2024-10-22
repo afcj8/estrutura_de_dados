@@ -159,7 +159,7 @@ public class ArvoreAVL {
     public NoAVL rotacaoDuplaDireita(NoAVL no) {
         rotacaoEsquerda(no.getFilhoEsquerdo());
         System.out.println("Rotação dupla à direita");
-        return rotacaoDireita(no);;
+        return rotacaoDireita(no);
     }
 
     public int height(NoAVL no) {
@@ -208,7 +208,7 @@ public class ArvoreAVL {
         else if (fb > 1 && fatorBalanceamento(no.getFilhoEsquerdo()) < 0) {
             no = rotacaoDuplaDireita(no);
         } 
-
+        // Se o nó atual for a raiz, atualiza a raiz
         if (no.getPai() == null) {
             raiz = no;
         }

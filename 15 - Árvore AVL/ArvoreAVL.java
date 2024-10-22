@@ -171,15 +171,6 @@ public class ArvoreAVL {
         return Math.max(hEsquerda, hDireita) + 1; 
     }
 
-    public int depth(NoAVL no) {
-        int profundidade = 0;
-        while (no != raiz) {
-            no = no.getPai();
-            profundidade++;
-        }
-        return profundidade;
-    }
-
     public int fatorBalanceamento(NoAVL no) {
         if (no == null) {
             return 0;
@@ -214,6 +205,17 @@ public class ArvoreAVL {
         }
 
         return no;
+    }
+
+    public NoAVL encontrarSucessor(NoAVL no) {
+        if (no.getFilhoDireito() != null) {
+            NoAVL sucessor = no.getFilhoDireito();
+            while (sucessor.getFilhoEsquerdo() != null) {
+                sucessor = sucessor.getFilhoEsquerdo();
+            }
+            return sucessor;
+        }
+        return null;
     }
 
     public void mostrar() {
@@ -261,5 +263,14 @@ public class ArvoreAVL {
                 emOrdem(no.getFilhoDireito());
             }
         }
+    }
+
+    public int depth(NoAVL no) {
+        int profundidade = 0;
+        while (no != raiz) {
+            no = no.getPai();
+            profundidade++;
+        }
+        return profundidade;
     }
 }

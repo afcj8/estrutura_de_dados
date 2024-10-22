@@ -89,6 +89,56 @@ public class ArvoreAVL {
         return novo;
     }
 
+    public Object remover(Object key) {
+        NoAVL no = pesquisar(raiz, key);
+        NoAVL pai = no.getPai();
+
+        if (isRoot(no) && isExternal(no)) {
+            raiz = null;
+            tamanho--;
+            return key;
+        }
+
+        if (isExternal(no)) {
+            if (pai.getFilhoEsquerdo() != null && pai.getFilhoEsquerdo().equals(no)) {
+                pai.setFilhoEsquerdo(null);
+            } else if (pai.getFilhoDireito() != null && pai.getFilhoDireito().equals(no)) {
+                pai.setFilhoDireito(null);
+            }
+        } 
+
+        else if (isInternal(no)) {
+
+            if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() == null) {
+                pai.setFilhoDireito(no.getFilhoEsquerdo());
+                no.getFilhoEsquerdo().setPai(pai);
+            } else if (no.getFilhoDireito() != null && no.getFilhoEsquerdo() == null) {
+                pai.setFilhoEsquerdo(no.getFilhoDireito());
+                no.getFilhoDireito().setPai(pai);
+            } 
+            
+            else if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() != null) {
+                NoAVL sucessor = encontrarSucessor(no);
+                if (sucessor != null) {
+                    Object temp = sucessor.getElement();
+                    remover(sucessor.getElement());
+                    no.setElement(temp);
+                    return key;
+                }
+            }
+        }
+
+        tamanho--;
+
+        while (pai != null) {
+            pai.setFb(fatorBalanceamento(pai));
+            pai = balancear(pai);
+            pai = pai.getPai();
+        }
+
+        return key;
+    }
+
     // ------------------ Rotações ------------------
 
     public NoAVL rotacaoEsquerda(NoAVL no) {

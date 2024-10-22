@@ -1,17 +1,21 @@
 public class Teste {
     public static void main(String[] args) {
-        ArvoreAVL avl = new ArvoreAVL(50);
+        ArvoreAVL avl = new ArvoreAVL(10);
+        NoAVL noA = avl.incluir(5);
         avl.mostrar();
-        NoAVL noA = avl.incluir(90);
+        NoAVL noB = avl.incluir(15);
         avl.mostrar();
-        NoAVL noB = avl.incluir(20);
+        NoAVL noC = avl.incluir(12);
         avl.mostrar();
-        NoAVL noC = avl.incluir(10);
+        // NoAVL noD = avl.incluir(17);
+        // avl.mostrar();
+
+        avl.remover(15);
         avl.mostrar();
-        NoAVL noD = avl.incluir(40);
-        avl.mostrar();
-        NoAVL noE = avl.incluir(30);
-        avl.mostrar();
+        // NoAVL noD = avl.incluir(40);
+        // avl.mostrar();
+        // NoAVL noE = avl.incluir(30);
+        // avl.mostrar();
         // NoAVL noF = avl.incluir(4);
         // avl.mostrar();
         // NoAVL noG = avl.incluir(3);

@@ -98,4 +98,36 @@ public class ArvoreRN {
 
         return novoNo;
     }
+
+    public int height(NoAVL no) {
+        if (no == null) {
+            return -1;
+        }
+        int hEsquerda = height(no.getFilhoEsquerdo());
+        int hDireita = height(no.getFilhoDireito());
+        return Math.max(hEsquerda, hDireita) + 1; 
+    }
+    
+    public void emOrdem(NoAVL no) {
+        if (isInternal(no)) {
+            if (no.getFilhoEsquerdo() != null) {
+                emOrdem(no.getFilhoEsquerdo());
+            }
+        }
+        aux.add(no); // visite
+        if (isInternal(no)) {
+            if (no.getFilhoDireito() != null) {
+                emOrdem(no.getFilhoDireito());
+            }
+        }
+    }
+
+    public int depth(NoAVL no) {
+        int profundidade = 0;
+        while (no != raiz) {
+            no = no.getPai();
+            profundidade++;
+        }
+        return profundidade;
+    }
 }

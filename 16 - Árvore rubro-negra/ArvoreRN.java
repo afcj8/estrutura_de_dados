@@ -36,4 +36,66 @@ public class ArvoreRN {
     public boolean isInternal(NoRB no) {
         return no.getFilhoDireito() != null || no.getFilhoEsquerdo() != null;
     }
+
+    // ------------------ Rotações ------------------
+
+    
+    public NoRB rotacaoEsquerda(NoRB no) {
+        NoRB novoNo = no.getFilhoDireito();
+        novoNo.setPai(no.getPai());
+
+        no.setFilhoDireito(novoNo.getFilhoEsquerdo());
+
+
+        if (no.getFilhoDireito() != null) {
+            no.getFilhoDireito().setPai(no);
+        }
+
+        novoNo.setFilhoEsquerdo(no);
+        no.setPai(novoNo);
+
+        if (novoNo.getPai() != null) {
+            if (novoNo.getPai().getFilhoDireito() == no) {
+                novoNo.getPai().setFilhoDireito(novoNo);
+            } else if (novoNo.getPai().getFilhoEsquerdo() == no) {
+                novoNo.getPai().setFilhoEsquerdo(novoNo);
+            }
+        }
+
+        novoNo.setCor(no.getCor());
+        no.setCor("R");
+
+        System.out.println("Rotação simples à esquerda");
+
+        return novoNo;
+    }
+
+    public NoRB rotacaoDireita(NoRB no) {
+        NoRB novoNo = no.getFilhoEsquerdo();
+        novoNo.setPai(no.getPai());
+
+        no.setFilhoEsquerdo(novoNo.getFilhoDireito());
+
+        if (no.getFilhoEsquerdo() != null) {
+            no.getFilhoEsquerdo().setPai(no);
+        }
+
+        novoNo.setFilhoDireito(no);
+        no.setPai(novoNo);
+
+        if (novoNo.getPai() != null) {
+            if (novoNo.getPai().getFilhoDireito() == no) {
+                novoNo.getPai().setFilhoDireito(novoNo);
+            } else if (novoNo.getPai().getFilhoEsquerdo() == no) {
+                novoNo.getPai().setFilhoEsquerdo(novoNo);
+            }
+        }
+
+        novoNo.setCor(no.getCor());
+        no.setCor("R");
+
+        System.out.println("Rotação simples à direita");
+
+        return novoNo;
+    }
 }

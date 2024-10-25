@@ -99,7 +99,40 @@ public class ArvoreRN {
         return novoNo;
     }
 
-    public int height(NoAVL no) {
+    public void mostrar() {
+        if (raiz == null) {
+            System.out.println("Árvore vazia");
+            return;
+        } 
+
+        aux = new ArrayList<>();
+        emOrdem(raiz);
+
+        int h = height(raiz); // Altura da árvore
+        Object[][] matriz = new Object[h + 1][aux.size()];
+
+        // Popular a matriz com nós
+        for (int i = 0; i < aux.size(); i++) {
+            NoRB no = aux.get(i);
+            int profundidade = depth(no);
+            matriz[profundidade][i] = no.getElement();
+        }
+
+        for (int i = 0; i <= h; i++) {
+            for (int j = 0; j < aux.size(); j++) {
+                if (matriz[i][j] == null) {
+                    System.out.print("\t");
+                } else {
+                    NoRB no = aux.get(j);
+                    System.out.printf("\t%d" + "[" + no.getCor() + "]", no.getElement());
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public int height(NoRB no) {
         if (no == null) {
             return -1;
         }
@@ -108,7 +141,7 @@ public class ArvoreRN {
         return Math.max(hEsquerda, hDireita) + 1; 
     }
     
-    public void emOrdem(NoAVL no) {
+    public void emOrdem(NoRB no) {
         if (isInternal(no)) {
             if (no.getFilhoEsquerdo() != null) {
                 emOrdem(no.getFilhoEsquerdo());
@@ -122,7 +155,7 @@ public class ArvoreRN {
         }
     }
 
-    public int depth(NoAVL no) {
+    public int depth(NoRB no) {
         int profundidade = 0;
         while (no != raiz) {
             no = no.getPai();

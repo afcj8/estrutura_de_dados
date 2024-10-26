@@ -1,6 +1,8 @@
+
 import java.util.ArrayList;
 
 public class ArvoreRN {
+
     private NoRB raiz;
     Comparador c = new Comparador();
     private int tamanho;
@@ -43,7 +45,7 @@ public class ArvoreRN {
             return no;
         }
 
-        if ((int)key == (int)no.getElement()) {
+        if ((int) key == (int) no.getElement()) {
             return no;
         }
 
@@ -82,14 +84,9 @@ public class ArvoreRN {
         } else {
             pai.setFilhoDireito(novo);
         }
-        
-        tamanho++;
-        
-        while (pai != null) {
-            manterInsercao(novo);
-            pai = pai.getPai();
-        }
 
+        tamanho++;
+        manterInsercao(novo);
         return novo;
     }
 
@@ -116,9 +113,9 @@ public class ArvoreRN {
         aux.setFilhoEsquerdo(n);
         n.setPai(aux);
 
-        System.out.println("Rotação para a esquerda realizada: ");
+        System.out.println("Rotação simples à esquerda");
     }
-    
+
     public void rotacaoDuplaEsquerda(NoRB n) {
         rotacaoDireita(n.getFilhoDireito());
         rotacaoEsquerda(n);
@@ -145,7 +142,7 @@ public class ArvoreRN {
         aux.setFilhoDireito(no);
         no.setPai(aux);
 
-        System.out.println("Rotação para a direita realizada: ");
+        System.out.println("Rotação simples á direita");
     }
 
     public void rotacaoDuplaDireita(NoRB no) {
@@ -153,12 +150,13 @@ public class ArvoreRN {
         rotacaoDireita(no);
     }
 
-    public void manterInsercao(NoRB n) {
-        while (n.getPai() != null && n.getPai().getCor().equals("R")) {
-            NoRB pai = n.getPai();
-            NoRB avo = pai.getPai();
-            NoRB tio;
-            if (avo != null) {
+public void manterInsercao(NoRB n) {
+    while (n.getPai() != null && n.getPai().getCor().equals("R")) {
+        NoRB pai = n.getPai();
+        NoRB avo = pai.getPai();
+        NoRB tio;
+
+        if (avo != null) {
                 // Se o pai for filho esquerdo, o tio é o filho direito
                 if (pai == avo.getFilhoEsquerdo()) {
                     tio = avo.getFilhoDireito();
@@ -172,66 +170,66 @@ public class ArvoreRN {
                 tio = null;
             }
 
-            // Caso 2: pai rubro, avo negro e tio rubro
-            if (pai.getCor().equals("R") && (avo != null && avo.getCor().equals("N")) && (tio != null && tio.getCor().equals("R"))) {
-                System.err.println("pai rubro, avo negro e tio rubro");
-                if (!isRoot(avo)) {
-                    avo.setCor("R");
-                    tio.setCor("N");
-                    pai.setCor("N");
-                    n.setCor("R");
-                } else {
-                    tio.setCor("N");
-                    pai.setCor("N");
-                    n.setCor("R");
-                }
-            } else if (pai.getCor().equals("R") && (avo != null && avo.getCor().equals("N")) && ((tio != null && tio.getCor().equals("R")) || (tio == null))) {
-                System.err.println("Entrei aqui");
-                // if (!isRoot(avo)) { // Diferente de raiz
-                    if (pai == avo.getFilhoEsquerdo() && n == pai.getFilhoEsquerdo()) {
-                        System.err.println("Entrei");
-                        System.out.println("Caso 3a: ");
-                        rotacaoDireita(avo);
-                        pai.setCor("N");
-                        avo.setCor("R");
-                        if (tio != null) {
-                            tio.setCor("N");
-                        }
-                        n.setCor("R");
-                    } else if (pai == avo.getFilhoDireito() && n == pai.getFilhoDireito()) {
-                        System.out.println("Caso 3b: ");
-                        rotacaoEsquerda(avo);
-                        pai.setCor("N");
-                        avo.setCor("R");
-                        tio.setCor("N");
-                        n.setCor("R");
-                    } else if (pai == avo.getFilhoDireito() && n == pai.getFilhoEsquerdo()) {
-                        System.out.println("Caso 3c: ");
-                        rotacaoDuplaEsquerda(avo);
-                        pai.setCor("N");
-                        avo.setCor("R");
-                        tio.setCor("N");
-                        n.setCor("R");
-                    } else if (pai == avo.getFilhoEsquerdo() && n == pai.getFilhoDireito()) {
-                        System.out.println("Caso 3d: ");
-                        rotacaoDuplaDireita(avo);
-                        pai.setCor("N");
-                        avo.setCor("R");
-                        tio.setCor("N");
-                        n.setCor("R");
-                    }
-                // }
+        // Caso 2: pai vermelho, avô preto e tio vermelho
+        if (pai.getCor().equals("R") && (avo != null && avo.getCor().equals("N")) && (tio != null && tio.getCor().equals("R"))) {
+            System.err.println("Caso 2: pai rubro, avo negro e tio rubro");
+            // avo.setCor(avo == raiz ? "N" : "R");
+
+            if (avo == raiz) {
+                avo.setCor("N");
             } else {
-                break;
+                avo.setCor("R");
             }
+
+            tio.setCor("N");
+            pai.setCor("N");
+            n = avo;  // Mover o foco de ajuste para o avô
+            continue;
+        }
+
+        // Caso 3: Aplicar rotações onde tio é nulo ou preto
+        if (pai.getCor().equals("R") && (avo != null && avo.getCor().equals("N")) && (tio == null || tio.getCor().equals("N"))) {
+            // Caso 3a: pai é filho esquerdo e nó atual é filho esquerdo do pai
+            if (pai == avo.getFilhoEsquerdo() && n == pai.getFilhoEsquerdo()) {
+                System.out.println("Caso 3a: Rotação à direita");
+                rotacaoDireita(avo);
+                pai.setCor("N");
+                avo.setCor("R");
+
+            // Caso 3b: pai é filho direito e nó atual é filho direito do pai
+            } else if (pai == avo.getFilhoDireito() && n == pai.getFilhoDireito()) {
+                System.out.println("Caso 3b: Rotação à esquerda");
+                rotacaoEsquerda(avo);
+                pai.setCor("N");
+                avo.setCor("R");
+
+            // Caso 3c: pai é filho direito e nó atual é filho esquerdo do pai
+            } else if (pai == avo.getFilhoDireito() && n == pai.getFilhoEsquerdo()) {
+                System.out.println("Caso 3c: Rotação dupla à esquerda");
+                rotacaoDuplaEsquerda(avo);
+                pai.setCor("R");
+                avo.setCor("R");
+
+            // Caso 3d: pai é filho esquerdo e nó atual é filho direito do pai
+            } else if (pai == avo.getFilhoEsquerdo() && n == pai.getFilhoDireito()) {
+                System.out.println("Caso 3d: Rotação dupla à direita");
+                rotacaoDuplaDireita(avo);
+                pai.setCor("R");
+                avo.setCor("R");
+            }
+            break;  // Após ajustar com rotações, sair do loop
         }
     }
+
+    raiz.setCor("N");  // Garantir que a raiz permanece preta
+}
+
 
     public void mostrar() {
         if (raiz == null) {
             System.out.println("Árvore vazia");
             return;
-        } 
+        }
 
         aux = new ArrayList<>();
         emOrdem(raiz);
@@ -266,9 +264,9 @@ public class ArvoreRN {
         }
         int hEsquerda = height(no.getFilhoEsquerdo());
         int hDireita = height(no.getFilhoDireito());
-        return Math.max(hEsquerda, hDireita) + 1; 
+        return Math.max(hEsquerda, hDireita) + 1;
     }
-    
+
     public void emOrdem(NoRB no) {
         if (isInternal(no)) {
             if (no.getFilhoEsquerdo() != null) {

@@ -1,12 +1,10 @@
-
 import java.util.ArrayList;
 
 public class ArvoreRN {
-
     private NoRB raiz;
     Comparador c = new Comparador();
     private int tamanho;
-    private ArrayList<NoRB> aux;
+    private ArrayList<NoRB> imp;
 
     public ArvoreRN() {
         this.raiz = null;
@@ -92,33 +90,33 @@ public class ArvoreRN {
 
     // ------------------ Rotações ------------------
 
-    public void rotacaoEsquerda(NoRB n) {
-        NoRB aux = n.getFilhoDireito();
-        n.setFilhoDireito(aux.getFilhoEsquerdo());
+    public void rotacaoEsquerda(NoRB no) {
+        NoRB aux = no.getFilhoDireito();
+        no.setFilhoDireito(aux.getFilhoEsquerdo());
 
         if (aux.getFilhoEsquerdo() != null) {
-            aux.getFilhoEsquerdo().setPai(n);
+            aux.getFilhoEsquerdo().setPai(no);
         }
 
-        aux.setPai(n.getPai());
+        aux.setPai(no.getPai());
 
-        if (n.getPai() == null) {
+        if (no.getPai() == null) {
             setRaiz(aux);
-        } else if (n == n.getPai().getFilhoEsquerdo()) {
-            n.getPai().setFilhoEsquerdo(aux);
+        } else if (no == no.getPai().getFilhoEsquerdo()) {
+            no.getPai().setFilhoEsquerdo(aux);
         } else {
-            n.getPai().setFilhoDireito(aux);
+            no.getPai().setFilhoDireito(aux);
         }
 
-        aux.setFilhoEsquerdo(n);
-        n.setPai(aux);
+        aux.setFilhoEsquerdo(no);
+        no.setPai(aux);
 
         System.out.println("Rotação simples à esquerda");
     }
 
-    public void rotacaoDuplaEsquerda(NoRB n) {
-        rotacaoDireita(n.getFilhoDireito());
-        rotacaoEsquerda(n);
+    public void rotacaoDuplaEsquerda(NoRB no) {
+        rotacaoDireita(no.getFilhoDireito());
+        rotacaoEsquerda(no);
     }
 
     public void rotacaoDireita(NoRB no) {
@@ -150,17 +148,17 @@ public class ArvoreRN {
         rotacaoDireita(no);
     }
 
-public void manterInsercao(NoRB n) {
-    while (n.getPai() != null && n.getPai().getCor().equals("R")) {
-        NoRB pai = n.getPai();
-        NoRB avo = pai.getPai();
-        NoRB tio;
+    public void manterInsercao(NoRB no) {
+        while (no.getPai() != null && no.getPai().getCor().equals("R")) {
+            NoRB pai = no.getPai();
+            NoRB avo = pai.getPai();
+            NoRB tio;
 
-        if (avo != null) {
+            if (avo != null) {
                 // Se o pai for filho esquerdo, o tio é o filho direito
                 if (pai == avo.getFilhoEsquerdo()) {
                     tio = avo.getFilhoDireito();
-                    // Se o pai for filho direito, o tio é o filho esquerdo
+                // Se o pai for filho direito, o tio é o filho esquerdo
                 } else if (pai == avo.getFilhoDireito()) {
                     tio = avo.getFilhoEsquerdo();
                 } else {
@@ -170,60 +168,62 @@ public void manterInsercao(NoRB n) {
                 tio = null;
             }
 
-        // Caso 2: pai vermelho, avô preto e tio vermelho
-        if (pai.getCor().equals("R") && (avo != null && avo.getCor().equals("N")) && (tio != null && tio.getCor().equals("R"))) {
-            System.err.println("Caso 2: pai rubro, avo negro e tio rubro");
-            // avo.setCor(avo == raiz ? "N" : "R");
+            // Caso 2: pai vermelho, avô preto e tio vermelho
+            if (pai.getCor().equals("R") && (avo != null && avo.getCor().equals("N")) && (tio != null && tio.getCor().equals("R"))) {
+                System.err.println("Caso 2: pai rubro, avo negro e tio rubro");
 
-            if (avo == raiz) {
-                avo.setCor("N");
-            } else {
-                avo.setCor("R");
+                if (avo == raiz) {
+                    avo.setCor("N");
+                } else {
+                    avo.setCor("R");
+                }
+
+                tio.setCor("N");
+                pai.setCor("N");
+                no = avo;  // Mover o foco de ajuste para o avô
+                continue;
             }
 
-            tio.setCor("N");
-            pai.setCor("N");
-            n = avo;  // Mover o foco de ajuste para o avô
-            continue;
-        }
+            // Caso 3: Aplicar rotações onde tio é nulo ou preto
+            if (pai.getCor().equals("R") && (avo != null && avo.getCor().equals("N")) && (tio == null || tio.getCor().equals("N"))) {
+                
+                // Caso 3a: pai é filho esquerdo e nó atual é filho esquerdo do pai
+                if (pai == avo.getFilhoEsquerdo() && no == pai.getFilhoEsquerdo()) {
+                    System.out.println("Caso 3a: Rotação à direita");
+                    rotacaoDireita(avo);
+                    pai.setCor("N");
+                    avo.setCor("R");
 
-        // Caso 3: Aplicar rotações onde tio é nulo ou preto
-        if (pai.getCor().equals("R") && (avo != null && avo.getCor().equals("N")) && (tio == null || tio.getCor().equals("N"))) {
-            // Caso 3a: pai é filho esquerdo e nó atual é filho esquerdo do pai
-            if (pai == avo.getFilhoEsquerdo() && n == pai.getFilhoEsquerdo()) {
-                System.out.println("Caso 3a: Rotação à direita");
-                rotacaoDireita(avo);
-                pai.setCor("N");
-                avo.setCor("R");
+                // Caso 3b: pai é filho direito e nó atual é filho direito do pai
+                } else if (pai == avo.getFilhoDireito() && no == pai.getFilhoDireito()) {
+                    System.out.println("Caso 3b: Rotação à esquerda");
+                    rotacaoEsquerda(avo);
+                    pai.setCor("N");
+                    avo.setCor("R");
 
-            // Caso 3b: pai é filho direito e nó atual é filho direito do pai
-            } else if (pai == avo.getFilhoDireito() && n == pai.getFilhoDireito()) {
-                System.out.println("Caso 3b: Rotação à esquerda");
-                rotacaoEsquerda(avo);
-                pai.setCor("N");
-                avo.setCor("R");
+                // Caso 3c: pai é filho direito e nó atual é filho esquerdo do pai
+                } else if (pai == avo.getFilhoDireito() && no == pai.getFilhoEsquerdo()) {
+                    System.out.println("Caso 3c: Rotação dupla à esquerda");
+                    rotacaoDuplaEsquerda(avo);
+                    no.setCor("N");
+                    pai.setCor("R");
+                    avo.setCor("R"); 
 
-            // Caso 3c: pai é filho direito e nó atual é filho esquerdo do pai
-            } else if (pai == avo.getFilhoDireito() && n == pai.getFilhoEsquerdo()) {
-                System.out.println("Caso 3c: Rotação dupla à esquerda");
-                rotacaoDuplaEsquerda(avo);
-                pai.setCor("R");
-                avo.setCor("R");
+                // Caso 3d: pai é filho esquerdo e nó atual é filho direito do pai
+                } else if (pai == avo.getFilhoEsquerdo() && no == pai.getFilhoDireito()) {
+                    System.out.println("Caso 3d: Rotação dupla à direita");
+                    rotacaoDuplaDireita(avo);
+                    no.setCor("N");
+                    pai.setCor("R");
+                    avo.setCor("R");
+                }
 
-            // Caso 3d: pai é filho esquerdo e nó atual é filho direito do pai
-            } else if (pai == avo.getFilhoEsquerdo() && n == pai.getFilhoDireito()) {
-                System.out.println("Caso 3d: Rotação dupla à direita");
-                rotacaoDuplaDireita(avo);
-                pai.setCor("R");
-                avo.setCor("R");
+                break;
             }
-            break;  // Após ajustar com rotações, sair do loop
         }
+
+        raiz.setCor("N");  // Garantir que a raiz permanece preta
     }
-
-    raiz.setCor("N");  // Garantir que a raiz permanece preta
-}
-
 
     public void mostrar() {
         if (raiz == null) {
@@ -231,25 +231,25 @@ public void manterInsercao(NoRB n) {
             return;
         }
 
-        aux = new ArrayList<>();
+        imp = new ArrayList<>();
         emOrdem(raiz);
 
         int h = height(raiz); // Altura da árvore
-        Object[][] matriz = new Object[h + 1][aux.size()];
+        Object[][] matriz = new Object[h + 1][imp.size()];
 
         // Popular a matriz com nós
-        for (int i = 0; i < aux.size(); i++) {
-            NoRB no = aux.get(i);
+        for (int i = 0; i < imp.size(); i++) {
+            NoRB no = imp.get(i);
             int profundidade = depth(no);
             matriz[profundidade][i] = no.getElement();
         }
 
         for (int i = 0; i <= h; i++) {
-            for (int j = 0; j < aux.size(); j++) {
+            for (int j = 0; j < imp.size(); j++) {
                 if (matriz[i][j] == null) {
                     System.out.print("\t");
                 } else {
-                    NoRB no = aux.get(j);
+                    NoRB no = imp.get(j);
                     System.out.printf("\t%d" + "[" + no.getCor() + "]", no.getElement());
                 }
             }
@@ -273,7 +273,7 @@ public void manterInsercao(NoRB n) {
                 emOrdem(no.getFilhoEsquerdo());
             }
         }
-        aux.add(no); // visite
+        imp.add(no); // visite
         if (isInternal(no)) {
             if (no.getFilhoDireito() != null) {
                 emOrdem(no.getFilhoDireito());

@@ -5,10 +5,10 @@ public class Teste {
 
         // ----------------- RDD -------------------
 
-        // arn.incluir(5);
-        // arn.mostrar();
-        // arn.incluir(8);
-        // arn.mostrar();
+        arn.incluir(5);
+        arn.mostrar();
+        arn.incluir(8);
+        arn.mostrar();
 
         // ----------------- RDE -------------------
 

@@ -84,7 +84,7 @@ public class ArvoreRN {
         }
 
         tamanho++;
-        manterInsercao(novo);
+        balancearInsercao(novo);
         return novo;
     }
 
@@ -148,7 +148,7 @@ public class ArvoreRN {
         rotacaoDireita(no);
     }
 
-    public void manterInsercao(NoRB no) {
+    public void balancearInsercao(NoRB no) {
         while (no.getPai() != null && no.getPai().getCor().equals("R")) {
             NoRB pai = no.getPai();
             NoRB avo = pai.getPai();

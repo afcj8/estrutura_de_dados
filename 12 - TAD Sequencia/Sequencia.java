@@ -1,6 +1,3 @@
-import TadLista.Lista;
-import TadLista.No;
-
 public class Sequencia extends Lista implements ISequencia {
     private No inicio, fim;
     private int n;

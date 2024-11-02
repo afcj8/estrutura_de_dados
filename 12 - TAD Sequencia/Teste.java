@@ -1,6 +1,3 @@
-import TadLista.ListaException;
-import TadLista.No;
-
 public class Teste {
     public static void main(String[] args) throws ListaException, Excecao {
         Sequencia s = new Sequencia();

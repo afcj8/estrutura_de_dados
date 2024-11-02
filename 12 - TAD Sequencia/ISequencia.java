@@ -1,5 +1,3 @@
-import TadLista.No;
-
 public interface ISequencia {
     // Métodos VECTOR
     No elemAtRank(int r) throws Excecao;

@@ -1,5 +1,3 @@
-package fila;
-
 public class Fila implements IFila {
     int inicio = 0, fim = 0, tamanho;
     Object objects[];

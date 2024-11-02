@@ -1,5 +1,3 @@
-package fila;
-
 public class Teste {
     public static void main(String[] args) throws FilaVaziaException {
         Fila fila = new Fila(10);

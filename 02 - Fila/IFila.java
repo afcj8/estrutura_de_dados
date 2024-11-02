@@ -1,5 +1,3 @@
-package fila;
-
 public interface IFila {
     // Insere um elemento no fim da fila
     void enqueue(Object obj);

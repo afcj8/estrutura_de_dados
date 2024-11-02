@@ -1,8 +1,3 @@
-package pilhaDuasFilas;
-
-import fila.FilaVaziaException;
-import fila.Fila;
-
 public class Pilha implements IPilha {
     private Fila f1;
     private Fila f2;

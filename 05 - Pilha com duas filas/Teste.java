@@ -1,7 +1,3 @@
-package pilhaDuasFilas;
-
-import fila.FilaVaziaException;
-
 public class Teste {
     public static void main(String[] args) throws FilaVaziaException {
         Pilha pilha = new Pilha();

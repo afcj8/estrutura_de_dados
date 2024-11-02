@@ -1,7 +1,3 @@
-package pilhaDuasFilas;
-
-import fila.FilaVaziaException;
-
 public interface IPilha {
     public int size();
     public boolean isEmpty();

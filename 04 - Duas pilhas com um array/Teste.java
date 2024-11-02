@@ -46,7 +46,5 @@ public class Teste {
         System.out.println("Está vazia? " + pilha.isEmptyP());
         System.out.println("tamanho: " + pilha.sizeP());
         System.out.println("Elemento do topo da pilha: " + pilha.topP() + "\n");
-
-        pilha.mostrar();
     }
 }

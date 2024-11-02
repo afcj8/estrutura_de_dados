@@ -1,5 +1,3 @@
-import pilha.PilhaVaziaException;
-
 public interface IFila {
     void enqueue(Object obj);
     Object dequeue() throws PilhaVaziaException;

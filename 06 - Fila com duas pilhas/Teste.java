@@ -1,5 +1,3 @@
-import pilha.PilhaVaziaException;
-
 public class Teste {
     public static void main(String[] args) throws PilhaVaziaException {
         Fila fila = new Fila();

@@ -1,6 +1,3 @@
-import pilha.Pilha;
-import pilha.PilhaVaziaException;
-
 public class Fila implements IFila {
     private Pilha p1;
     private Pilha p2;

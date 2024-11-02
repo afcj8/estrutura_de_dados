@@ -1,5 +1,3 @@
-package pilha;
-
 public class Teste {
     public static void main(String[] args) throws PilhaVaziaException {
         Pilha pilha = new Pilha(10);

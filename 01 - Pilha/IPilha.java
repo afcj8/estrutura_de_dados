@@ -1,5 +1,3 @@
-package pilha;
-
 public interface IPilha {
     // Retorna o número de elementos armazenados
     public int size();

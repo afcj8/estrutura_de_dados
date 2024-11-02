@@ -1,5 +1,3 @@
-package pilha;
-
 public class Pilha implements IPilha {
     private int t, tamanho;
     private Object[] p;

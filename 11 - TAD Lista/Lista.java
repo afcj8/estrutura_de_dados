@@ -1,5 +1,3 @@
-package TadLista;
-
 public class Lista implements ILista {
     private No inicio, fim;
     private int n;

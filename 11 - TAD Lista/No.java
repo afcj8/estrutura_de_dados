@@ -1,5 +1,3 @@
-package TadLista;
-
 public class No {
     private Object elemento;
     private No anterior, proximo;

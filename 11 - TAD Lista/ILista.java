@@ -1,5 +1,3 @@
-package TadLista;
-
 public interface ILista {
     // Verifica se o nó p é o primeiro
     boolean isFirst(No p) throws ListaException;

@@ -1,5 +1,3 @@
-package TadLista;
-
 public class Teste {
     public static void main(String[] args) throws ListaException {
         Lista lista = new Lista();

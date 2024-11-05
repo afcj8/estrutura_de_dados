@@ -121,14 +121,6 @@ public class ArvoreAVL {
                 no.getFilhoDireito().setPai(pai);
             } 
 
-            if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() == null) {
-                pai.setFilhoDireito(no.getFilhoEsquerdo());
-                no.getFilhoEsquerdo().setPai(pai);
-            } else if (no.getFilhoDireito() != null && no.getFilhoEsquerdo() == null) {
-                pai.setFilhoEsquerdo(no.getFilhoDireito());
-                no.getFilhoDireito().setPai(pai);
-            } 
-            
             else if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() != null) {
                 NoAVL sucessor = encontrarSucessor(no);
                 if (sucessor != null) {

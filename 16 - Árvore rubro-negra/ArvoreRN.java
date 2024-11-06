@@ -225,6 +225,17 @@ public class ArvoreRN {
         raiz.setCor("N");  // Garantir que a raiz permanece preta
     }
 
+    public NoRB encontrarSucessor(NoRB no) {
+        if (no.getFilhoDireito() != null) {
+            NoRB sucessor = no.getFilhoDireito();
+            while (sucessor.getFilhoEsquerdo() != null) {
+                sucessor = sucessor.getFilhoEsquerdo();
+            }
+            return sucessor;
+        }
+        return null;
+    }
+
     public void mostrar() {
         if (raiz == null) {
             System.out.println("Árvore vazia");

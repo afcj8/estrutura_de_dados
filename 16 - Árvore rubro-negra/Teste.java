@@ -9,7 +9,11 @@ public class Teste {
         arn.incluir(15);
         arn.mostrar();
 
-        arn.incluir(3);
+        arn.incluir(8);
+        arn.mostrar();
+
+        System.out.println("Após a remoção: ");
+        arn.remover(5);
         arn.mostrar();
 
         // ----------------- RDD -------------------

@@ -115,8 +115,11 @@ public class ArvoreRN {
             if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() == null) {
                 if (pai.getFilhoEsquerdo() == no) {
                     pai.setFilhoEsquerdo(no.getFilhoEsquerdo());
+                } else if (pai.getFilhoDireito() == no) {
+                    pai.setFilhoDireito(no.getFilhoEsquerdo());
                 }
                 no.getFilhoEsquerdo().setPai(pai);
+                balancearRemocao(no.getFilhoEsquerdo());
             } else if (no.getFilhoDireito() != null && no.getFilhoEsquerdo() == null) {
                 if (pai.getFilhoEsquerdo() == no) {
                     pai.setFilhoEsquerdo(no.getFilhoDireito());
@@ -124,10 +127,12 @@ public class ArvoreRN {
                     pai.setFilhoDireito(no.getFilhoDireito());
                 }
                 no.getFilhoDireito().setPai(pai);
+                balancearRemocao(no.getFilhoDireito());
             } 
             
             else if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() != null) {
                 NoRB sucessor = encontrarSucessor(no);
+                balancearRemocao(sucessor);
                 if (sucessor != null) {
                     Object temp = sucessor.getElement();
                     remover(sucessor.getElement());
@@ -136,7 +141,6 @@ public class ArvoreRN {
                 }
             }
         }
-
         tamanho--;
         return key;
     }
@@ -276,6 +280,85 @@ public class ArvoreRN {
         }
 
         raiz.setCor("N");  // Garantir que a raiz permanece preta
+    }
+
+    public void balancearRemocao(NoRB no) {
+        System.out.println("Balanceando remoção");
+        while (no != raiz && no.getCor().equals("N")) {
+            System.out.println("Entrei no while");
+
+            NoRB pai = no.getPai();
+            NoRB irmao;
+
+            if (no == pai.getFilhoEsquerdo()) {
+                irmao = pai.getFilhoDireito();
+
+                // Caso 1: Irmão é vermelho
+                if (irmao.getCor().equals("R")) {
+                    System.out.println("Caso 1: Irmão é vermelho");
+                    irmao.setCor("N");
+                    pai.setCor("R");
+                    rotacaoEsquerda(pai);
+                    irmao = pai.getFilhoDireito();
+                }
+
+                // Caso 2: Irmão é preto e ambos os filhos são pretos
+                if ((irmao.getFilhoEsquerdo() == null || irmao.getFilhoEsquerdo().getCor().equals("N")) && (irmao.getFilhoDireito() == null || irmao.getFilhoDireito().getCor().equals("N"))) {
+                    System.out.println("Caso 2: Irmão é preto e ambos os filhos são pretos");
+                    irmao.setCor("R");
+                    no = pai;
+                } else {
+                    // Caso 3: Irmão é preto e filho direito é vermelho
+                    if (irmao.getFilhoDireito() == null || irmao.getFilhoDireito().getCor().equals("N")) {
+                        System.out.println("Caso 3: Irmão é preto e filho direito é vermelho");
+                        irmao.getFilhoEsquerdo().setCor("N");
+                        irmao.setCor("R");
+                        rotacaoDireita(irmao);
+                        irmao = pai.getFilhoDireito();
+                    }
+
+                    // Caso 4: Irmão é preto e filho direito é preto
+                    System.out.println("Caso 4: Irmão é preto e filho direito é preto");
+                    irmao.setCor(pai.getCor());
+                    pai.setCor("N");
+                    irmao.getFilhoDireito().setCor("N");
+                    rotacaoEsquerda(pai);
+                    no = raiz;
+                }
+            } else {
+                irmao = pai.getFilhoEsquerdo();
+
+                if (irmao.getCor().equals("R")) {
+                    System.out.println("Caso 1: Irmão é vermelho");
+                    irmao.setCor("N");
+                    pai.setCor("R");
+                    rotacaoDireita(pai);
+                    irmao = pai.getFilhoEsquerdo();
+                }
+
+                if ((irmao.getFilhoEsquerdo() == null || irmao.getFilhoEsquerdo().getCor().equals("N")) && (irmao.getFilhoDireito() == null || irmao.getFilhoDireito().getCor().equals("N"))) {
+                    System.out.println("Caso 2: Irmão é preto e ambos os filhos são pretos");
+                    irmao.setCor("R");
+                    no = pai;
+                } else {
+                    if (irmao.getFilhoEsquerdo() == null || irmao.getFilhoEsquerdo().getCor().equals("N")) {
+                        System.out.println("Caso 3: Irmão é preto e filho esquerdo é vermelho");
+                        irmao.getFilhoDireito().setCor("N");
+                        irmao.setCor("R");
+                        rotacaoEsquerda(irmao);
+                        irmao = pai.getFilhoEsquerdo();
+                    }
+
+                    System.out.println("Caso 4: Irmão é preto e filho esquerdo é preto");
+                    irmao.setCor(pai.getCor());
+                    pai.setCor("N");
+                    irmao.getFilhoEsquerdo().setCor("N");
+                    rotacaoDireita(pai);
+                    no = raiz;
+                }
+            }
+        }
+        no.setCor("N");
     }
 
     public NoRB encontrarSucessor(NoRB no) {

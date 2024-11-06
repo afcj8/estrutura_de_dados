@@ -12,8 +12,11 @@ public class Teste {
         arn.incluir(8);
         arn.mostrar();
 
+        arn.incluir(12);
+        arn.mostrar();
+
         System.out.println("Após a remoção: ");
-        arn.remover(5);
+        arn.remover(10);
         arn.mostrar();
 
         // ----------------- RDD -------------------

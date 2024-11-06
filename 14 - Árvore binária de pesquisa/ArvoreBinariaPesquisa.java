@@ -175,6 +175,8 @@ public class ArvoreBinariaPesquisa {
             if (v.getFilhoEsquerdo() != null && v.getFilhoDireito() == null) {
                 if (pai.getFilhoEsquerdo() == v) {
                     pai.setFilhoEsquerdo(v.getFilhoEsquerdo());
+                } else if (pai.getFilhoDireito() == v) {
+                    pai.setFilhoDireito(v.getFilhoEsquerdo());
                 }
                 v.getFilhoEsquerdo().setPai(pai);
             } else if (v.getFilhoDireito() != null && v.getFilhoEsquerdo() == null) {

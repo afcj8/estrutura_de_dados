@@ -88,6 +88,66 @@ public class ArvoreRN {
         return novo;
     }
 
+    public Object remover(Object key) {
+        NoRB no = pesquisar(raiz, key);
+        NoRB pai = no.getPai();
+
+        if (no.getElement() != key) {
+            return null;
+        }
+
+        if (isRoot(no) && isExternal(no)) {
+            raiz = null;
+            tamanho--;
+            return key;
+        }
+
+        if (isExternal(no)) {
+            if (pai.getFilhoEsquerdo() != null && pai.getFilhoEsquerdo().equals(no)) {
+                pai.setFilhoEsquerdo(null);
+            } else if (pai.getFilhoDireito() != null && pai.getFilhoDireito().equals(no)) {
+                pai.setFilhoDireito(null);
+            }
+        } 
+
+        else if (isInternal(no)) {
+
+            if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() == null) {
+                if (pai.getFilhoEsquerdo() == no) {
+                    pai.setFilhoEsquerdo(no.getFilhoEsquerdo());
+                }
+                no.getFilhoEsquerdo().setPai(pai);
+            } else if (no.getFilhoDireito() != null && no.getFilhoEsquerdo() == null) {
+                if (pai.getFilhoEsquerdo() == no) {
+                    pai.setFilhoEsquerdo(no.getFilhoDireito());
+                } else if (pai.getFilhoDireito() == no) {
+                    pai.setFilhoDireito(no.getFilhoDireito());
+                }
+                no.getFilhoDireito().setPai(pai);
+            } 
+            
+            else if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() != null) {
+                NoRB sucessor = encontrarSucessor(no);
+                if (sucessor != null) {
+                    Object temp = sucessor.getElement();
+                    remover(sucessor.getElement());
+                    no.setElement(temp);
+                    return key;
+                }
+            }
+        }
+
+        tamanho--;
+
+        while (pai != null) {
+            pai.setFb(fatorBalanceamento(pai));
+            pai = balancear(pai);
+            pai = pai.getPai();
+        }
+
+        return key;
+    }
+
     // ------------------ Rotações ------------------
 
     public void rotacaoEsquerda(NoRB no) {

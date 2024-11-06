@@ -104,8 +104,10 @@ public class ArvoreRN {
 
         if (isExternal(no)) {
             if (pai.getFilhoEsquerdo() != null && pai.getFilhoEsquerdo().equals(no)) {
+                balancearRemocao(no);
                 pai.setFilhoEsquerdo(null);
             } else if (pai.getFilhoDireito() != null && pai.getFilhoDireito().equals(no)) {
+                balancearRemocao(no);
                 pai.setFilhoDireito(null);
             }
         } 

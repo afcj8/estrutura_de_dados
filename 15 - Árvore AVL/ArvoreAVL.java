@@ -93,6 +93,10 @@ public class ArvoreAVL {
         NoAVL no = pesquisar(raiz, key);
         NoAVL pai = no.getPai();
 
+        if (no.getElement() != key) {
+            return null;
+        }
+
         if (isRoot(no) && isExternal(no)) {
             raiz = null;
             tamanho--;
@@ -115,12 +119,14 @@ public class ArvoreAVL {
                 }
                 no.getFilhoEsquerdo().setPai(pai);
             } else if (no.getFilhoDireito() != null && no.getFilhoEsquerdo() == null) {
-                if (pai.getFilhoDireito() == no) {
+                if (pai.getFilhoEsquerdo() == no) {
+                    pai.setFilhoEsquerdo(no.getFilhoDireito());
+                } else if (pai.getFilhoDireito() == no) {
                     pai.setFilhoDireito(no.getFilhoDireito());
                 }
                 no.getFilhoDireito().setPai(pai);
             } 
-
+            
             else if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() != null) {
                 NoAVL sucessor = encontrarSucessor(no);
                 if (sucessor != null) {

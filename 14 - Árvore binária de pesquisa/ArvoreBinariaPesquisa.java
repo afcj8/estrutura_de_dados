@@ -145,6 +145,12 @@ public class ArvoreBinariaPesquisa {
         No v = pesquisar(raiz, key);
         No pai = v.getPai();
 
+        // Se o nó não existir, retorna null
+
+        if (v.getElement() != key) {
+            return null;
+        }
+
         // Se só houver um nó na árvore, remove o nó
 
         if (isRoot(v) && isExternal(v)) {
@@ -172,12 +178,13 @@ public class ArvoreBinariaPesquisa {
                 }
                 v.getFilhoEsquerdo().setPai(pai);
             } else if (v.getFilhoDireito() != null && v.getFilhoEsquerdo() == null) {
-                if (pai.getFilhoDireito() == v) {
+                if (pai.getFilhoEsquerdo() == v) {
+                    pai.setFilhoEsquerdo(v.getFilhoDireito());
+                } else if (pai.getFilhoDireito() == v) {
                     pai.setFilhoDireito(v.getFilhoDireito());
                 }
                 v.getFilhoDireito().setPai(pai);
-            } 
-            
+            }             
             // Se o nó tiver dois filhos, encontra o sucessor do nó e remove o nó
             
             else if (v.getFilhoEsquerdo() != null && v.getFilhoDireito() != null) {

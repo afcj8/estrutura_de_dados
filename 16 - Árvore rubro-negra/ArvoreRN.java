@@ -138,13 +138,6 @@ public class ArvoreRN {
         }
 
         tamanho--;
-
-        while (pai != null) {
-            pai.setFb(fatorBalanceamento(pai));
-            pai = balancear(pai);
-            pai = pai.getPai();
-        }
-
         return key;
     }
 

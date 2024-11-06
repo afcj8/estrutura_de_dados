@@ -3,12 +3,21 @@ public class Teste {
         ArvoreRN arn = new ArvoreRN(10);
         arn.mostrar();
 
-        // ----------------- RDD -------------------
-
         arn.incluir(5);
         arn.mostrar();
-        arn.incluir(8);
+
+        arn.incluir(15);
         arn.mostrar();
+
+        arn.incluir(3);
+        arn.mostrar();
+
+        // ----------------- RDD -------------------
+
+        // arn.incluir(5);
+        // arn.mostrar();
+        // arn.incluir(8);
+        // arn.mostrar();
 
         // ----------------- RDE -------------------
 

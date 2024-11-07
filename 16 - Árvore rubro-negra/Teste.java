@@ -25,7 +25,7 @@ public class Teste {
         arn.mostrar();
 
         System.out.println("Após a remoção: ");
-        arn.remover(15);
+        arn.remover(5);
         arn.mostrar();
 
         // ----------------- RDD -------------------

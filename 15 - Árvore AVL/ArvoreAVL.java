@@ -347,4 +347,8 @@ public class ArvoreAVL {
         }
         return profundidade;
     }
+
+    public boolean isEmpty() {
+        return tamanho == 0;
+    }
 }

@@ -293,8 +293,8 @@ public class ArvoreAVL {
     }
 
     public void mostrar() {
-        if (raiz == null) {
-            System.out.println("Árvore vazia");
+        if (isEmpty()) {
+            System.out.println("Árvore vazia!");
             return;
         } 
 

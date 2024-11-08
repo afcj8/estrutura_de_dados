@@ -49,12 +49,12 @@ public class Teste {
         avl.remover(20);
         avl.mostrar();
 
-        System.out.println("Removendo o 80");
+        System.out.println("Removendo o 70");
         avl.remover(70);
         avl.mostrar();
 
-        System.out.println("Removendo o 60");
-        avl.remover(60);
+        System.out.println("Removendo o 80");
+        avl.remover(80);
         avl.mostrar();
     }
 }

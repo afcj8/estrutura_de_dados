@@ -341,7 +341,7 @@ public class ArvoreAVL {
 
     public int depth(NoAVL no) {
         int profundidade = 0;
-        while (no != raiz) {
+        while (no != null && no != raiz) {
             no = no.getPai();
             profundidade++;
         }

@@ -287,7 +287,6 @@ public class ArvoreRN {
     public void balancearRemocao(NoRB no) {
         System.out.println("Balanceando remoção");
         while (no != raiz && no.getCor().equals("N")) {
-            System.out.println("Entrei no while");
 
             NoRB pai = no.getPai();
             NoRB irmao;

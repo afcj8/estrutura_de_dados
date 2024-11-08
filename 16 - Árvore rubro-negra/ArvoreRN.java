@@ -116,26 +116,31 @@ public class ArvoreRN {
 
         else if (isInternal(no)) {
             if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() == null) {
-                if (pai != null) {
+                if (pai == null) {
+                    this.raiz = no.getFilhoEsquerdo();
+                } else {
                     if (pai.getFilhoEsquerdo() == no) {
                         pai.setFilhoEsquerdo(no.getFilhoEsquerdo());
-                    } else if (pai.getFilhoDireito() == no) {
+                    } else {
                         pai.setFilhoDireito(no.getFilhoEsquerdo());
                     }
                 }
                 no.getFilhoEsquerdo().setPai(pai);
                 balancearRemocao(no.getFilhoEsquerdo());
             } else if (no.getFilhoDireito() != null && no.getFilhoEsquerdo() == null) {
-                if (pai != null) {
+                if (pai == null) {
+                    this.raiz = no.getFilhoDireito();
+                } else {
                     if (pai.getFilhoEsquerdo() == no) {
                         pai.setFilhoEsquerdo(no.getFilhoDireito());
-                    } else if (pai.getFilhoDireito() == no) {
+                    } else {
                         pai.setFilhoDireito(no.getFilhoDireito());
                     }
                 }
                 no.getFilhoDireito().setPai(pai);
                 balancearRemocao(no.getFilhoDireito());
-            } 
+            }
+
             
             else if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() != null) {
                 NoRB sucessor = encontrarSucessor(no);
@@ -322,9 +327,6 @@ public class ArvoreRN {
                             irmao.setCor("R");
                             rotacaoDireita(irmao);
                         }
-                        // irmao.getFilhoEsquerdo().setCor("N");
-                        // irmao.setCor("R");
-                        // rotacaoDireita(irmao);
                         irmao = pai.getFilhoDireito();
                     }
 
@@ -336,10 +338,6 @@ public class ArvoreRN {
                         irmao.getFilhoDireito().setCor("N");
                         rotacaoEsquerda(pai);
                     }
-                    // irmao.setCor(pai.getCor());
-                    // pai.setCor("N");
-                    // irmao.getFilhoDireito().setCor("N");
-                    // rotacaoEsquerda(pai);
                     no = raiz;
                 }
             } else {

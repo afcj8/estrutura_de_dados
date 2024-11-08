@@ -1,23 +1,32 @@
 public class Teste {
     public static void main(String[] args) {
         ArvoreAVL avl = new ArvoreAVL(30);
+        avl.mostrar();
+
         NoAVL noA = avl.incluir(20);
         avl.mostrar();
+
         NoAVL noB = avl.incluir(50);
         avl.mostrar();
+
         NoAVL noC = avl.incluir(40);
         avl.mostrar();
+
         NoAVL noD = avl.incluir(70);
         avl.mostrar();
 
         NoAVL noE = avl.incluir(10);
         avl.mostrar();
+
         NoAVL noF = avl.incluir(25);
         avl.mostrar();
+
         NoAVL noG = avl.incluir(35);
         avl.mostrar();
+
         NoAVL noH = avl.incluir(60);
         avl.mostrar();
+        
         NoAVL noI = avl.incluir(80);
         avl.mostrar();
 
@@ -55,6 +64,10 @@ public class Teste {
 
         System.out.println("Removendo o 80");
         avl.remover(80);
+        avl.mostrar();
+
+        System.out.println("Removendo o 60");
+        avl.remover(60);
         avl.mostrar();
     }
 }

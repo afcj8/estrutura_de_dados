@@ -112,7 +112,6 @@ public class ArvoreAVL {
         } 
 
         else if (isInternal(no)) {
-
             if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() == null) {
                 if (pai == null) {
                     this.raiz = no.getFilhoEsquerdo();

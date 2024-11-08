@@ -88,6 +88,75 @@ public class ArvoreRN {
         return novo;
     }
 
+    public Object remover(Object key) {
+        NoRB no = pesquisar(raiz, key);
+        NoRB pai = no.getPai();
+
+        if (no.getElement() != key) {
+            return null;
+        }
+
+        if (isRoot(no) && isExternal(no)) {
+            raiz = null;
+            tamanho--;
+            return key;
+        }
+
+        if (isExternal(no)) {
+            if (pai != null) {
+                if (pai.getFilhoEsquerdo() != null && pai.getFilhoEsquerdo().equals(no)) {
+                    balancearRemocao(pai.getFilhoEsquerdo());
+                    pai.setFilhoEsquerdo(null);
+                } else if (pai.getFilhoDireito() != null && pai.getFilhoDireito().equals(no)) {
+                    balancearRemocao(pai.getFilhoDireito());
+                    pai.setFilhoDireito(null);
+                }
+            }
+        } 
+
+        else if (isInternal(no)) {
+            if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() == null) {
+                if (pai == null) {
+                    this.raiz = no.getFilhoEsquerdo();
+                } else {
+                    if (pai.getFilhoEsquerdo() == no) {
+                        pai.setFilhoEsquerdo(no.getFilhoEsquerdo());
+                    } else {
+                        pai.setFilhoDireito(no.getFilhoEsquerdo());
+                    }
+                }
+                no.getFilhoEsquerdo().setPai(pai);
+                balancearRemocao(no.getFilhoEsquerdo());
+            } else if (no.getFilhoDireito() != null && no.getFilhoEsquerdo() == null) {
+                if (pai == null) {
+                    this.raiz = no.getFilhoDireito();
+                } else {
+                    if (pai.getFilhoEsquerdo() == no) {
+                        pai.setFilhoEsquerdo(no.getFilhoDireito());
+                    } else {
+                        pai.setFilhoDireito(no.getFilhoDireito());
+                    }
+                }
+                no.getFilhoDireito().setPai(pai);
+                balancearRemocao(no.getFilhoDireito());
+            }
+
+            
+            else if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() != null) {
+                NoRB sucessor = encontrarSucessor(no);
+                balancearRemocao(sucessor);
+                if (sucessor != null) {
+                    Object temp = sucessor.getElement();
+                    remover(sucessor.getElement());
+                    no.setElement(temp);
+                    return key;
+                }
+            }
+        }
+        tamanho--;
+        return key;
+    }
+
     // ------------------ Rotações ------------------
 
     public void rotacaoEsquerda(NoRB no) {
@@ -225,8 +294,106 @@ public class ArvoreRN {
         raiz.setCor("N");  // Garantir que a raiz permanece preta
     }
 
+    public void balancearRemocao(NoRB no) {
+        System.out.println("Balanceando remoção");
+        while (no != raiz && no.getCor().equals("N")) {
+
+            NoRB pai = no.getPai();
+            NoRB irmao;
+
+            if (no == pai.getFilhoEsquerdo()) {
+                irmao = pai.getFilhoDireito();
+
+                // Caso 1: Irmão é vermelho
+                if (irmao != null && irmao.getCor().equals("R")) {
+                    System.out.println("Caso 1: Irmão é vermelho");
+                    irmao.setCor("N");
+                    pai.setCor("R");
+                    rotacaoEsquerda(pai);
+                    irmao = pai.getFilhoDireito();
+                }
+
+                // Caso 2: Irmão é preto e ambos os filhos são pretos
+                if (irmao != null && (irmao.getFilhoEsquerdo() == null || irmao.getFilhoEsquerdo().getCor().equals("N")) && (irmao.getFilhoDireito() == null || irmao.getFilhoDireito().getCor().equals("N"))) {
+                    System.out.println("Caso 2: Irmão é preto e ambos os filhos são pretos");
+                    irmao.setCor("R");
+                    no = pai;
+                } else {
+                    // Caso 3: Irmão é preto e filho direito é vermelho
+                    if (irmao == null || irmao.getFilhoDireito() == null || irmao.getFilhoDireito().getCor().equals("N")) {
+                        System.out.println("Caso 3: Irmão é preto e filho direito é vermelho");
+                        if (irmao != null) {
+                            irmao.getFilhoEsquerdo().setCor("N");
+                            irmao.setCor("R");
+                            rotacaoDireita(irmao);
+                        }
+                        irmao = pai.getFilhoDireito();
+                    }
+
+                    // Caso 4: Irmão é preto e filho direito é preto
+                    System.out.println("Caso 4: Irmão é preto e filho direito é preto");
+                    if (irmao != null) {
+                        irmao.setCor(pai.getCor());
+                        pai.setCor("N");
+                        irmao.getFilhoDireito().setCor("N");
+                        rotacaoEsquerda(pai);
+                    }
+                    no = raiz;
+                }
+            } else {
+                irmao = pai.getFilhoEsquerdo();
+
+                if (irmao.getCor().equals("R")) {
+                    System.out.println("Caso 1: Irmão é vermelho");
+                    irmao.setCor("N");
+                    pai.setCor("R");
+                    rotacaoDireita(pai);
+                    irmao = pai.getFilhoEsquerdo();
+                }
+
+                if ((irmao != null && (irmao.getFilhoEsquerdo() == null || irmao.getFilhoEsquerdo().getCor().equals("N")) && (irmao.getFilhoDireito() == null || irmao.getFilhoDireito().getCor().equals("N")))) {
+                    System.out.println("Caso 2: Irmão é preto e ambos os filhos são pretos");
+                    irmao.setCor("R");
+                    no = pai;
+                } else {
+                    if (irmao == null || irmao.getFilhoEsquerdo() == null || irmao.getFilhoEsquerdo().getCor().equals("N")) {
+                        System.out.println("Caso 3: Irmão é preto e filho esquerdo é vermelho");
+                        if (irmao != null) {
+                            irmao.getFilhoDireito().setCor("N");
+                            irmao.setCor("R");
+                            rotacaoEsquerda(irmao);
+                        }
+                        irmao = pai.getFilhoEsquerdo();
+                    }
+
+                    System.out.println("Caso 4: Irmão é preto e filho esquerdo é preto");
+                    if (irmao != null) {
+                        irmao.setCor(pai.getCor());
+                        pai.setCor("N");
+                        irmao.getFilhoEsquerdo().setCor("N");
+                        rotacaoDireita(pai);
+                    }
+                    no = raiz;
+                }
+            }
+        }
+        no.setCor("N");
+    }
+
+    public NoRB encontrarSucessor(NoRB no) {
+        if (no.getFilhoDireito() != null) {
+            NoRB sucessor = no.getFilhoDireito();
+            while (sucessor.getFilhoEsquerdo() != null) {
+                sucessor = sucessor.getFilhoEsquerdo();
+            }
+            return sucessor;
+        }
+        return null;
+    }
+
     public void mostrar() {
-        if (raiz == null) {
+
+        if (isEmpty()) {
             System.out.println("Árvore vazia");
             return;
         }
@@ -283,10 +450,14 @@ public class ArvoreRN {
 
     public int depth(NoRB no) {
         int profundidade = 0;
-        while (no != raiz) {
+        while (no != null && no != raiz) {
             no = no.getPai();
             profundidade++;
         }
         return profundidade;
+    }
+
+    public boolean isEmpty() {
+        return tamanho == 0;
     }
 }

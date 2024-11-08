@@ -33,11 +33,40 @@ public class Teste {
         System.out.println();
         abp.mostrar();
         
-        abp.remover(4);
+        System.out.println("Removendo o 15: ");
+        abp.remover(15);
+        abp.mostrar();
 
-        System.out.println("\nApós a remoção: ");
-        
-        System.out.println();
+        System.out.println("Removendo o 8: ");
+        abp.remover(8);
+        abp.mostrar();
+
+        System.out.println("Removendo o 10: ");
+        abp.remover(10);
+        abp.mostrar();
+
+        System.out.println("Removendo o 4: ");
+        abp.remover(4);
+        abp.mostrar();
+
+        System.out.println("Removendo o 2: ");
+        abp.remover(2);
+        abp.mostrar();
+
+        System.out.println("Removendo o 13: ");
+        abp.remover(13);
+        abp.mostrar();
+
+        System.out.println("Removendo o 18: ");
+        abp.remover(18);
+        abp.mostrar();
+
+        System.out.println("Removendo o 20: ");
+        abp.remover(20);
+        abp.mostrar();
+
+        System.out.println("Removendo o 1: ");
+        abp.remover(1);
         abp.mostrar();
     }
 }

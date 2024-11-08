@@ -116,6 +116,8 @@ public class ArvoreAVL {
             if (no.getFilhoEsquerdo() != null && no.getFilhoDireito() == null) {
                 if (pai.getFilhoEsquerdo() == no) {
                     pai.setFilhoEsquerdo(no.getFilhoEsquerdo());
+                } else if (pai.getFilhoDireito() == no) {
+                    pai.setFilhoDireito(no.getFilhoEsquerdo());
                 }
                 no.getFilhoEsquerdo().setPai(pai);
             } else if (no.getFilhoDireito() != null && no.getFilhoEsquerdo() == null) {

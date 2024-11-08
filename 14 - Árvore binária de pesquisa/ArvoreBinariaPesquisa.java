@@ -162,10 +162,12 @@ public class ArvoreBinariaPesquisa {
         // Se o nó for uma folha, remove o nó, ou seja, se o nó não tiver filhos
 
         if (isExternal(v)) {
-            if (pai.getFilhoEsquerdo() != null && pai.getFilhoEsquerdo().equals(v)) {
-                pai.setFilhoEsquerdo(null);
-            } else if (pai.getFilhoDireito() != null && pai.getFilhoDireito().equals(v)) {
-                pai.setFilhoDireito(null);
+            if (pai != null) {
+                if (pai.getFilhoEsquerdo() != null && pai.getFilhoEsquerdo().equals(v)) {
+                    pai.setFilhoEsquerdo(null);
+                } else if (pai.getFilhoDireito() != null && pai.getFilhoDireito().equals(v)) {
+                    pai.setFilhoDireito(null);
+                }
             }
         } 
         
@@ -173,13 +175,19 @@ public class ArvoreBinariaPesquisa {
 
         else if (isInternal(v)) {
             if (v.getFilhoEsquerdo() != null && v.getFilhoDireito() == null) {
-                if (pai.getFilhoEsquerdo() == v) {
-                    pai.setFilhoEsquerdo(v.getFilhoEsquerdo());
+                if (pai != null) {
+                    if (pai.getFilhoEsquerdo() == v) {
+                        pai.setFilhoEsquerdo(v.getFilhoEsquerdo());
+                    } else if (pai.getFilhoDireito() == v) {
+                        pai.setFilhoDireito(v.getFilhoEsquerdo());
+                    }
                 }
                 v.getFilhoEsquerdo().setPai(pai);
             } else if (v.getFilhoDireito() != null && v.getFilhoEsquerdo() == null) {
-                if (pai.getFilhoEsquerdo() == v) {
-                    pai.setFilhoEsquerdo(v.getFilhoDireito());
+                if (pai != null) {
+                    if (pai.getFilhoDireito() == v) {
+                        pai.setFilhoDireito(v.getFilhoDireito());
+                    }
                 } else if (pai.getFilhoDireito() == v) {
                     pai.setFilhoDireito(v.getFilhoDireito());
                 }
@@ -207,7 +215,7 @@ public class ArvoreBinariaPesquisa {
 
         // Se a árvore estiver vazia, exibe a mensagem "Árvore vazia!"
 
-        if (raiz == null) {
+        if (isEmpty()) {
             System.out.println("Árvore vazia!");
             return;
         }
@@ -307,7 +315,7 @@ public class ArvoreBinariaPesquisa {
 
     public int depth(No v) {
         int profundidade = 0;
-        while (v != raiz) {
+        while (v != null && v != raiz) {
             v = v.getPai();
             profundidade++;
         }
@@ -339,6 +347,6 @@ public class ArvoreBinariaPesquisa {
     // Método isEmpty - verifica se a árvore está vazia
 
     public boolean isEmpty() {
-        return raiz == null;
+        return tamanho == 0;
     }
 }

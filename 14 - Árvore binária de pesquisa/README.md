@@ -34,3 +34,24 @@ Após a remoção do nó folha 20:
     10
 5        15
 ```
+
+2. **Remoção de um Nó com um Único Filho**
+
+Nesse caso, o nó a ser removido é substituído por seu único filho (esquerdo ou direito), preservando a estrutura da árvore e mantendo a propriedade de ordenação.
+
+**Exemplo**
+
+```
+    10
+5        15
+            20
+                25
+```
+
+Após a remoção do nó folha 20:
+
+```
+    10
+5        15
+            20
+```

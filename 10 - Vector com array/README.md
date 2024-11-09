@@ -80,4 +80,18 @@ Após a remoção:
 
 2. **Remoção no Fim:** A remoção do último elemento é direta, já que basta diminuir o tamanho lógico do vector sem necessidade de deslocamento. É, portanto, uma operação eficiente.
 
+**Exemplo**
+
+Remover o elemento do fim:
+
+```
+[10, 8, 20, 30]
+```
+
+Após a remoção:
+
+```
+[10, 8, 20]
+```
+
 3. **Remoção em uma Posição Intermediária:** Para remover um elemento em uma posição específica, os elementos à direita dessa posição precisam ser deslocados uma posição à esquerda, preenchendo a lacuna deixada. Como na inserção, o custo está relacionado à quantidade de elementos deslocados.

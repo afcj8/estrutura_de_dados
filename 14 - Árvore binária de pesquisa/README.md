@@ -12,6 +12,30 @@ Uma árvore binária de pesquisa é uma estrutura de dados hierárquica, compost
 
 Para inserir um valor, inicia-se a partir da raiz e compara-se o valor a ser inserido com o valor do nó atual. Se o valor for menor, desloca-se para o filho à esquerda; se for maior, para o filho à direita. Esse processo se repete até encontrar uma posição vazia na árvore, onde o novo valor é inserido como um novo nó.
 
+**Exemplo**
+
+Para ilustrar o processo de inserção, considera-se a árvore abaixo e a inserção do valor 12:
+
+```
+            10
+    5               15
+3       8               20
+```
+
+1. O valor 12 é comparado com a raiz (10) e, sendo maior, move-se para a subárvore direita.
+2. Em seguida, o valor 12 é comparado com o nó 15. Como 12 é menor que 15, direciona-se para o lado esquerdo do nó 15.
+3. Finalmente, o valor 12 é inserido como filho esquerdo de 15.
+
+Após a inserção, a árvore fica assim:
+
+```
+            10
+    5               15
+3       8       12      20
+```
+
+Esse processo de comparação e inserção preserva a ordem e estrutura da árvore binária de pesquisa.
+
 ## 14.3. Remoção
 
 A remoção de um nó na árvore binária de pesquisa depende da quantidade de filhos do nó a ser removido. Existem três cenários principais:

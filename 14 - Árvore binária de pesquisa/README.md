@@ -55,3 +55,30 @@ Após a remoção do nó folha 20:
 5        15
             20
 ```
+
+3. **Remoção de um Nó com Dois Filhos**
+
+O processo de remoção exige um ajuste na estrutura para preservar a ordem. Nesse caso, o nó removido é substituído pelo seu sucessor imediato, que é o menor valor da subárvore direita. Esse sucessor representa o menor valor maior do que o nó removido, garantindo a continuidade da ordem.
+
+Após encontrar o sucessor, ele é movido para a posição do nó removido. Em seguida, o sucessor é excluído de sua posição original na subárvore direita. Essa remoção e substituição permitem que a estrutura e as propriedades de uma árvore binária de pesquisa sejam mantidas.
+
+**Exemplo**
+
+```
+                10
+    5                       20
+3       8            15              30
+            9   12        17     25
+```
+
+Após a remoção do nó 20, que possui dois filhos:
+
+
+```
+                10
+    5                       25
+3       8            15              30
+            9   12        17     
+```
+
+Neste exemplo, o nó 25, que é o menor valor na subárvore direita de 20, substitui o nó removido, e a árvore mantém sua estrutura e propriedades de ordem.

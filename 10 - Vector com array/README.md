@@ -1,0 +1,3 @@
+# 10. TAD Vector
+
+A TAD (Tipo Abstrato de Dados) Vector é uma estrutura de dados que se assemelha a um array dinâmico, onde o tamanho pode ser alterado conforme necessário, permitindo a adição e remoção de elementos em tempo de execução. Um vector armazena seus elementos em uma sequência linear, onde cada posição é acessível por meio de um índice numérico. Essa estrutura é especialmente útil quando o número de elementos é desconhecido previamente ou varia ao longo da execução do programa.

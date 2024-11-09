@@ -44,6 +44,20 @@ Após a inserção:
 
 3. **Inserção em uma Posição Intermediária:** Inserir em uma posição específica entre os elementos exige mover os elementos à direita dessa posição uma casa à frente, criando espaço para o novo elemento. Esse deslocamento de elementos implica em um custo adicional proporcional à quantidade de elementos deslocados.
 
+**Exemplo**
+
+Inserir 18 na posição 2:
+
+```
+[10, 8, 20, 30]
+```
+
+Após a inserção:
+
+```
+[10, 8, 18, 20, 30]
+```
+
 ## 10.3. Remoção de Elementos
 
 A remoção em um vector também pode ocorrer no início, no fim ou em uma posição intermediária.

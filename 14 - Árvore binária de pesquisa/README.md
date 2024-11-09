@@ -15,3 +15,22 @@ Para inserir um valor, inicia-se a partir da raiz e compara-se o valor a ser ins
 ## 14.3. Remoção
 
 A remoção de um nó na árvore binária de pesquisa depende da quantidade de filhos do nó a ser removido. Existem três cenários principais:
+
+1. **Remoção de um Nó Folha**
+
+Esse é o caso mais simples. O nó é simplesmente removido, pois não possui dependências na árvore.
+
+**Exemplo**
+
+```
+    10
+5        15
+            20
+```
+
+Após a remoção do nó folha 20:
+
+```
+    10
+5        15
+```

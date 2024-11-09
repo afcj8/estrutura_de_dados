@@ -15,3 +15,13 @@ A inserção em um vector pode ocorrer em três posições: no início, no fim o
 2. **Inserção no Fim:** Inserir no final do vector é, em geral, a operação mais eficiente, pois basta adicionar o novo elemento na próxima posição livre. Quando o vector atinge sua capacidade máxima, pode ser necessário expandi-lo, copiando os elementos para um espaço maior, o que aumenta o custo dessa operação ocasionalmente.
 
 3. **Inserção em uma Posição Intermediária:** Inserir em uma posição específica entre os elementos exige mover os elementos à direita dessa posição uma casa à frente, criando espaço para o novo elemento. Esse deslocamento de elementos implica em um custo adicional proporcional à quantidade de elementos deslocados.
+
+## 10.3. Remoção de Elementos
+
+A remoção em um vector também pode ocorrer no início, no fim ou em uma posição intermediária.
+
+1. **Remoção no Início:** Remover o primeiro elemento implica mover todos os elementos subsequentes uma posição para a esquerda, o que demanda uma série de operações de deslocamento e torna o custo proporcional ao número de elementos deslocados.
+
+2. **Remoção no Fim:** A remoção do último elemento é direta, já que basta diminuir o tamanho lógico do vector sem necessidade de deslocamento. É, portanto, uma operação eficiente.
+
+3. **Remoção em uma Posição Intermediária:** Para remover um elemento em uma posição específica, os elementos à direita dessa posição precisam ser deslocados uma posição à esquerda, preenchendo a lacuna deixada. Como na inserção, o custo está relacionado à quantidade de elementos deslocados.

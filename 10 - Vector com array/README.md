@@ -12,6 +12,21 @@ A inserção em um vector pode ocorrer em três posições: no início, no fim o
 
 1. **Inserção no Início:** Inserir no início de um vector exige deslocar todos os elementos uma posição à direita, liberando a primeira posição para o novo elemento. Esse deslocamento pode tornar a operação custosa em termos de desempenho, especialmente em vetores grandes.
 
+**Exemplo**
+
+Inserir 15 no início:
+
+
+```
+[10, 8, 20, 30]
+```
+
+Após a inserção:
+
+```
+[15, 10, 8, 20, 30]
+```
+
 2. **Inserção no Fim:** Inserir no final do vector é, em geral, a operação mais eficiente, pois basta adicionar o novo elemento na próxima posição livre. Quando o vector atinge sua capacidade máxima, pode ser necessário expandi-lo, copiando os elementos para um espaço maior, o que aumenta o custo dessa operação ocasionalmente.
 
 3. **Inserção em uma Posição Intermediária:** Inserir em uma posição específica entre os elementos exige mover os elementos à direita dessa posição uma casa à frente, criando espaço para o novo elemento. Esse deslocamento de elementos implica em um custo adicional proporcional à quantidade de elementos deslocados.

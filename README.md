@@ -2,6 +2,10 @@
 
 Estruturas de dados são objetos projetados para armazenar dados de forma eficiente, fornecendo funcionalidades como ordenação eficiente e busca por palavras-chave. A programação orientada a objetos é especialmente útil ao implementar essas estruturas, pois permite abstrair e encapsular as características principais relacionadas ao armazenamento de informações.
 
+## Diferença entre TAD e Estrutura de Dados (ED)
+
+Um Tipo Abstrato de Dados (TAD) define o comportamento e as operações de uma estrutura de dados sem se preocupar com a implementação específica. É uma especificação teórica que descreve quais operações são possíveis e quais propriedades devem ser mantidas. Já uma Estrutura de Dados (ED) é a implementação concreta de um TAD, onde são definidas as técnicas e os algoritmos que manipulam o armazenamento e o acesso aos dados de forma prática. Enquanto o TAD foca na interface e na funcionalidade abstrata, a ED se concentra na otimização e eficiência da representação dos dados em memória.
+
 ## Manual do Desenvolvedor
 
 Este manual fornece as instruções necessárias para executar as estruturas de dados disponíveis no repositório. Siga as etapas abaixo:

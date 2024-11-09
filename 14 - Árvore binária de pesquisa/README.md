@@ -7,3 +7,7 @@ Uma árvore binária de pesquisa é uma estrutura de dados hierárquica, compost
 - **Nó raiz:** o ponto de entrada da árvore.
 - **Nós internos:** todos os nós que possuem ao menos um filho.
 - **Nós folhas:** nós sem filhos, geralmente localizados nas extremidades da árvore.
+
+## 14.2. Inserção
+
+Para inserir um valor, inicia-se a partir da raiz e compara-se o valor a ser inserido com o valor do nó atual. Se o valor for menor, desloca-se para o filho à esquerda; se for maior, para o filho à direita. Esse processo se repete até encontrar uma posição vazia na árvore, onde o novo valor é inserido como um novo nó.

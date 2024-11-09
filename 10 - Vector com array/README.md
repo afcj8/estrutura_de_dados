@@ -16,7 +16,6 @@ A inserção em um vector pode ocorrer em três posições: no início, no fim o
 
 Inserir 15 no início:
 
-
 ```
 [10, 8, 20, 30]
 ```
@@ -28,6 +27,20 @@ Após a inserção:
 ```
 
 2. **Inserção no Fim:** Inserir no final do vector é, em geral, a operação mais eficiente, pois basta adicionar o novo elemento na próxima posição livre. Quando o vector atinge sua capacidade máxima, pode ser necessário expandi-lo, copiando os elementos para um espaço maior, o que aumenta o custo dessa operação ocasionalmente.
+
+**Exemplo**
+
+Inserir 25 no fim:
+
+```
+[10, 8, 20, 30]
+```
+
+Após a inserção:
+
+```
+[10, 8, 20, 30, 25]
+```
 
 3. **Inserção em uma Posição Intermediária:** Inserir em uma posição específica entre os elementos exige mover os elementos à direita dessa posição uma casa à frente, criando espaço para o novo elemento. Esse deslocamento de elementos implica em um custo adicional proporcional à quantidade de elementos deslocados.
 

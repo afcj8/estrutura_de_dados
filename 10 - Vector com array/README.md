@@ -64,6 +64,20 @@ A remoção em um vector também pode ocorrer no início, no fim ou em uma posi�
 
 1. **Remoção no Início:** Remover o primeiro elemento implica mover todos os elementos subsequentes uma posição para a esquerda, o que demanda uma série de operações de deslocamento e torna o custo proporcional ao número de elementos deslocados.
 
+**Exemplo**
+
+Remover o elemento do início:
+
+```
+[10, 8, 20, 30]
+```
+
+Após a remoção:
+
+```
+[8, 20, 30]
+```
+
 2. **Remoção no Fim:** A remoção do último elemento é direta, já que basta diminuir o tamanho lógico do vector sem necessidade de deslocamento. É, portanto, uma operação eficiente.
 
 3. **Remoção em uma Posição Intermediária:** Para remover um elemento em uma posição específica, os elementos à direita dessa posição precisam ser deslocados uma posição à esquerda, preenchendo a lacuna deixada. Como na inserção, o custo está relacionado à quantidade de elementos deslocados.

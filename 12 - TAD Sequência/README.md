@@ -24,3 +24,11 @@ A remoção de um elemento consiste em eliminar um item da sequência. Dependend
 
 - **Listas:** permite remover um elemento de qualquer posição, seja no meio da sequência ou em qualquer outro lugar. A operação de remoção desloca os elementos após o item removido para fechar a lacuna.
 - **Filas** e **Pilhas:** a remoção do meio não é uma operação comum, pois ambas seguem restrições de ordem de acesso e remoção (FIFO e LIFO, respectivamente).
+
+3. **Remoção no Final:**
+
+- **Listas:** é possível remover o último elemento da sequência. Em algumas implementações, essa operação é eficiente, pois o último elemento está facilmente acessível.
+- **Filas:** a remoção do final não é realizada, já que a estrutura prioriza a remoção do início.
+- **Pilhas:** a remoção do topo é o comportamento típico, o que implica que a remoção do final também é irrelevante na pilha, pois o topo é sempre o último elemento inserido.
+
+Essas operações, quando realizadas de forma eficiente, podem garantir um bom desempenho dependendo da estrutura de dados utilizada. Em algumas sequências, a remoção de um item pode envolver o deslocamento de múltiplos elementos para manter a ordem da sequência, o que pode influenciar o custo de tempo das operações.

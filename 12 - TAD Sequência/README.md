@@ -19,3 +19,8 @@ A remoção de um elemento consiste em eliminar um item da sequência. Dependend
 - **Listas:** um elemento é removido da primeira posição. Após a remoção, todos os elementos seguintes são deslocados para preencher a lacuna.
 - **Filas:** a remoção ocorre sempre no início da fila, o que segue a lógica FIFO (First In, First Out - Primeiro a Entrar, Primeiro a Sair).
 - **Pilhas:** a remoção do topo da pilha é a operação típica, mas é possível usar a pilha como uma sequência e removê-la do início, embora essa operação não seja comum para pilhas.
+
+2. **Remoção no Meio:**
+
+- **Listas:** permite remover um elemento de qualquer posição, seja no meio da sequência ou em qualquer outro lugar. A operação de remoção desloca os elementos após o item removido para fechar a lacuna.
+- **Filas** e **Pilhas:** a remoção do meio não é uma operação comum, pois ambas seguem restrições de ordem de acesso e remoção (FIFO e LIFO, respectivamente).

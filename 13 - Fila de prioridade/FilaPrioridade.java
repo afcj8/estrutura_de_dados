@@ -5,7 +5,7 @@ public class FilaPrioridade {
         this.inicio = null;
         this.fim = null;
     }
-    public void enfileirar(Object elemento, int prioridade) {
+    public void inserir(Object elemento, int prioridade) {
         No novo = new No(elemento, prioridade);
         if (this.inicio == null) {
             this.inicio = novo;
@@ -49,7 +49,7 @@ public class FilaPrioridade {
     public boolean vazia() {
         return this.inicio == null;
     }
-    public void imprimir() {
+    public void mostrar() {
         No atual = this.inicio;
         while (atual != null) {
             System.out.println(atual.getElemento() + " - " + atual.getPrioridade());

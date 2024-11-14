@@ -1,14 +1,14 @@
-# 14. Árvore Binária de Pesquisa
+# 15. Árvore Binária de Pesquisa
 
 Uma árvore binária de pesquisa é uma estrutura de dados hierárquica, composta por nós organizados de maneira específica para facilitar a busca de informações. Em uma árvore binária de pesquisa, cada nó pode ter até dois filhos, com a propriedade de que o nó à esquerda de um nó "pai" contém valores menores e o nó à direita contém valores maiores. Essa organização permite que operações de busca, inserção e remoção sejam executadas de maneira eficiente.
 
-## 14.1. Estrutura da Árvore Binária de Pesquisa
+## 15.1. Estrutura da Árvore Binária de Pesquisa
 
 - **Nó raiz:** o ponto de entrada da árvore.
 - **Nós internos:** todos os nós que possuem ao menos um filho.
 - **Nós folhas:** nós sem filhos, geralmente localizados nas extremidades da árvore.
 
-## 14.2. Inserção
+## 15.2. Inserção
 
 Para inserir um valor, inicia-se a partir da raiz e compara-se o valor a ser inserido com o valor do nó atual. Se o valor for menor, desloca-se para o filho à esquerda; se for maior, para o filho à direita. Esse processo se repete até encontrar uma posição vazia na árvore, onde o novo valor é inserido como um novo nó.
 
@@ -36,7 +36,7 @@ Após a inserção, a árvore fica assim:
 
 Esse processo de comparação e inserção preserva a ordem e estrutura da árvore binária de pesquisa.
 
-## 14.3. Remoção
+## 15.3. Remoção
 
 A remoção de um nó na árvore binária de pesquisa depende da quantidade de filhos do nó a ser removido. Existem três cenários principais:
 

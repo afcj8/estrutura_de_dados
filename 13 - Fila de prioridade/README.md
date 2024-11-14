@@ -4,7 +4,7 @@ Uma fila de prioridade é uma estrutura de dados na qual cada elemento possui um
 
 ## 13.1. Inserção
 
-Ao inserir um elemento em uma fila de prioridade, sua posição é determinada pela prioridade. Quando o novo item tem uma prioridade superior aos já presentes, ele é inserido antes dos elementos de menor prioridade. Caso a prioridade do novo elemento seja mais baixa, ele será posicionado depois dos elementos com prioridade mais alta.
+Ao inserir um novo elemento na fila de prioridade, ele é posicionado antes dos itens com menor prioridade e depois dos itens com prioridades iguais ou maiores. Isso significa que a fila é organizada de modo que o novo elemento não "fura a fila" de prioridades já estabelecidas, mas ainda é colocado em uma posição adequada.
 
 **Exemplo**
 
@@ -12,3 +12,7 @@ Ao inserir um elemento em uma fila de prioridade, sua posição é determinada p
 - Inserindo o valor 60 com prioridade superior: [60, 10, 20, 30]
 
 Nesse caso, o elemento 60 foi colocado na frente dos demais porque sua prioridade é maior.
+
+## 13.2. Remoção
+
+A remoção na fila de prioridade segue a mesma lógica: o item com maior prioridade é removido primeiro. Caso dois elementos tenham a mesma prioridade, o elemento que foi inserido primeiro é removido antes. Após a remoção do item de maior prioridade, a estrutura se reorganiza para manter o próximo item de maior prioridade na posição inicial.

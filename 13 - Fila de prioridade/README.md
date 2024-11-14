@@ -1,0 +1,3 @@
+# 13. Fila de Prioridade
+
+Uma fila de prioridade é uma estrutura de dados na qual cada elemento possui uma "prioridade" associada. Diferente de uma fila comum, onde os elementos são inseridos no final e removidos do início (seguindo a ordem de chegada), em uma fila de prioridade os elementos são organizados e removidos com base no nível de prioridade. Assim, os itens de maior prioridade são removidos antes dos de menor prioridade, independentemente da ordem de inserção.

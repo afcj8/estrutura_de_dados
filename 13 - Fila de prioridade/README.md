@@ -30,3 +30,5 @@ A remoção na fila de prioridade segue a mesma lógica: o item com maior priori
     - Resultado: [65, 10, 20, 30]
 
 O item com a maior prioridade restante (65) ocupa agora o início da fila, mantendo a estrutura de prioridade intacta.
+
+Esse processo de inserção e remoção assegura que a fila permaneça ordenada de acordo com a prioridade, processando sempre o elemento mais importante antes dos demais, sem que novos itens furem a posição dos elementos já organizados na fila.

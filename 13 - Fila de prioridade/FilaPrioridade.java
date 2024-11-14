@@ -69,9 +69,9 @@ public class FilaPrioridade {
     }
 
 
-    public int remover() throws FilaPrioridadeException {
+    public int remover() {
         if (this.inicio == null) {
-            throw new FilaPrioridadeException("Fila vazia!");
+            throw new RuntimeException("A fila está vazia!");
         }
         int elemento = this.inicio.getElemento();
         this.inicio = this.inicio.getProximo();
@@ -81,25 +81,18 @@ public class FilaPrioridade {
         return elemento;
     }
 
-    public int inicio() throws FilaPrioridadeException {
-        if (this.inicio == null) {
-            throw new FilaPrioridadeException("Fila vazia!");
-        }
-        return this.inicio.getElemento();
-    }
-
-    public boolean vazia() {
-        return this.inicio == null;
-    }
-
     public void mostrar() {
         No atual = this.inicio;
+        if (atual == null) {
+            System.out.println("Fila vazia!");
+            return;
+        }
         System.out.print("[");
         while (atual != null) {
             System.out.print(atual.getElemento());
             atual = atual.getProximo();
             if (atual != null) {
-                System.out.print(", "); // Adiciona vírgula entre os elementos
+                System.out.print(", ");
             }
         }
         System.out.println("]");

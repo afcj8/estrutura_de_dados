@@ -10,5 +10,22 @@ public class Teste {
         fp.inserir(70);
         fp.inserir(65);
         fp.mostrar();
+
+        fp.remover();
+        fp.mostrar();
+        fp.remover();
+        fp.mostrar();
+        fp.remover();
+        fp.mostrar();
+        fp.remover();
+        fp.mostrar();
+        fp.remover();
+        fp.mostrar();
+        fp.remover();
+        fp.mostrar();
+        fp.remover();
+        fp.mostrar();
+        fp.remover();
+        fp.mostrar();
     }
 }

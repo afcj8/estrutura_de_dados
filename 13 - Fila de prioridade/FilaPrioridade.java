@@ -72,9 +72,14 @@ public class FilaPrioridade {
 
     public void mostrar() {
         No atual = this.inicio;
+        System.out.print("[");
         while (atual != null) {
-            System.out.println(atual.getElemento() + " - " + atual.getProximo());
+            System.out.print(atual.getElemento());
             atual = atual.getProximo();
+            if (atual != null) {
+                System.out.print(", "); // Adiciona vírgula entre os elementos
+            }
         }
+        System.out.println("]");
     }
 }

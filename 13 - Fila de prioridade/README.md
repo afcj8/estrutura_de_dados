@@ -8,10 +8,16 @@ Ao inserir um novo elemento na fila de prioridade, ele é posicionado antes dos 
 
 **Exemplo**
 
-- Lista inicial: [10, 20, 30]
-- Inserindo o valor 60 com prioridade superior: [60, 10, 20, 30]
+1. Lista inicial: [10, 20, 30]
+2. Inserindo 60 com prioridade mais alta:
+- Resultado: [60, 10, 20, 30]
 
-Nesse caso, o elemento 60 foi colocado na frente dos demais porque sua prioridade é maior.
+O elemento 60, por ter prioridade mais alta, é inserido no início da fila.
+
+3. Inserindo 65, ainda com prioridade superior:
+- Resultado: [60, 65, 10, 20, 30]
+
+Nesse caso, o elemento 65 se posiciona após o 60 e antes dos demais, mantendo a ordem de prioridade sem furar a fila.
 
 ## 13.2. Remoção
 

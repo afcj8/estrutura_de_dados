@@ -1,12 +1,10 @@
 public class No {
-    private Object elemento;
+    private int elemento;
     private No proximo;
-    private int prioridade;
-    public No(Object elemento, int prioridade) {
+    public No(int elemento) {
         this.elemento = elemento;
-        this.prioridade = prioridade;
     }
-    public Object getElemento() {
+    public int getElemento() {
         return this.elemento;
     }
     public No getProximo() {
@@ -14,11 +12,5 @@ public class No {
     }
     public void setProximo(No proximo) {
         this.proximo = proximo;
-    }
-    public int getPrioridade() {
-        return this.prioridade;
-    }
-    public void setPrioridade(int prioridade) {
-        this.prioridade = prioridade;
     }
 }

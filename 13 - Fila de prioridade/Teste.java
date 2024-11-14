@@ -6,11 +6,17 @@ public class Teste {
         fp.inserir(30);
         fp.inserir(40);
         fp.inserir(50);
-        fp.inserir(60);
-        fp.inserir(70);
-        fp.inserir(65);
+        fp.inserir(60); // prioridade
+        fp.inserir(70); // prioridade
+        fp.inserir(65); // prioridade
+        fp.mostrar();
+        fp.inserir(55);
         fp.mostrar();
 
+        System.out.println("Removendo elementos da fila: ");
+
+        fp.remover();
+        fp.mostrar();
         fp.remover();
         fp.mostrar();
         fp.remover();

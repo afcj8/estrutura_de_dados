@@ -1,88 +1,48 @@
 public class FilaPrioridade {
-    private No inicio;
-    private No fim;
+    private No fila;
 
     public FilaPrioridade() {
-        this.inicio = null;
-        this.fim = null;
+        this.fila = null;
     }
 
     public void inserir(int elemento) {
         No novo = new No(elemento);
-
-        // Verifica se a lista está vazia
-        if (this.inicio == null) {
-            this.inicio = novo;
-            this.fim = novo;
-            return;
-        }
-
-        // Caso o elemento tenha prioridade (elemento > 59)
-        if (elemento > 59) {
-            No atual = this.inicio;
-            No anterior = null;
-
-            // Encontra o último nó com prioridade (elemento > 59)
-            while (atual != null && atual.getElemento() > 59) {
-                anterior = atual;
-                atual = atual.getProximo();
-            }
-
-            // Insere o novo nó após o último nó com prioridade
-            if (anterior == null) { // Se não houver nenhum nó com prioridade
-                novo.setProximo(this.inicio);
-                this.inicio = novo;
-            } else { // Insere o novo nó após o último nó com prioridade
-                anterior.setProximo(novo);
-                novo.setProximo(atual);
-            }
-
-            // Atualiza o fim da lista, se necessário
-            if (novo.getProximo() == null) {
-                this.fim = novo;
-            }
-
-        } else { // Caso o elemento não tenha prioridade (elemento <= 59)
-            No atual = this.inicio;
-            No anterior = null;
-
-            // Encontra a posição correta para o elemento não prioritário
-            while (atual != null && atual.getElemento() < 60) {
-                anterior = atual;
-                atual = atual.getProximo();
-            }
-
-            // Insere o novo nó no local adequado
-            if (anterior == null) { // Insere no início se não houver elementos prioritários
-                novo.setProximo(this.inicio);
-                this.inicio = novo;
-            } else { // Insere no meio ou no final, antes dos elementos prioritários
-                anterior.setProximo(novo);
-                novo.setProximo(atual);
-            }
-
-            // Atualiza o fim da lista, se necessário
-            if (atual == null) {
-                this.fim = novo;
+        if (fila == null) { // a fila está vazia?
+            fila = novo;
+        } else {
+            if (elemento > 59) { // é prioridade?
+                if (fila.getElemento() < 60) { // é a primeira prioridade?
+                    novo.setProximo(fila); // insere no início da fila
+                    fila = novo;
+                } else {
+                    No aux = fila;
+                    while (aux.getProximo() != null && aux.getProximo().getElemento() > 59) {
+                        aux = aux.getProximo();
+                    }
+                    novo.setProximo(aux.getProximo()); // insere depois da última prioridade
+                    aux.setProximo(novo);
+                }
+            } else { // não é prioridade, então insere no final
+                No aux = fila;
+                while (aux.getProximo() != null) {
+                    aux = aux.getProximo();
+                }
+                aux.setProximo(novo);
             }
         }
     }
 
-
     public int remover() {
-        if (this.inicio == null) {
+        if (this.fila == null) {
             throw new RuntimeException("A fila está vazia!");
         }
-        int elemento = this.inicio.getElemento();
-        this.inicio = this.inicio.getProximo();
-        if (this.inicio == null) {
-            this.fim = null;
-        }
+        int elemento = this.fila.getElemento();
+        this.fila = this.fila.getProximo();
         return elemento;
     }
 
     public void mostrar() {
-        No atual = this.inicio;
+        No atual = this.fila;
         if (atual == null) {
             System.out.println("Fila vazia!");
             return;

@@ -1,10 +1,11 @@
+
 import java.util.ArrayList;
 
 public class Heap {
-    private No raiz;
-    private No ultimo;
+
+    private No raiz, ultimo;
     private int tamanho;
-    private ArrayList<No> nos;
+    private ArrayList<No> aux;
     private Comparador c = new Comparador();
 
     public Heap(Object obj) {
@@ -41,11 +42,25 @@ public class Heap {
         return no.getFilhoEsquerdo() == null && no.getFilhoDireito() == null;
     }
 
+    public void emOrdem(No no) {
+        if (isInternal(no)) {
+            if (no.getFilhoEsquerdo() != null) {
+                emOrdem(no.getFilhoEsquerdo());
+            }
+        }
+        aux.add(no); // visite
+        if (isInternal(no)) {
+            if (no.getFilhoDireito() != null) {
+                emOrdem(no.getFilhoDireito());
+            }
+        }
+    }
+
     public int height(No no) {
         if (no == null) {
             return 0;
         }
-        
+
         if (isExternal(no)) {
             return 0;
         }
@@ -58,5 +73,17 @@ public class Heap {
             h = Math.max(h, height(no.getFilhoDireito()));
         }
         return h + 1;
+    }
+
+    public int depth(No no) {
+        if (no == null) {
+            return 0;
+        }
+
+        if (isRoot(no)) {
+            return 0;
+        }
+
+        return 1 + depth(no.getPai());
     }
 }

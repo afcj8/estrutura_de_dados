@@ -30,6 +30,14 @@ public class Heap {
         this.raiz = p;
     }
 
+    public No getUltimo() {
+        return this.ultimo;
+    }
+
+    public void setUltimo(No u) {
+        this.ultimo = u;
+    }
+
     public boolean isRoot(No no) {
         return no == this.raiz;
     }
@@ -48,7 +56,7 @@ public class Heap {
             return no;
         }
 
-        if ((int)key == (int)no.getObj()) {
+        if ((int) key == (int) no.getObj()) {
             return no;
         }
 
@@ -67,17 +75,68 @@ public class Heap {
         }
     }
 
-    public void emOrdem(No no) {
-        if (isInternal(no)) {
-            if (no.getFilhoEsquerdo() != null) {
-                emOrdem(no.getFilhoEsquerdo());
-            }
+    public No incluir(Object obj) {
+        No pai = pesquisar(raiz, obj);
+        No novo = new No(pai, obj);
+
+        if (pai == null) {
+            raiz = novo;
+            this.ultimo = novo;
+            this.tamanho++;
+            return novo;
         }
-        aux.add(no); // visite
-        if (isInternal(no)) {
-            if (no.getFilhoDireito() != null) {
-                emOrdem(no.getFilhoDireito());
+
+        if (novo.getObj() == pai.getObj()) {
+            return pai;
+        }
+
+        if (c.compare(obj, pai.getObj()) < 0) {
+            pai.setFilhoEsquerdo(novo);
+        } else {
+            pai.setFilhoDireito(novo);
+        }
+
+        this.ultimo = novo;
+        tamanho++;
+        upHeap(novo);
+        return novo;
+    }
+
+    private void upHeap(No no) {
+        while (!isRoot(no) && c.compare(no.getObj(), no.getPai().getObj()) < 0) {
+            trocarNos(no, no.getPai());
+            no = no.getPai();
+        }
+    }
+
+    private void trocarNos(No a, No b) {
+        Object temp = a.getObj();
+        a.setObj(b.getObj());
+        b.setObj(temp);
+    }
+
+    public void mostrar() {
+        if (isEmpty()) {
+            System.out.println("Heap vazia!");
+            return;
+        }
+
+        Object[][] matriz = new Object[height(raiz) + 1][tamanho];
+        aux = new ArrayList();
+        emOrdem(raiz);
+        for (int i = 0; i < tamanho; i++) {
+            Object obj = ((No)aux.get(i)).getObj();
+            matriz[depth((No)aux.get(i))][i] = obj;
+        }
+        for (int i = 0; i < height(raiz) + 1; i++) {
+            for (int j = 0; j < tamanho; j++) {
+                if (matriz[i][j] == null) {
+                    System.out.print("\t");
+                } else {
+                    System.out.printf("\t%d", matriz[i][j]);
+                }
             }
+            System.out.println();
         }
     }
 
@@ -112,5 +171,26 @@ public class Heap {
         return 1 + depth(no.getPai());
     }
 
+    public void emOrdem(No no) {
+        if (isInternal(no)) {
+            if (no.getFilhoEsquerdo() != null) {
+                emOrdem(no.getFilhoEsquerdo());
+            }
+        }
+        aux.add(no); // visite
+        if (isInternal(no)) {
+            if (no.getFilhoDireito() != null) {
+                emOrdem(no.getFilhoDireito());
+            }
+        }
+    }
+
+    public boolean isEmpty() {
+        return tamanho == 0;
+    }
+
+    public int size() {
+        return tamanho;
+    }
 
 }

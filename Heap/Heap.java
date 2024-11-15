@@ -235,6 +235,20 @@ public class Heap {
         }
     }
 
+    public void heapOrdem(No no) {
+        if (isInternal(no)) {
+            if (no.getFilhoEsquerdo() != null) {
+                heapOrdem(no.getFilhoEsquerdo());
+            }
+        }
+        System.out.printf("%d ", no.getObj()); // visite
+        if (isInternal(no)) {
+            if (no.getFilhoDireito() != null) {
+                heapOrdem(no.getFilhoDireito());
+            }
+        }
+    }
+
     public boolean isEmpty() {
         return tamanho == 0;
     }

@@ -9,5 +9,7 @@ public class Teste {
         heap.mostrar();
         heap.removeMin();
         heap.mostrar();
+        
+        heap.heapOrdem(heap.getRaiz());
     }
 }

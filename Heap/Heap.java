@@ -42,6 +42,31 @@ public class Heap {
         return no.getFilhoEsquerdo() == null && no.getFilhoDireito() == null;
     }
 
+    public No pesquisar(No no, Object key) {
+
+        if (isExternal(no)) {
+            return no;
+        }
+
+        if ((int)key == (int)no.getObj()) {
+            return no;
+        }
+
+        if (c.compare(key, no.getObj()) < 0) {
+            if (no.getFilhoEsquerdo() != null) {
+                return pesquisar(no.getFilhoEsquerdo(), key);
+            } else {
+                return no;
+            }
+        } else {
+            if (no.getFilhoDireito() != null) {
+                return pesquisar(no.getFilhoDireito(), key);
+            } else {
+                return no;
+            }
+        }
+    }
+
     public void emOrdem(No no) {
         if (isInternal(no)) {
             if (no.getFilhoEsquerdo() != null) {
@@ -86,4 +111,6 @@ public class Heap {
 
         return 1 + depth(no.getPai());
     }
+
+
 }

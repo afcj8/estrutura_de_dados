@@ -102,6 +102,33 @@ public class Heap {
         return novo;
     }
 
+    public Object removeMin() {
+        if (isEmpty()) {
+            return null;
+        }
+
+        Object min = raiz.getObj();
+        if (tamanho == 1) {
+            raiz = null;
+            ultimo = null;
+            tamanho--;
+            return min;
+        }
+
+        No sucessor = encontrarSucessor(raiz);
+        raiz.setObj(sucessor.getObj());
+        No pai = sucessor.getPai();
+        if (pai.getFilhoEsquerdo() == sucessor) {
+            pai.setFilhoEsquerdo(null);
+        } else {
+            pai.setFilhoDireito(null);
+        }
+
+        downHeap(raiz);
+        tamanho--;
+        return min;
+    }
+
     private void upHeap(No no) {
         while (!isRoot(no) && c.compare(no.getObj(), no.getPai().getObj()) < 0) {
             trocarNos(no, no.getPai());
@@ -109,10 +136,33 @@ public class Heap {
         }
     }
 
+    private void downHeap(No no) {
+        while (no.getFilhoEsquerdo() != null) {
+            No menor = no.getFilhoEsquerdo();
+            if (no.getFilhoDireito() != null && c.compare(no.getFilhoDireito().getObj(), menor.getObj()) < 0) {
+                menor = no.getFilhoDireito();
+            }
+            if (c.compare(menor.getObj(), no.getObj()) < 0) {
+                trocarNos(no, menor);
+                no = menor;
+            } else {
+                break;
+            }
+        }
+    }
+
     private void trocarNos(No a, No b) {
         Object temp = a.getObj();
         a.setObj(b.getObj());
         b.setObj(temp);
+    }
+
+    private No encontrarSucessor(No no) {
+        No sucessor = no.getFilhoDireito();
+        while (sucessor.getFilhoEsquerdo() != null) {
+            sucessor = sucessor.getFilhoEsquerdo();
+        }
+        return sucessor;
     }
 
     public void mostrar() {

@@ -8,6 +8,12 @@ public class Heap {
     private ArrayList<No> aux;
     private Comparador c = new Comparador();
 
+    public Heap() {
+        this.raiz = null;
+        this.ultimo = null;
+        this.tamanho = 0;
+    }
+
     public Heap(Object obj) {
         this.raiz = new No(null, obj);
         this.ultimo = this.raiz;

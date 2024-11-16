@@ -57,39 +57,26 @@ public class Heap {
     }
 
     public No incluir(Object obj) {
-        No novo = new No(null, obj);
+        No antigoUltimo = proximoNo();
+        No novoUltimo = new No(antigoUltimo, obj);
+
         if (isEmpty()) {
-            raiz = novo;
-            ultimo = novo;
+            raiz = novoUltimo;
+            ultimo = novoUltimo;
             tamanho++;
-            return novo;
+            return novoUltimo;
         }
 
-        ArrayList<No> fila = new ArrayList<>();
-        fila.add(raiz);
-        No pai = null;
-
-        while (!fila.isEmpty()) {
-            pai = fila.remove(0);
-            if (pai.getFilhoEsquerdo() == null) {
-                pai.setFilhoEsquerdo(novo);
-                break;
-            } else {
-                fila.add(pai.getFilhoEsquerdo());
-            }
-            if (pai.getFilhoDireito() == null) {
-                pai.setFilhoDireito(novo);
-                break;
-            } else {
-                fila.add(pai.getFilhoDireito());
-            }
+        if (antigoUltimo.getFilhoEsquerdo() == null) {
+            antigoUltimo.setFilhoEsquerdo(novoUltimo);
+        } else {
+            antigoUltimo.setFilhoDireito(novoUltimo);
         }
 
-        novo.setPai(pai);
-        upHeap(novo);
-        ultimo = novo;
+        upHeap(novoUltimo);
+        this.ultimo = novoUltimo;
         tamanho++;
-        return novo;
+        return novoUltimo;
     }
 
     public Object removeMin() {
@@ -159,6 +146,56 @@ public class Heap {
         Object temp = a.getObj();
         a.setObj(b.getObj());
         b.setObj(temp);
+    }
+
+    private No proximoNo() {
+        No atual = ultimo;
+
+        if (isRoot(atual)) {
+            return atual;
+        }
+
+        while (!isRoot(atual) && !atual.getPai().getFilhoEsquerdo().equals(atual)) {
+            atual = atual.getPai();
+        }
+
+        if (atual != raiz && atual.getPai().getFilhoDireito() == null) {
+            return atual.getPai();
+        } else if (atual != raiz && atual.getPai().getFilhoDireito() != null) {
+            atual = atual.getPai().getFilhoDireito();
+        }
+
+        while (atual.getFilhoEsquerdo() != null) {
+            atual = atual.getFilhoEsquerdo();
+        }
+
+        return atual;
+    }
+
+    private No novoUltimoNo() {
+        No atual = ultimo;
+
+        if (isRoot(atual)) {
+            return atual;
+        }
+
+        while (atual != raiz && atual == atual.getPai().getFilhoDireito()) {
+            atual = atual.getPai();
+        }
+
+        if (atual != raiz && atual.getPai().getFilhoDireito() != null) {
+            atual = atual.getPai().getFilhoDireito();
+            while (atual.getFilhoEsquerdo() != null) {
+                atual = atual.getFilhoEsquerdo();
+            }
+        } else {
+            atual = raiz;
+            while (atual.getFilhoEsquerdo() != null) {
+                atual = atual.getFilhoEsquerdo();
+            }
+        }
+
+        return atual;
     }
 
     public void mostrar() {

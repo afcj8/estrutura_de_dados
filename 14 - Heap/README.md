@@ -55,3 +55,41 @@ A remoção no heap ocorre geralmente na raiz, pois ela contém o maior (em um h
 
 1. Substitui-se o valor da raiz pelo último elemento da árvore (o mais à direita do último nível).
 2. Esse elemento é movido para baixo usando o processo de `downHeap` até que a propriedade do heap seja restabelecida.
+
+**Exemplo**
+
+Para ilustrar o processo de remoção, considera-se a árvore abaixo e a remoção do valor 2:
+
+```
+            2
+    5               3
+10       8      15
+```
+
+Após a remoção do valor 2, o último elemento da heap (15) substitui o valor 2 no topo, resultando na seguinte estrutura:
+
+```
+            15
+    5               3
+10       8      
+```
+
+Para manter a propriedade da heap, aplica-se o processo de `downHeap`. Nesse processo, o elemento que está no topo é comparado com seus filhos e trocado, se necessário, até alcançar sua posição ideal:
+
+1. O valor 15 é comparado com seus filhos (5 e 3). Ele é trocado com o menor dos filhos (3), assumindo a seguinte configuração:
+
+```
+            3
+    5               15
+10       8
+```
+
+2. O valor 15 é comparado novamente com seus filhos e trocado, se necessário. Como não há mais violações, a estrutura final é a seguinte:
+
+```
+            3
+    5               15
+10       8
+```
+
+Após esses passos, a remoção do elemento foi concluída e a propriedade da heap foi restaurada.

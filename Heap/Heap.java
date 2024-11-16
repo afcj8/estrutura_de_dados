@@ -56,61 +56,45 @@ public class Heap {
         return no.getFilhoEsquerdo() == null && no.getFilhoDireito() == null;
     }
 
-    public No pesquisar(No no, Object key) {
-
-        if (isExternal(no)) {
-            return no;
-        }
-
-        if ((int) key == (int) no.getObj()) {
-            return no;
-        }
-
-        if (c.compare(key, no.getObj()) < 0) {
-            if (no.getFilhoEsquerdo() != null) {
-                return pesquisar(no.getFilhoEsquerdo(), key);
-            } else {
-                return no;
-            }
-        } else {
-            if (no.getFilhoDireito() != null) {
-                return pesquisar(no.getFilhoDireito(), key);
-            } else {
-                return no;
-            }
-        }
-    }
-
     public No incluir(Object obj) {
-        No pai = pesquisar(raiz, obj);
-        No novo = new No(pai, obj);
-
-        if (pai == null) {
+        No novo = new No(null, obj);
+        if (isEmpty()) {
             raiz = novo;
-            this.ultimo = novo;
-            this.tamanho++;
+            ultimo = novo;
+            tamanho++;
             return novo;
         }
 
-        if (novo.getObj() == pai.getObj()) {
-            return pai;
+        ArrayList<No> fila = new ArrayList<>();
+        fila.add(raiz);
+        No pai = null;
+
+        while (!fila.isEmpty()) {
+            pai = fila.remove(0);
+            if (pai.getFilhoEsquerdo() == null) {
+                pai.setFilhoEsquerdo(novo);
+                break;
+            } else {
+                fila.add(pai.getFilhoEsquerdo());
+            }
+            if (pai.getFilhoDireito() == null) {
+                pai.setFilhoDireito(novo);
+                break;
+            } else {
+                fila.add(pai.getFilhoDireito());
+            }
         }
 
-        if (c.compare(obj, pai.getObj()) < 0) {
-            pai.setFilhoEsquerdo(novo);
-        } else {
-            pai.setFilhoDireito(novo);
-        }
-
-        this.ultimo = novo;
-        tamanho++;
+        novo.setPai(pai);
         upHeap(novo);
+        ultimo = novo;
+        tamanho++;
         return novo;
     }
 
     public Object removeMin() {
         if (isEmpty()) {
-            return null;
+            return "Heap vazia!";
         }
 
         Object min = raiz.getObj();
@@ -121,15 +105,29 @@ public class Heap {
             return min;
         }
 
-        No sucessor = encontrarSucessor(raiz);
-        raiz.setObj(sucessor.getObj());
-        No pai = sucessor.getPai();
-        if (pai.getFilhoEsquerdo() == sucessor) {
-            pai.setFilhoEsquerdo(null);
+        No ultimoNo = getUltimo();
+        raiz.setObj(ultimoNo.getObj());
+
+        if (ultimoNo == ultimoNo.getPai().getFilhoEsquerdo()) {
+            ultimoNo.getPai().setFilhoEsquerdo(null);
         } else {
-            pai.setFilhoDireito(null);
+            ultimoNo.getPai().setFilhoDireito(null);
         }
 
+        ArrayList<No> fila = new ArrayList<>();
+        fila.add(raiz);
+        No novoUltimo = null;
+        while (!fila.isEmpty()) {
+            novoUltimo = fila.remove(0);
+            if (novoUltimo.getFilhoEsquerdo() != null) {
+                fila.add(novoUltimo.getFilhoEsquerdo());
+            }
+            if (novoUltimo.getFilhoDireito() != null) {
+                fila.add(novoUltimo.getFilhoDireito());
+            }
+        }
+
+        ultimo = novoUltimo;
         downHeap(raiz);
         tamanho--;
         return min;
@@ -161,14 +159,6 @@ public class Heap {
         Object temp = a.getObj();
         a.setObj(b.getObj());
         b.setObj(temp);
-    }
-
-    private No encontrarSucessor(No no) {
-        No sucessor = no.getFilhoDireito();
-        while (sucessor.getFilhoEsquerdo() != null) {
-            sucessor = sucessor.getFilhoEsquerdo();
-        }
-        return sucessor;
     }
 
     public void mostrar() {
@@ -242,6 +232,11 @@ public class Heap {
     }
 
     public void heapOrdem(No no) {
+        if (isEmpty()) {
+            System.out.println("Heap vazia!");
+            return;
+        }
+
         if (isInternal(no)) {
             if (no.getFilhoEsquerdo() != null) {
                 heapOrdem(no.getFilhoEsquerdo());
@@ -262,5 +257,4 @@ public class Heap {
     public int size() {
         return tamanho;
     }
-
 }

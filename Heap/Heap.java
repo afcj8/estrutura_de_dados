@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 public class Heap {
@@ -56,6 +55,13 @@ public class Heap {
         return no.getFilhoEsquerdo() == null && no.getFilhoDireito() == null;
     }
 
+    public Object min() {
+        if (isEmpty()) {
+            return "Heap vazia!";
+        }
+        return raiz.getObj();
+    }
+
     public No incluir(Object obj) {
         No antigoUltimo = proximoNo();
         No novoUltimo = new No(antigoUltimo, obj);
@@ -85,37 +91,26 @@ public class Heap {
         }
 
         Object min = raiz.getObj();
-        if (tamanho == 1) {
+        trocarNos(raiz, ultimo);
+        No novoUltimo = novoUltimoNo();
+
+        if (isRoot(ultimo)) {
             raiz = null;
             ultimo = null;
             tamanho--;
             return min;
         }
 
-        No ultimoNo = getUltimo();
-        raiz.setObj(ultimoNo.getObj());
-
-        if (ultimoNo == ultimoNo.getPai().getFilhoEsquerdo()) {
-            ultimoNo.getPai().setFilhoEsquerdo(null);
-        } else {
-            ultimoNo.getPai().setFilhoDireito(null);
-        }
-
-        ArrayList<No> fila = new ArrayList<>();
-        fila.add(raiz);
-        No novoUltimo = null;
-        while (!fila.isEmpty()) {
-            novoUltimo = fila.remove(0);
-            if (novoUltimo.getFilhoEsquerdo() != null) {
-                fila.add(novoUltimo.getFilhoEsquerdo());
-            }
-            if (novoUltimo.getFilhoDireito() != null) {
-                fila.add(novoUltimo.getFilhoDireito());
+        if (ultimo != null && ultimo.getPai() != null) {
+            if (ultimo.getPai().getFilhoDireito() == null) {
+                ultimo.getPai().setFilhoEsquerdo(null);
+            } else {
+                ultimo.getPai().setFilhoDireito(null);
             }
         }
 
-        ultimo = novoUltimo;
         downHeap(raiz);
+        this.ultimo = novoUltimo;
         tamanho--;
         return min;
     }
@@ -179,20 +174,18 @@ public class Heap {
             return atual;
         }
 
-        while (atual != raiz && atual == atual.getPai().getFilhoDireito()) {
+        while (!isRoot(atual) && (atual.getPai().getFilhoDireito() == null || !atual.getPai().getFilhoDireito().equals(atual))) {
             atual = atual.getPai();
         }
 
-        if (atual != raiz && atual.getPai().getFilhoDireito() != null) {
-            atual = atual.getPai().getFilhoDireito();
-            while (atual.getFilhoEsquerdo() != null) {
-                atual = atual.getFilhoEsquerdo();
-            }
-        } else {
-            atual = raiz;
-            while (atual.getFilhoEsquerdo() != null) {
-                atual = atual.getFilhoEsquerdo();
-            }
+        if (!isRoot(atual) && atual.getPai().getFilhoEsquerdo() == null) {
+            return atual.getPai();
+        } else if (!isRoot(atual) && atual.getPai().getFilhoEsquerdo() != null) {
+            atual = atual.getPai().getFilhoEsquerdo();
+        }
+
+        while (atual.getFilhoDireito() != null) {
+            atual = atual.getFilhoDireito();
         }
 
         return atual;

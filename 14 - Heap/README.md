@@ -48,3 +48,10 @@ Para manter a propriedade da heap, aplica-se o processo de `upHeap`. Nesse proce
 ```
 
 Dessa forma, a propriedade da heap é restabelecida.
+
+## 14.2. Remoção
+
+A remoção no heap ocorre geralmente na raiz, pois ela contém o maior (em um heap máximo) ou o menor (em um heap mínimo) elemento. Após a remoção:
+
+1. Substitui-se o valor da raiz pelo último elemento da árvore (o mais à direita do último nível).
+2. Esse elemento é movido para baixo usando o processo de `downHeap` até que a propriedade do heap seja restabelecida.

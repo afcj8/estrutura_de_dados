@@ -35,7 +35,7 @@ Para executar o código, utilize Codespaces, que já possui o ambiente Java conf
 
 1. Navegue até o diretório da estrutura de dados:
    ```bash
-   cd 16\ -\ Árvore\ AVL/
+   cd 17\ -\ Árvore\ AVL/
    ```
 
 2. Compile o arquivo principal:

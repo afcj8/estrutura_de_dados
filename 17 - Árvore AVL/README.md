@@ -204,12 +204,60 @@ Se, ao recalcular os fatores de balanceamento, algum nó apresentar um valor for
 
 ## 17.3. Remoção
 
-Na remoção, o elemento é retirado da árvore seguindo as regras da árvore binária de busca. Após a remoção, os fatores de balanceamento são recalculados e podem causar desequilíbrios. A correção também utiliza rotações, seguindo os mesmos princípios da inserção.
+Na remoção, o elemento é retirado da árvore seguindo as regras da árvore binária de pesquisa. Após a remoção, os fatores de balanceamento são recalculados e podem causar desequilíbrios. A correção também utiliza rotações, seguindo os mesmos princípios da inserção.
 
-Os casos de remoção incluem:
+**Exemplo:** Remover os nós 8, 65, 44 e 15 da árvore abaixo.
 
-1. Remoção de um nó folha (sem filhos).
-2. Remoção de um nó com um único filho.
-3. Remoção de um nó com dois filhos.
+```
+                                                        44[0]
+                        15[0]                                           78[-1]
+        8[0]                            22[0]                   65[0]                   90[1]
+2[0]            11[0]           19[0]           36[0]                           84[0]
+```
 
-Após a remoção, o balanceamento é restaurado considerando as subárvores impactadas.
+1. **Remoção do 8:** O nó 8 tem dois filhos (2 e 11). Substitui-se o nó 8 pelo seu sucessor imediato, o nó 11. Em seguida, o nó 11 é removido da subárvore onde estava. Isso não causa desbalanceamento.
+
+```
+                                                44[0]
+                15[0]                                           78[-1]
+        11[1]                   22[0]                   65[0]                   90[1]
+2[0]                    19[0]           36[0]                           84[0]
+```
+
+2. **Remoção do 65:** O nó 65 não possui filhos, portanto, é simplesmente removido da árvore. Após a remoção, os fatores de balanceamento dos nós afetados são recalculados. O fator de balanceamento do nó 78 é alterado para -2. Como o fator de balanceamento do seu filho direito (nó 90) é 1, será necessário realizar uma rotação dupla à esquerda para restaurar o equilíbrio da árvore.
+
+- **Após a rotação simples à direita:**
+
+```
+                                                44[0]
+                15[0]                                           78[-2]
+        11[1]                   22[0]                                      84[-1]
+2[0]                    19[0]           36[0]                                       90[0]
+```
+
+- **Após a rotação simples à esquerda:**
+
+```
+                                                44[1]
+                15[0]                                           84[0]
+        11[1]                   22[0]                   78[0]           90[0]
+2[0]                    19[0]           36[0]
+```
+
+3. **Remoção do 44:** O nó 44 tem dois filhos (15 e 84). Substitui-se o nó 44 pelo seu sucessor imediato, o nó 78. Em seguida, o nó 78 é removido de onde estava. Isso não causa desbalanceamento.
+
+```
+                                                78[1]
+                15[0]                                   84[-1]
+        11[1]                   22[0]                           90[0]
+2[0]                    19[0]           36[0]
+```
+
+3. **Remoção do 15:** O nó 15 tem dois filhos (11 e 22). Substitui-se o nó 15 pelo seu sucessor imediato, o nó 19. Em seguida, o nó 19 é removido de onde estava. Isso mantém a árvore balanceada.
+
+```
+                                        78[1]
+                19[0]                           84[-1]
+        11[1]           22[-1]                          90[0]
+2[0]                            36[0]
+```

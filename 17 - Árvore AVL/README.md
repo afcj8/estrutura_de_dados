@@ -25,15 +25,15 @@ A rotação simples à esquerda é aplicada quando o fator de balanceamento (FB)
 
 ```
 10[-2]
-        15[-1]
-                20[0]
+    15[-1]
+        20[0]
 ```
 
 **Exemplo após a rotação:**
 
 ```
-        15[0]
-10[0]           20[0]
+    15[0]
+10[0]   20[0]
 ```
 
 ### 17.1.2. Rotação Simples à Direita
@@ -43,14 +43,41 @@ A rotação simples à direits ocorre quando o FB do nó for maior que 1, e o FB
 **Exemplo antes da rotação:**
 
 ```
-                20[2]
-        15[1]
+        20[2]
+    15[1]
 10[0]
 ```
 
 **Exemplo após a rotação:**
 
 ```
-        15[0]
-10[0]           20[0]
+    15[0]
+10[0]   20[0]
+```
+
+### 17.1.3. Rotação Dupla à Esquerda
+
+A rotação dupla à esquerda é aplicada quando o FB do nó for menor que -1, e o FB do filho à direita for maior que 0. Nesse caso, realiza-se primeiro uma rotação simples à direita no filho à direita, seguida de uma rotação simples à esquerda no nó desbalanceado.
+
+**Exemplo antes da rotação:**
+
+```
+10[-2]
+    20[1]
+15[0]
+```
+
+**Após a rotação simples à direita:**
+
+```
+10[-2]
+    15[-1]
+        20[0]
+```
+
+**Após a rotação simples à esquerda:**
+
+```
+    15[0]
+10[0]   20[0]
 ```

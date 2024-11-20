@@ -81,3 +81,30 @@ A rotação dupla à esquerda é aplicada quando o FB do nó for menor que -1, e
     15[0]
 10[0]   20[0]
 ```
+
+### 17.1.4. Rotação Dupla à Direita
+
+A rotação dupla à direita ocorre quando o FB do nó for maior que 1, e o FB do filho à esquerda for menor que 0. Nesse caso, realiza-se primeiro uma rotação simples à esquerda no filho à esquerda, seguida de uma rotação simples à direita no nó desbalanceado.
+
+**Exemplo antes da rotação:**
+
+```
+    20[2]
+10[-1]
+    15[0]
+```
+
+**Após a rotação simples à esquerda:**
+
+```
+        20[2]
+    15[1]
+10[0]
+```
+
+**Após a rotação simples à direita:**
+
+```
+    15[0]
+10[0]   20[0]
+```

@@ -205,3 +205,11 @@ Se, ao recalcular os fatores de balanceamento, algum nó apresentar um valor for
 ## 17.3. Remoção
 
 Na remoção, o elemento é retirado da árvore seguindo as regras da árvore binária de busca. Após a remoção, os fatores de balanceamento são recalculados e podem causar desequilíbrios. A correção também utiliza rotações, seguindo os mesmos princípios da inserção.
+
+Os casos de remoção incluem:
+
+1. Remoção de um nó folha (sem filhos).
+2. Remoção de um nó com um único filho.
+3. Remoção de um nó com dois filhos.
+
+Após a remoção, o balanceamento é restaurado considerando as subárvores impactadas.

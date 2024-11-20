@@ -35,3 +35,22 @@ A rotação simples à esquerda é aplicada quando o fator de balanceamento (FB)
         15[0]
 10[0]           20[0]
 ```
+
+### 17.1.2. Rotação Simples à Direita
+
+A rotação simples à direits ocorre quando o FB do nó for maior que 1, e o FB do filho à esquerda for 0 ou maior.
+
+**Exemplo antes da rotação:**
+
+```
+                20[2]
+        15[1]
+10[0]
+```
+
+**Exemplo após a rotação:**
+
+```
+        15[0]
+10[0]           20[0]
+```

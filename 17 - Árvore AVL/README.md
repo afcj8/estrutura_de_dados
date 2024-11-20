@@ -12,7 +12,26 @@ Durante a inserção, o elemento é inicialmente colocado na posição apropriad
 
 As rotações podem ser de quatro tipos:
 
-1. Rotação Simples à Direita (desbalanceamento à esquerda).
-2. Rotação Simples à Esquerda (desbalanceamento à direita).
-3. Rotação Dupla à Direita (esquerda-direita).
-4. Rotação Dupla à Esquerda (direita-esquerda).
+1. Rotação Simples à Esquerda (desbalanceamento à direita).
+2. Rotação Simples à Direita (desbalanceamento à esquerda).
+3. Rotação Dupla à Esquerda (direita-esquerda).
+4. Rotação Dupla à Direita (esquerda-direita).
+
+### 17.1.1. Rotação Simples à Esquerda
+
+A rotação simples à esquerda é aplicada quando o fator de balanceamento (FB) do nó for menor que -1, e o FB do filho à direita for 0 ou menor.
+
+**Exemplo antes da rotação:**
+
+```
+10[-2]
+        15[-1]
+                20[0]
+```
+
+**Exemplo após a rotação:**
+
+```
+        15[0]
+10[0]           20[0]
+```

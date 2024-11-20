@@ -106,3 +106,9 @@ A rotação dupla à direita ocorre quando o FB do nó for maior que 1, e o FB d
     15[0]
 10[0]   20[0]
 ```
+
+## 17.2. Inserção
+
+A inserção em uma árvore AVL segue as mesmas regras de uma árvore binária de pesquisa: o elemento é colocado na posição adequada com base em sua relação de ordem com os outros nós. Após a inserção, o fator de balanceamento (FB) de cada nó no caminho da nova chave até a raiz é atualizado.
+
+Se, ao recalcular os fatores de balanceamento, algum nó apresentar um valor fora do intervalo permitido (-1, 0, 1), considera-se que houve um desequilíbrio. Nesse caso, uma ou mais rotações são realizadas para restaurar o balanceamento da árvore.

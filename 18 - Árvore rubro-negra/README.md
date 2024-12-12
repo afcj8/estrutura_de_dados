@@ -16,3 +16,15 @@ Essas propriedades asseguram que a altura da árvore seja $O(log 𝑛)$, onde �
 ### 18.1.1. Altura Negra
 
 É representado pelo número de nós negros encontrados até qualquer nó folha descendente.
+
+**Exemplo**
+
+```
+            10[N]             
+      6[R]          22[N]
+3[N]        8[N]
+       7[R]     9[R]
+         
+```
+
+Nesse exemplo a altura negra é 2.

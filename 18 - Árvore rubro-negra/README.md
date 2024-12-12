@@ -6,10 +6,13 @@ A principal característica da árvore rubro-negra é manter um balanceamento ap
 
 ## 18.1. Propriedades
 
-1. Nulos (nós externos ou folhas) são considerados negros.
-2. A raiz é sempre negra.
-3. Um nó rubro não pode ter um filho rubro (ou seja, nós rubros não podem ser consecutivos).
-4. O caminho de qualquer nó até as folhas descendentes contém o mesmo número de nós negros (propriedade da altura negra).
+I. Nulos (nós externos ou folhas) são considerados negros.
+
+II. A raiz é sempre negra.
+
+III. Um nó rubro não pode ter um filho rubro (ou seja, nós rubros não podem ser consecutivos).
+
+IV. O caminho de qualquer nó até as folhas descendentes contém o mesmo número de nós negros (propriedade da altura negra).
 
 Essas propriedades asseguram que a altura da árvore seja $O(log 𝑛)$, onde 𝑛 é o número de nós.
 

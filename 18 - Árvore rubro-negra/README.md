@@ -28,3 +28,11 @@ Essas propriedades asseguram que a altura da árvore seja $O(log 𝑛)$, onde �
 ```
 
 Nesse exemplo a altura negra é 2.
+
+## 18.2. Inserção
+
+Na inserção de um novo nó:
+
+1. O nó é sempre inserido como rubro.
+2. Após a inserção, as propriedades da árvore rubro-negra podem ser violadas.
+3. Para corrigir essas violações, aplica-se uma série de rotações (simples ou duplas) e/ou recolorações.

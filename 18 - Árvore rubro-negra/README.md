@@ -39,3 +39,16 @@ Na inserção de um novo nó:
 1. O nó é sempre inserido como rubro.
 2. Após a inserção, as propriedades da árvore rubro-negra podem ser violadas.
 3. Para corrigir essas violações, aplica-se uma série de rotações (simples ou duplas) e/ou recolorações.
+
+### Caso 1: O pai de 𝑣, 𝑤, é negro
+
+Se o nó 𝑤 (pai de 𝑣) é negro, os critérios III e IV permanecem válidos. Não é necessário realizar nenhuma operação.
+
+**Exemplo**
+
+```
+10[N]             
+    22[R]
+```
+
+Nesse caso, 10 é negro e 22 é rubro. Os critérios permanecem válidos.

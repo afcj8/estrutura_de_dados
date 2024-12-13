@@ -121,3 +121,22 @@ Após a rotação dupla (esquerda no 10, direita no 30):
         20[N]             
 10[R]           30[R]
 ```
+
+#### Subcaso 3: Inserção na subárvore direita-direita
+
+Realiza-se uma rotação simples à esquerda.
+
+**Exemplo**
+
+```
+10[N]
+    20[R]            
+        30[R]
+```
+
+Após a rotação simples à esquerda:
+
+```
+        20[N]             
+10[R]           30[R]
+```

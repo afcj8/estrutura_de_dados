@@ -164,3 +164,18 @@ Após a rotação dupla (direita no 30, esquerda no 10):
 
 A remoção em uma árvore rubro-negra envolve a análise do nó removido e de seu sucessor, resultando em quatro casos distintos. A seguir, descrevem-se esses casos e os procedimentos para cada um:
 
+1. **Removido rubro e sucessor rubro:** Neste caso, não é necessário realizar nenhuma alteração, pois a propriedade da árvore é mantida.
+
+2. **Removido negro e sucessor rubro:** Para esse cenário, basta pintar o sucessor de negro, mantendo a árvore balanceada.
+
+3. **Removido negro e sucessor negro:** Quando ocorre a remoção de um nó negro e o sucessor também é negro, a propriedade fundamental da árvore rubro-negra — que exige que todos os caminhos até as folhas tenham o mesmo número de nós negros — é violada. Isso gera um "duplo negro", que precisa ser corrigido. Para isso, a análise prossegue com base no nó irmão do removido.
+
+    - **Caso 1:** Se o irmão do nó removido é negro, ambos os filhos do irmão são negros e o pai é negro, deve-se pintar o irmão de rubro e promove o duplo negro para o pai. Este caso não é terminal, ou seja, requer mais ajustes.
+
+    - **Caso 2:** Se o irmão do nó removido é negro, ambos os filhos do irmão são negros e o pai é rubro, simplesmente pinta-se o irmão de rubro e o pai de negro. Esse caso é terminal, pois resolve o desequilíbrio sem mais necessidade de ajustes.
+
+    - **Caso 3:** Se o irmão do nó removido é negro, o pai é de qualquer cor, o filho esquerdo do irmão é rubro e o filho direito é negro, deve-se realizar uma rotação simples à direita no irmão, pintar o irmão de rubro e o filho esquerdo de negro. O duplo negro permanece no mesmo lugar. Este caso sempre leva ao Caso 4.
+
+    - **Caso 4:** Se o irmão do nó removido é negro, o pai é de qualquer cor, o filho esquerdo do irmão é de qualquer cor e o filho direito é rubro, deve-se realizar uma rotação simples à esquerda no pai, pintar o pai de negro, transferir a cor antiga do pai para o irmão e pintar o filho direito do irmão de negro. Esse caso é terminal, resolvendo o desequilíbrio de maneira definitiva.
+
+Em todos esses casos, as operações realizadas garantem a manutenção das propriedades da árvore rubro-negra, corrigindo eventuais violações e restaurando seu equilíbrio.

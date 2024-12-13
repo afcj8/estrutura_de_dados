@@ -79,3 +79,26 @@ Após a inserção de 15, o critério III é violado porque 10 e 15 são rubros.
 ```
 
 Agora, todos os critérios são mantidos.
+
+### Caso 3: w (pai de 𝑣) é rubro, 𝑡 (pai de 𝑤) é negro, e 𝑢 (irmão de 𝑤) é negro
+
+Neste cenário, são necessárias rotações para corrigir violações. Há quatro subcasos correspondentes às rotações possíveis, dependendo da posição de 𝑣, 𝑤 e 𝑡:
+
+#### Subcaso 1: Inserção na subárvore esquerda-esquerda
+
+Realiza-se uma rotação simples à direita.
+
+**Exemplo**
+
+```
+        30[N]
+    20[R]            
+10[R]
+```
+
+Após a rotação simples à direita:
+
+```
+        20[N]             
+10[R]           30[R]
+```

@@ -52,3 +52,30 @@ Se o nó 𝑤 (pai de 𝑣) é negro, os critérios III e IV permanecem válidos
 ```
 
 Nesse caso, 10 é negro e 22 é rubro. Os critérios permanecem válidos.
+
+### Caso 2: 𝑤 (pai de 𝑣) é rubro, 𝑡 (pai de 𝑤) é negro, e 𝑢 (irmão de 𝑤) é rubro
+
+Se 𝑤 é rubro, 𝑡 é negro e 𝑢 (irmão de 𝑤) também é rubro, a re-coloração resolve a violação:
+
+- Re-colore 𝑡 como rubro.
+- Re-colore 𝑤 e 𝑢 como negros.
+
+**Exemplo**
+
+```
+        20[N]             
+10[R]           22[R]
+    15[R]
+```
+
+Após a inserção de 15, o critério III é violado porque 10 e 15 são rubros.
+
+**Após a re-coloração**
+
+```
+        20[R]             
+10[N]           22[N]
+    15[R]
+```
+
+Agora, todos os critérios são mantidos.

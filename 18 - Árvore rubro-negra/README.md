@@ -159,3 +159,8 @@ Após a rotação dupla (direita no 30, esquerda no 10):
         20[N]             
 10[R]           30[R]
 ```
+
+## 18.3. Remoção
+
+A remoção em uma árvore rubro-negra envolve a análise do nó removido e de seu sucessor, resultando em quatro casos distintos. A seguir, descrevem-se esses casos e os procedimentos para cada um:
+

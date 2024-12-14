@@ -305,6 +305,51 @@ A remoção em uma árvore rubro-negra envolve a análise do nó removido e de s
 
     - **Caso 3:** Se o irmão do nó removido é negro, o pai é de qualquer cor, o filho esquerdo do irmão é rubro e o filho direito é negro, deve-se realizar uma rotação simples à direita no irmão, pintar o irmão de rubro e o filho esquerdo de negro. O duplo negro permanece no mesmo lugar. Este caso sempre leva ao Caso 4.
 
-    - **Caso 4:** Se o irmão do nó removido é negro, o pai é de qualquer cor, o filho esquerdo do irmão é de qualquer cor e o filho direito é rubro, deve-se realizar uma rotação simples à esquerda no pai, pintar o pai de negro, transferir a cor antiga do pai para o irmão e pintar o filho direito do irmão de negro. Esse caso é terminal, resolvendo o desequilíbrio de maneira definitiva.
+    - **Caso 4:** Se o irmão do nó removido é negro, o pai e o filho esquerdo do irmão é de qualquer cor e o filho direito é rubro, deve-se realizar uma rotação simples à esquerda no pai, pintar o pai de negro, transferir a cor antiga do pai para o irmão e pintar o filho direito do irmão de negro. Esse caso é terminal, resolvendo o desequilíbrio de maneira definitiva.
 
 Em todos esses casos, as operações realizadas garantem a manutenção das propriedades da árvore rubro-negra, corrigindo eventuais violações e restaurando seu equilíbrio.
+
+### Exemplo: Remover o no C da árvore abaixo
+
+```
+                        D[N]
+        B[N]                            I[N]
+A[N]            C[N]            G[R]            J[N]
+                            F[N]    H[N] 
+```
+
+O nó `C` é removido, resultando no surgimento de um nó duplo-negro (`DN`) em seu lugar para manter o equilíbrio na altura negra da árvore.
+
+```
+                        D[N]
+        B[N]                            I[N]
+A[N]            DN              G[R]            J[N]
+                            F[N]    H[N] 
+```
+
+- A remoção promoveu o caso 1:
+
+```
+                        D[N]
+        B[DN]                           I[N]
+A[R]                            G[R]            J[N]
+                            F[N]    H[N] 
+```
+
+- Agora, será necessário resolver o caso 3:
+
+```
+                        D[N]
+        B[DN]                           G[N]
+A[R]                            F[N]            I[R]
+                                            H[N]    J[N]
+```
+
+- Por fim, será necessário resolver o caso 4:
+
+```
+                                        G[N]
+                D[N]                                    I[N]
+        B[N]            F[N]                    H[N]            J[N]
+A[R]
+```

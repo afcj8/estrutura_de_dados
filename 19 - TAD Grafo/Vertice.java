@@ -1,25 +1,35 @@
+import java.util.ArrayList;
+
 public class Vertice {
-    private String nome;
-    private int indice;
-    
-    public Vertice(String nome, int indice) {
-        this.nome = nome;
-        this.indice = indice;
+    private Object vertice;
+    private ArrayList<Aresta> arestas;
+
+    public Vertice(Object vertice) {
+        this.vertice = vertice;
+        this.arestas = new ArrayList<Aresta>();
     }
-    
-    public String getNome() {
-        return nome;
+    public Object getVertice() {
+        return vertice;
     }
-    
-    public int getIndice() {
-        return indice;
+
+    public ArrayList<Aresta> getArestas() {
+        return arestas;
     }
-    
-    public void setNome(String nome) {
-        this.nome = nome;
+
+    public void setVertice(Object vertice) {
+        this.vertice = vertice;
     }
-    
-    public void setIndice(int indice) {
-        this.indice = indice;
+
+    public void setAresta(Aresta a) {
+        arestas.add(a);
+    }
+
+    public void removerAresta(Aresta a) {
+        arestas.remove(a);
+    }
+
+    @Override
+    public String toString() {
+        return "Vertice " + vertice + " | Qtd de arestas = " + arestas.size();
     }
 }

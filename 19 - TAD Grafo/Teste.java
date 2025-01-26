@@ -40,7 +40,7 @@ public class Teste {
         //System.out.println("Arestas incidentes a V1: " + arestasIncidentes);
 
         // A aresta é direcionada?
-        //System.out.println("A aresta " + a2 + " é direcionada? " + grafo.eDirecionada(a2));
+        //System.out.println("A aresta " + a2 + " é direcionada? " + grafo.ehDirecionada(a2));
 
         // Inserção de aresta direcionada
         //Aresta a5 = grafo.InserirArestaDirecionada(v1, v3, new Aresta("A5", v1, v3));

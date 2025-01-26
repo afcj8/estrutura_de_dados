@@ -125,7 +125,7 @@ public class Grafo {
         return this.arestas;
     }
 
-    public boolean eDirecionada(Aresta a) {
+    public boolean ehDirecionada(Aresta a) {
         Vertice inicio = a.getInicio();
         Vertice fim = a.getFim();
 

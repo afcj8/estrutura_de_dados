@@ -101,6 +101,13 @@ public class Grafo {
         a.setAresta(aux);
     }
 
+    public ArrayList<Vertice> finalVertices(Aresta a) {
+        ArrayList<Vertice> verticesFinais = new ArrayList<>();
+        verticesFinais.add(a.getInicio());
+        verticesFinais.add(a.getFim());
+        return verticesFinais;
+    }
+
     public ArrayList<Aresta> arestasIncidentes(Vertice v) { 
         int aux = this.vertices.indexOf(v);
 

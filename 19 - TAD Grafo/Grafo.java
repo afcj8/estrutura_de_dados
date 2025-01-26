@@ -9,13 +9,13 @@ public class Grafo {
         arestas = new ArrayList<Aresta>();
     }
 
-    public Vertice inserirVertice(Object v) { // OK
+    public Vertice inserirVertice(Object v) {
         Vertice vertice = new Vertice(v);
         this.vertices.add(vertice);
         return vertice;
     }
 
-    public Aresta inserirAresta(Vertice inicio, Vertice fim, Object a) { // OK
+    public Aresta inserirAresta(Vertice inicio, Vertice fim, Object a) {
         Aresta aresta = new Aresta(a, inicio, fim);
         inicio.setAresta(aresta);
         fim.setAresta(aresta);
@@ -23,7 +23,7 @@ public class Grafo {
         return aresta;
     }
 
-    public Object removeVertice(Vertice v) { // OK
+    public Object removeVertice(Vertice v) {
         vertices.remove(v);
         ArrayList<Aresta> arestasRemover = new ArrayList<Aresta>();
 
@@ -40,7 +40,7 @@ public class Grafo {
         return v.getVertice();
     }
 
-    public Object removeAresta(Aresta a) { // OK
+    public Object removeAresta(Aresta a) {
         if (a == null) {
             throw new IllegalArgumentException("Aresta não pode ser nula!");
         }
@@ -54,7 +54,7 @@ public class Grafo {
         return a.getAresta();
     }
 
-    public Vertice oposto(Vertice v, Aresta a) { // OK
+    public Vertice oposto(Vertice v, Aresta a) {
         int indexVertice = this.vertices.indexOf(v);
 
         if (indexVertice == -1) {
@@ -76,7 +76,7 @@ public class Grafo {
         return null;
     }
 
-    public boolean eAdjacente(Vertice v, Vertice w) { // OK
+    public boolean eAdjacente(Vertice v, Vertice w) {
         int x = this.vertices.indexOf(v);
         int z = this.vertices.indexOf(w);
         if (x == -1 || z == -1) {
@@ -92,25 +92,22 @@ public class Grafo {
         }
     }
 
-    public void subsVertice(Vertice v, Object obj) { // OK
+    public void subsVertice(Vertice v, Object obj) { 
         v.setVertice(obj);
     }
 
-    public void subsAresta(Aresta a, Object obj) { // OK
+    public void subsAresta(Aresta a, Object obj) {
         Aresta aux = new Aresta(obj, a.getInicio(), a.getFim());
         a.setAresta(aux);
     }
 
-    public ArrayList<Aresta> arestasIncidentes(Vertice v) { // OK
+    public ArrayList<Aresta> arestasIncidentes(Vertice v) { 
         int aux = this.vertices.indexOf(v);
 
-        // Verifica se o vértice existe no grafo
         if (aux == -1) {
-            // Vértice não encontrado, retorna uma lista vazia
             return new ArrayList<>();
         }
 
-        // Vértice encontrado, cria e retorna uma lista de arestas incidentes ao vértice
         ArrayList<Aresta> arestas = new ArrayList<>();
         for (Aresta a : this.arestas) {
             if (a.getInicio().equals(v) || a.getFim().equals(v)) {
@@ -120,15 +117,15 @@ public class Grafo {
         return arestas;
     }
 
-    public ArrayList<Vertice> vertices() { // OK
+    public ArrayList<Vertice> vertices() {
         return this.vertices;
     }
 
-    public ArrayList<Aresta> arestas() { // OK
+    public ArrayList<Aresta> arestas() {
         return this.arestas;
     }
 
-    public boolean eDirecionada(Aresta a) { // OK
+    public boolean eDirecionada(Aresta a) {
         Vertice inicio = a.getInicio();
         Vertice fim = a.getFim();
 
@@ -141,9 +138,7 @@ public class Grafo {
         }
 
         for (Aresta aux : this.arestas) {
-            // Verifica se a aresta é a mesma
             if (a.equals(aux)) {
-                // Verifica se a aresta está ausente na posição oposta (fim, inicio)
                 Aresta oposta = new Aresta(a.getAresta(), fim, inicio);
                 if (!this.arestas.contains(oposta)) {
                     return true;
@@ -153,12 +148,11 @@ public class Grafo {
         return false;
     }
 
-    public Aresta InserirArestaDirecionada(Vertice inicio, Vertice fim, Object a) { // OK
+    public Aresta InserirArestaDirecionada(Vertice inicio, Vertice fim, Object a) {
         Aresta aresta = new Aresta(a, inicio, fim);
         inicio.setAresta(aresta);
         fim.setAresta(aresta);
         arestas.add(aresta);
         return aresta;
-
     }
 }

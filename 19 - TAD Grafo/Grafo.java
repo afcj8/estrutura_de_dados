@@ -142,11 +142,36 @@ public class Grafo {
         return true;
     }
 
-    public Aresta InserirArestaDirecionada(Vertice inicio, Vertice fim, Object a) {
+    public Aresta inserirArestaDirecionada(Vertice inicio, Vertice fim, Object a) {
         Aresta aresta = new Aresta(a, inicio, fim);
         inicio.setAresta(aresta);
         fim.setAresta(aresta);
         arestas.add(aresta);
         return aresta;
+    }
+
+    public void imprimirListaAdjacencia() {
+        for (Vertice vertice : vertices) {
+            System.out.print(vertice.getVertice() + " -> ");
+            ArrayList<Vertice> sucessores = new ArrayList<>();
+            
+            for (Aresta aresta : vertice.getArestas()) {
+                if (aresta.getInicio().equals(vertice)) {
+                    sucessores.add(aresta.getFim());
+                }
+            }
+            
+            if (sucessores.isEmpty()) {
+                System.out.println("Nenhum sucessor");
+            } else {
+                for (int i = 0; i < sucessores.size(); i++) {
+                    System.out.print(sucessores.get(i).getVertice());
+                    if (i < sucessores.size() - 1) {
+                        System.out.print(", ");
+                    }
+                }
+                System.out.println();
+            }
+        }
     }
 }

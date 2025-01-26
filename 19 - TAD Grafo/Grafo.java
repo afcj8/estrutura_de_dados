@@ -136,26 +136,12 @@ public class Grafo {
     }
 
     public boolean ehDirecionada(Aresta a) {
-        Vertice inicio = a.getInicio();
-        Vertice fim = a.getFim();
-
-        int indexInicio = this.vertices.indexOf(inicio);
-        int indexFim = this.vertices.indexOf(fim);
-
-        if (indexInicio == -1 || indexFim == -1) {
-            System.out.println("Vértice não encontrado");
-            return false;
-        }
-
-        for (Aresta aux : this.arestas) {
-            if (a.equals(aux)) {
-                Aresta oposta = new Aresta(a.getAresta(), fim, inicio);
-                if (!this.arestas.contains(oposta)) {
-                    return true;
-                }
+        for (Aresta aresta : this.arestas) {
+            if (a.getInicio().equals(aresta.getFim()) && a.getFim().equals(aresta.getInicio())) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public Aresta InserirArestaDirecionada(Vertice inicio, Vertice fim, Object a) {

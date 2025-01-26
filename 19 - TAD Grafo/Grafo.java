@@ -76,7 +76,7 @@ public class Grafo {
         return null;
     }
 
-    public boolean eAdjacente(Vertice v, Vertice w) {
+    public boolean ehAdjacente(Vertice v, Vertice w) {
         int x = this.vertices.indexOf(v);
         int z = this.vertices.indexOf(w);
         if (x == -1 || z == -1) {

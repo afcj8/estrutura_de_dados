@@ -15,7 +15,7 @@ public class Teste {
         Aresta a3 = grafo.inserirAresta(v3, v4, new Aresta("A3", v3, v4));
         Aresta a4 = grafo.inserirAresta(v4, v1, new Aresta("A4", v4, v1));
 
-        System.out.println("V2 e V4 são adjacentes? " + grafo.eAdjacente(v2, v4));
+        System.out.println("V2 e V4 são adjacentes? " + grafo.ehAdjacente(v2, v4));
         System.out.println();
 
 

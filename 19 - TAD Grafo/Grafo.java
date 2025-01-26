@@ -101,8 +101,7 @@ public class Grafo {
     }
 
     public void subsAresta(Aresta a, Object obj) {
-        Aresta aux = new Aresta(obj, a.getInicio(), a.getFim());
-        a.setAresta(aux);
+        a.setAresta(obj);
     }
 
     public ArrayList<Vertice> finalVertices(Aresta a) {

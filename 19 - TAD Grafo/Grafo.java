@@ -24,6 +24,10 @@ public class Grafo {
     }
 
     public Object removeVertice(Vertice v) {
+        if (!vertices.contains(v)) {
+            throw new IllegalArgumentException("Vértice não encontrado");
+        }
+
         vertices.remove(v);
         ArrayList<Aresta> arestasRemover = new ArrayList<Aresta>();
 

@@ -112,19 +112,17 @@ public class Grafo {
     }
 
     public ArrayList<Aresta> arestasIncidentes(Vertice v) { 
-        int aux = this.vertices.indexOf(v);
-
-        if (aux == -1) {
+        if (!vertices.contains(v)) {
             return new ArrayList<>();
         }
 
-        ArrayList<Aresta> arestas = new ArrayList<>();
+        ArrayList<Aresta> incidentes = new ArrayList<>();
         for (Aresta a : this.arestas) {
             if (a.getInicio().equals(v) || a.getFim().equals(v)) {
-                arestas.add(a);
+                incidentes.add(a);
             }
         }
-        return arestas;
+        return incidentes;
     }
 
     public ArrayList<Vertice> vertices() {

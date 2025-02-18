@@ -50,14 +50,13 @@ public class Teste {
                 return;
             }
 
-            // Execução do Dijkstra
+            // Execução do Dijkstra e posteriormente do A*
             long inicioTempoDijkstra = System.nanoTime();
             Dijkstra dijkstra = new Dijkstra(labirinto, inicio, fim);
             dijkstra.encontrarCaminho();
             long fimTempoDijkstra = System.nanoTime();
             System.out.println("Tempo gasto pelo Dijkstra: " + (fimTempoDijkstra - inicioTempoDijkstra) / 1_000_000 + " ms");
 
-            // Execução do A*
             long inicioTempoAEstrela = System.nanoTime();
             AEstrela aEstrela = new AEstrela(labirinto, inicio, fim);
             aEstrela.encontrarCaminho();

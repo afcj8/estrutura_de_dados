@@ -57,7 +57,6 @@ public class Dijkstra {
             }
         }
 
-        // Se a fila esvaziar sem encontrar o destino, não há caminho possível
-        System.out.println("Caminho não encontrado pelo Dijkstra.");
+        System.out.println("Caminho não encontrado pelo Dijkstra."); // Se a fila esvaziar, não há caminho possível
     }
 }

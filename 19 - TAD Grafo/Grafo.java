@@ -59,25 +59,10 @@ public class Grafo {
     }
 
     public Vertice oposto(Vertice v, Aresta a) {
-        int indexVertice = this.vertices.indexOf(v);
-
-        if (indexVertice == -1) {
-            throw new IllegalArgumentException("Vértice não encontrado");
+        if (!a.getInicio().equals(v) && !a.getFim().equals(v)) {
+            throw new IllegalArgumentException("Aresta não é incidente ao vértice");
         }
-
-        for (Aresta aresta : this.arestas) {
-            if (aresta.equals(a)) {
-                Vertice inicio = aresta.getInicio();
-                Vertice fim = aresta.getFim();
-
-                if (inicio.equals(v)) {
-                    return fim;
-                } else if (fim.equals(v)) {
-                    return inicio;
-                }
-            }
-        }
-        return null;
+        return a.getInicio().equals(v) ? a.getFim() : a.getInicio();
     }
 
     public boolean ehAdjacente(Vertice v, Vertice w) {

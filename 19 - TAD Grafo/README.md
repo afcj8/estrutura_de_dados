@@ -1,16 +1,64 @@
-# Principais Métodos do TAD Grafo
+# TAD Grafo
 
-- **finalVertices(a):** retorna um array armazenando os vértices finais da aresta a.
-- **oposto(v, a):** retorna o vértice oposto de v em a, ou seja, o vértice final da aresta a separada do vértice v. Um erro ocorre se a não é incidente a v.
-- **ehAdjacente(v, w):** retorna true se v e w são adjacentes.
-- **subsVertice(v, x):** substitui o elemento armazenado no vértice v por x.
-- **subsAresta(a, x):** substitui o elemento armazenado na aresta a por x.
-- **inserirVertice(o):** insere e retorna um novo vértice armazenando o elemento o.
-- **inserirAresta(v, w, o):** insere e retorna uma nova aresta não-dirigida (v, w) armazenando o elemento o.
-- **removeVertice(v):** remove o vértice v (e todas as arestas incidentes) e retorna o elemento armazenado em v.
-- **removeAresta(a):** remove a aresta a, retornando o elemento armazenado.
-- **arestasIncidentes(v):** retorna uma coleção de todas as arestas incidentes sob o vértice v
-- **vertices():** retorna uma coleção de todos os vértices do grafo.
-- **arestas():** retorna uma coleção de todas as arestas no grafo.
-- **ehDirecionada(a):** testa se a aresta é direcionada.
-- **inserirArestaDirecionada(v, w, o):** insere uma nova aresta direcionada com origem em v, destino em w e armazenando o elemento o.
+Este TAD (Tipo Abstrato de Dados) implementa um grafo com suporte a arestas direcionadas e não direcionadas, bem como operações fundamentais sobre vértices e arestas.
+
+## Principais Métodos
+
+### 📌 Inserção e Remoção
+
+- **`inserirVertice(Object o)`**  
+  Insere e retorna um novo vértice que armazena o elemento `o`.
+
+- **`inserirAresta(Vertice v, Vertice w, Object o)`**  
+  Insere e retorna uma nova aresta não direcionada entre os vértices `v` e `w`, armazenando o elemento `o`.
+
+- **`inserirArestaDirecionada(Vertice v, Vertice w, Object o)`**  
+  Insere e retorna uma nova aresta direcionada do vértice `v` para `w`, armazenando o elemento `o`.
+
+- **`removeVertice(Vertice v)`**  
+  Remove o vértice `v` e todas as arestas incidentes. Retorna o elemento armazenado em `v`.
+
+- **`removeAresta(Aresta a)`**  
+  Remove a aresta `a` e retorna o elemento armazenado nela.
+
+---
+
+### 🔄 Substituição
+
+- **`subsVertice(Vertice v, Object x)`**  
+  Substitui o elemento armazenado no vértice `v` por `x`.
+
+- **`subsAresta(Aresta a, Object x)`**  
+  Substitui o elemento armazenado na aresta `a` por `x`.
+
+---
+
+### 🔎 Consulta
+
+- **`finalVertices(Aresta a)`**  
+  Retorna uma lista com os dois vértices finais da aresta `a`.
+
+- **`oposto(Vertice v, Aresta a)`**  
+  Retorna o vértice oposto a `v` na aresta `a`. Lança erro se `a` não é incidente a `v`.
+
+- **`ehAdjacente(Vertice v, Vertice w)`**  
+  Retorna `true` se os vértices `v` e `w` são adjacentes, ou seja, se existe uma aresta ligando-os.
+
+- **`arestasIncidentes(Vertice v)`**  
+  Retorna uma lista de todas as arestas incidentes ao vértice `v`.
+
+- **`vertices()`**  
+  Retorna uma lista com todos os vértices do grafo.
+
+- **`arestas()`**  
+  Retorna uma lista com todas as arestas do grafo.
+
+- **`ehDirecionada(Aresta a)`**  
+  Retorna `true` se a aresta `a` for direcionada, ou seja, se não há aresta oposta entre os mesmos vértices.
+
+---
+
+### 📋 Impressão
+
+- **`imprimirListaAdjacencia()`**  
+  Imprime a lista de adjacência do grafo, exibindo os sucessores de cada vértice.

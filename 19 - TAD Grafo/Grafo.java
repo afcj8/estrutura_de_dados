@@ -5,20 +5,28 @@ public class Grafo {
     private ArrayList<Aresta> arestas;
 
     public Grafo() {
-        vertices = new ArrayList<Vertice>();
-        arestas = new ArrayList<Aresta>();
+        this.vertices = new ArrayList<>();
+        this.arestas = new ArrayList<>();
     }
 
-    public Vertice inserirVertice(Object v) {
-        Vertice vertice = new Vertice(v);
-        this.vertices.add(vertice);
-        return vertice;
+    public Vertice inserirVertice(Object elemento) {
+        Vertice novo = new Vertice(elemento);
+        vertices.add(novo);
+        return novo;
     }
 
-    public Aresta inserirAresta(Vertice inicio, Vertice fim, Object a) {
-        Aresta aresta = new Aresta(a, inicio, fim);
-        inicio.setAresta(aresta);
-        fim.setAresta(aresta);
+    public Aresta inserirAresta(Vertice origem, Vertice destino, Object elemento) {
+        Aresta aresta = new Aresta(elemento, origem, destino);
+        origem.setAresta(aresta);
+        destino.setAresta(aresta);
+        arestas.add(aresta);
+        return aresta;
+    }
+
+    public Aresta inserirArestaDirecionada(Vertice origem, Vertice destino, Object elemento) {
+        Aresta aresta = new Aresta(elemento, origem, destino);
+        origem.setAresta(aresta);
+        destino.setAresta(aresta);
         arestas.add(aresta);
         return aresta;
     }
@@ -28,81 +36,61 @@ public class Grafo {
             throw new IllegalArgumentException("Vértice não encontrado");
         }
 
+        // Remove arestas incidentes
+        ArrayList<Aresta> incidentes = new ArrayList<>(v.getArestas());
+        for (Aresta a : incidentes) {
+            Vertice outro = (a.getInicio() == v) ? a.getFim() : a.getInicio();
+            outro.removerAresta(a);
+            arestas.remove(a);
+        }
+
         vertices.remove(v);
-        ArrayList<Aresta> arestasRemover = new ArrayList<Aresta>();
-
-        for (Aresta a : v.getArestas()) {
-            arestasRemover.add(a);
-            Vertice vert = (v == a.getInicio() ? a.getFim() : a.getInicio());
-            vert.removerAresta(a);
-        }
-
-        for (Aresta remover : arestasRemover) {
-            arestas.remove(remover);
-        }
-
         return v.getVertice();
     }
 
     public Object removeAresta(Aresta a) {
-        if (a == null) {
-            throw new IllegalArgumentException("Aresta não pode ser nula!");
-        }
+        if (a == null) throw new IllegalArgumentException("Aresta não pode ser nula!");
+        a.getInicio().removerAresta(a);
+        a.getFim().removerAresta(a);
         arestas.remove(a);
-        Vertice inicio = (Vertice)a.getInicio();
-        Vertice fim = (Vertice)a.getFim();
-
-        inicio.getArestas().remove(a);
-        fim.getArestas().remove(a);
-
         return a.getAresta();
     }
 
     public Vertice oposto(Vertice v, Aresta a) {
         if (!a.getInicio().equals(v) && !a.getFim().equals(v)) {
-            throw new IllegalArgumentException("Aresta não é incidente ao vértice");
+            throw new IllegalArgumentException("Aresta não é incidente ao vértice informado.");
         }
         return a.getInicio().equals(v) ? a.getFim() : a.getInicio();
     }
 
-    public boolean ehAdjacente(Vertice v, Vertice w) {
-        int x = this.vertices.indexOf(v);
-        int z = this.vertices.indexOf(w);
-        if (x == -1 || z == -1) {
-            return false;
-        } else {
-            for (Aresta aresta : this.arestas) {
-                if ((aresta.getInicio().equals(v) && aresta.getFim().equals(w)) ||
-                        (aresta.getInicio().equals(w) && aresta.getFim().equals(v))) {
-                    return true;
-                }
+    public boolean ehAdjacente(Vertice v1, Vertice v2) {
+        for (Aresta a : arestas) {
+            if ((a.getInicio().equals(v1) && a.getFim().equals(v2)) ||
+                (a.getInicio().equals(v2) && a.getFim().equals(v1))) {
+                return true;
             }
-            return false;
         }
+        return false;
     }
 
-    public void subsVertice(Vertice v, Object obj) { 
-        v.setVertice(obj);
+    public void subsVertice(Vertice v, Object novoValor) {
+        v.setVertice(novoValor);
     }
 
-    public void subsAresta(Aresta a, Object obj) {
-        a.setAresta(obj);
+    public void subsAresta(Aresta a, Object novoValor) {
+        a.setAresta(novoValor);
     }
 
     public ArrayList<Vertice> finalVertices(Aresta a) {
-        ArrayList<Vertice> verticesFinais = new ArrayList<>();
-        verticesFinais.add(a.getInicio());
-        verticesFinais.add(a.getFim());
-        return verticesFinais;
+        ArrayList<Vertice> finais = new ArrayList<>();
+        finais.add(a.getInicio());
+        finais.add(a.getFim());
+        return finais;
     }
 
-    public ArrayList<Aresta> arestasIncidentes(Vertice v) { 
-        if (!vertices.contains(v)) {
-            return new ArrayList<>();
-        }
-
+    public ArrayList<Aresta> arestasIncidentes(Vertice v) {
         ArrayList<Aresta> incidentes = new ArrayList<>();
-        for (Aresta a : this.arestas) {
+        for (Aresta a : arestas) {
             if (a.getInicio().equals(v) || a.getFim().equals(v)) {
                 incidentes.add(a);
             }
@@ -111,49 +99,39 @@ public class Grafo {
     }
 
     public ArrayList<Vertice> vertices() {
-        return this.vertices;
+        return vertices;
     }
 
     public ArrayList<Aresta> arestas() {
-        return this.arestas;
+        return arestas;
     }
 
     public boolean ehDirecionada(Aresta a) {
-        for (Aresta aresta : this.arestas) {
-            if (a.getInicio().equals(aresta.getFim()) && a.getFim().equals(aresta.getInicio())) {
-                return false;
+        for (Aresta outra : arestas) {
+            if (a.getInicio().equals(outra.getFim()) &&
+                a.getFim().equals(outra.getInicio())) {
+                return false; // existe uma aresta oposta → grafo não é direcionado
             }
         }
         return true;
     }
 
-    public Aresta inserirArestaDirecionada(Vertice inicio, Vertice fim, Object a) {
-        Aresta aresta = new Aresta(a, inicio, fim);
-        inicio.setAresta(aresta);
-        fim.setAresta(aresta);
-        arestas.add(aresta);
-        return aresta;
-    }
-
     public void imprimirListaAdjacencia() {
-        for (Vertice vertice : vertices) {
-            System.out.print(vertice.getVertice() + " -> ");
-            ArrayList<Vertice> sucessores = new ArrayList<>();
-            
-            for (Aresta aresta : vertice.getArestas()) {
-                if (aresta.getInicio().equals(vertice)) {
-                    sucessores.add(aresta.getFim());
+        for (Vertice v : vertices) {
+            System.out.print(v.getVertice() + " -> ");
+            ArrayList<Vertice> adjacentes = new ArrayList<>();
+            for (Aresta a : v.getArestas()) {
+                if (a.getInicio().equals(v)) {
+                    adjacentes.add(a.getFim());
                 }
             }
-            
-            if (sucessores.isEmpty()) {
+
+            if (adjacentes.isEmpty()) {
                 System.out.println("Nenhum sucessor");
             } else {
-                for (int i = 0; i < sucessores.size(); i++) {
-                    System.out.print(sucessores.get(i).getVertice());
-                    if (i < sucessores.size() - 1) {
-                        System.out.print(", ");
-                    }
+                for (int i = 0; i < adjacentes.size(); i++) {
+                    System.out.print(adjacentes.get(i).getVertice());
+                    if (i < adjacentes.size() - 1) System.out.print(", ");
                 }
                 System.out.println();
             }

@@ -77,7 +77,7 @@ $$
 
 | Grafo | Observações |
 | ----- | ----------- |
-| <img src="../imgs/grafo_clique.png" style="max-height: 60vh;"/> | - Clique \(K4\): {v2, v3, v4, v6}; <br> - Conjunto independente: {v1, v3, v5}. |
+| <img src="../imgs/grafo_clique.png" style="max-height: 60vh;"/> | - Clique $K_4$: {v2, v3, v4, v6}; <br> - Conjunto independente: {v1, v3, v5}. |
 
 - **Grafo complementar:** é um grafo construído a partir de um grafo original, mantendo os mesmos vértices, mas incluindo apenas as arestas que não existem no grafo original. Em outras palavras, dois vértices estarão conectados no grafo complementar somente se não estiverem conectados no grafo original.
 

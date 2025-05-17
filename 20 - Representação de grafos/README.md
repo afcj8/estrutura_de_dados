@@ -20,3 +20,15 @@ Representa um grafo usando uma matriz $A$ de dimensão $nxn$, onde $n$ é o núm
 | Grafo | Matriz de adjacência |
 | ----- | -------------------- |
 | <img src="../imgs/grafo_direcionado.png" style="max-height: 60vh;" /> | <img src="../imgs/matriz_adjacencia_grafo_direcionado.png" style="max-height: 60vh;"/> |
+
+## 20.2. Matriz de Custo
+
+A matriz de custo é uma variação da matriz de adjacência, na qual cada entrada $C_{ij}$ armazena o peso (ou custo) da aresta entre os vértices $i$ e $j$. Se não houver aresta entre dois vértices, pode-se representar essa ausência usando um valor especial, como:
+
+- `0` (sem custo),
+- `-1` (inexistente),
+- ou $\infty$ (infinito), dependendo do contexto da aplicação (ex: algoritmos de caminhos mínimos).
+
+| Grafo | Matriz de custo |
+| ----- | --------------- |
+| <img src="../imgs/grafo_de_custo.png" style="max-height: 60vh;" /> | <img src="../imgs/matriz_de_custo.png" style="max-height: 60vh;"/> |

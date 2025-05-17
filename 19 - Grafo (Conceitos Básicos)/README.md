@@ -33,8 +33,12 @@ Arestas podem ou não possuir direção, o que define diferentes tipos de grafos
 | ------------- | ----------- |
 | <img src="../imgs/multigrafo.png" width="50%" style="max-height: 60vh;" /> | - \(a6\) é um laço;<br> - \(a2\) e \(a5\) são arestas paralelas;<br> - Trata-se de um multigrafo. |
 
-- **Grafo completo:** é um grafo em que todos os vértices são adjacentes entre si, ou seja, há uma aresta entre cada par distinto de vértices.
+- **Grafo completo:** é um grafo em que todos os vértices são adjacentes entre si, ou seja, há uma aresta entre cada par distinto de vértices. Em um grafo completo de ordem $n$, o número total de arestas é dado pela fórmula:
 
-| Grafo         | Observações |
-| ------------- | ----------- |
-| <img src="../imgs/grafo_completo.png" width="50%" style="max-height: 60vh;" /> | - \(Kn\): grafo completo de ordem \(n\);<br> - O grafo ao lado representa \(K4\). |
+$$
+|A| = \frac{n(n - 1)}{2}
+$$
+
+| Grafo | Observações |
+| ----- | ----------- |
+| <img src="../imgs/grafo_completo.png" width="50%" style="max-height: 60vh;" /> | - $K_n$: grafo completo de ordem $n$.<br>- O grafo ao lado representa $K_4$.<br>- Como $n = 4$, então o número de arestas é $\frac{4(4 - 1)}{2} = 6$. |

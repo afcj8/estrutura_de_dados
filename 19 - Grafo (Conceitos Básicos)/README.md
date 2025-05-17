@@ -14,3 +14,11 @@ Arestas podem ou não possuir direção, o que define diferentes tipos de grafos
 | Grafo simples | Dígrafo |
 | ------------- | ------- |
 | <img src="../imgs/grafo_simples.png" width="50%" style="max-height: 60vh;"/> | <img src="../imgs/digrafo.png" width="50%" style="max-height: 60vh;"/> |
+
+- **Adjacência:** dois vértices são adjacentes quando existe uma aresta que os conecta. O mesmo vale para duas arestas que incidem sobre um mesmo vértice.
+
+- **Grau de um vértice:** é o número de arestas que incidem sobre ele.
+
+| Grafo         | Observações |
+| ------------- | ----------- |
+| <img src="../imgs/adjacencia_grau.png" width="50%" style="max-height: 60vh;" /> | - \(v1\) e \(v2\) são vértices adjacentes;<br> - \(a1\) e \(a4\) são arestas adjacentes;<br> - O vértice \(v1\) possui grau igual a 3. |

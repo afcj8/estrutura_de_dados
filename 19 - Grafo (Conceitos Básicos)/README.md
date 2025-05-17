@@ -22,3 +22,11 @@ Arestas podem ou não possuir direção, o que define diferentes tipos de grafos
 | Grafo         | Observações |
 | ------------- | ----------- |
 | <img src="../imgs/adjacencia_grau.png" width="50%" style="max-height: 60vh;" /> | - \(v1\) e \(v2\) são vértices adjacentes;<br> - \(a1\) e \(a4\) são arestas adjacentes;<br> - O vértice \(v1\) possui grau igual a 3. |
+
+- **Laço:** é uma aresta que conecta um vértice a ele mesmo.
+- **Arestas paralelas:** são duas ou mais arestas que conectam o mesmo par de vértices.
+- **Multigrafo:** é um grafo que permite laços e/ou arestas paralelas. Caso contrário, é denominado grafo simples.
+
+| Grafo         | Observações |
+| ------------- | ----------- |
+| <img src="../imgs/multigrafo.png" width="50%" style="max-height: 60vh;" /> | - \(a6\) é um laço;<br> - \(a2\) e \(a5\) são arestas paralelas;<br> - Trata-se de um multigrafo. |

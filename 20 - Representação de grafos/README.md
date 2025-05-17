@@ -32,3 +32,15 @@ A matriz de custo é uma variação da matriz de adjacência, na qual cada entra
 | Grafo | Matriz de custo |
 | ----- | --------------- |
 | <img src="../imgs/grafo_de_custo.png" style="max-height: 60vh;" /> | <img src="../imgs/matriz_de_custo.png" style="max-height: 60vh;"/> |
+
+## 20.3. Lista de Arestas
+
+Representa um grafo utilizando duas listas de vértices:  
+- uma lista $g$ com os vértices de origem das arestas,  
+- e uma lista $h$ com os vértices de destino correspondentes.
+
+Cada par $(g_i, h_i)$ representa uma aresta do grafo.
+
+| Grafo | Lista de arestas |
+| ----- | ---------------- |
+| <img src="../imgs/lista_de_arestas.png" style="max-height: 60vh;" /> | $g$ = {v1, v2, v2, v3, v3, v4}<br> $h$ = {v2, v3, v5, v4, v5, v5} |

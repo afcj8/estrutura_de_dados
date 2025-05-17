@@ -69,7 +69,7 @@ $$
 
 | Grafo | Grafo | Observações |
 | ----- | ----- | ----------- |
-| <img src="../imgs/grafo_isomorfo.png" style="max-height: 60vh;"/> | <img src="../imgs/grafo_isomorfo1.png" style="max-height: 60vh;"/> | - Ambos possuem a mesma estrutura de conexões; <br> - São regulares de grau 3; <br> - Os mesmos pares de vértices estão conectados em ambos. |
+| <img src="../imgs/grafo_isomorfo.png" style="max-height: 60vh;"/> | <img src="../imgs/grafo_isomorfo1.png" style="max-height: 60vh;"/> | - São regulares de grau 3;<br>- Possuem a mesma estrutura de conexões, ou seja, os mesmos pares de vértices estão conectados. |
 
 - **Clique em um grafo:** é um subconjunto de vértices no qual todos os pares estão conectados entre si.
 

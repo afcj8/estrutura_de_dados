@@ -42,3 +42,57 @@ $$
 | Grafo | Observações |
 | ----- | ----------- |
 | <img src="../imgs/grafo_completo.png" style="max-height: 60vh;" /> | - $K_n$: grafo completo de ordem $n$.<br>- O grafo ao lado representa $K_4$.<br>- Como $n = 4$, então o número de arestas é $\frac{4(4 - 1)}{2} = 6$. |
+
+- **Grafo bipartido:** é um grafo cujos vértices podem ser divididos em dois conjuntos disjuntos, de modo que todas as arestas conectam vértices de conjuntos diferentes.
+
+| Grafo | Observações |
+| ----- | ----------- |
+| <img src="../imgs/grafo_bipartido.png" style="max-height: 60vh;" /> | - Conjunto \(v1\) possui 3 vértices;<br> - Conjunto \(v2\) possui 2 vértices;<br> - Cada aresta conecta um vértice de \(v1\) a um vértice de \(v2\). |
+
+- **Grafo rotulado:** é um grafo em que os vértices possuem rótulos ou identificações únicas.
+
+- **Grafo valorado (ou ponderado):** é um grafo em que as arestas possuem valores (ou pesos), que podem representar custo, distância, tempo, entre outros.
+
+| Grafo rotulado | Grafo valorado |
+| -------------- | -------------- |
+| <img src="../imgs/grafo_rotulado.png" style="max-height: 60vh;"/> | <img src="../imgs/grafo_valorado.png" style="max-height: 60vh;"/> |
+
+- **Subgrafo:** é um grafo formado por um subconjunto de vértices e arestas de outro grafo.
+
+| Grafo | Subgrafo |
+| ----- | -------- |
+| <img src="../imgs/grafo_inteiro.png" style="max-height: 60vh;"/> | <img src="../imgs/subgrafo.png" style="max-height: 60vh;"/> |
+
+- **Grafos isomorfos:** são grafos que possuem a mesma estrutura de conexões, embora possam ter diferentes rótulos nos vértices.
+
+- **Grafo regular:** é um grafo em que todos os vértices possuem o mesmo grau.
+
+| Grafo | Grafo | Observações |
+| ----- | ----- | ----------- |
+| <img src="../imgs/grafo_isomorfo.png" style="max-height: 60vh;"/> | <img src="../imgs/grafo_isomorfo1.png" style="max-height: 60vh;"/> | - Ambos possuem a mesma estrutura de conexões; <br> - São regulares de grau 3; <br> - Os mesmos pares de vértices estão conectados em ambos. |
+
+- **Clique em um grafo:** é um subconjunto de vértices no qual todos os pares estão conectados entre si.
+
+- **Conjunto independente de vértices:** é um conjunto de vértices no qual nenhum par é adjacente, ou seja, não há arestas entre eles.
+
+| Grafo | Observações |
+| ----- | ----------- |
+| <img src="../imgs/grafo_clique.png" style="max-height: 60vh;"/> | - Clique \(K4\): {v2, v3, v4, v6}; <br> - Conjunto independente: {v1, v3, v5}. |
+
+- **Grafo complementar:** é um grafo construído a partir de um grafo original, mantendo os mesmos vértices, mas incluindo apenas as arestas que não existem no grafo original. Em outras palavras, dois vértices estarão conectados no grafo complementar somente se não estiverem conectados no grafo original.
+
+| Grafo | Grafo complementar |
+| ----- | ------------------ |
+| <img src="../imgs/grafo_complementar.png" style="max-height: 60vh;"/> | <img src="../imgs/grafo_complementar1.png" style="max-height: 60vh;"/> |
+
+- **Grafo parcial:** é um subgrafo que mantém todos os vértices do grafo original, mas apenas algumas de suas arestas.
+
+| Grafo | Grafo parcial |
+| ----- | ------------- |
+| <img src="../imgs/grafo_clique.png" style="max-height: 60vh;"/> | <img src="../imgs/grafo_parcial.png" style="max-height: 60vh;"/> |
+
+- **Hipergrafo:** é uma generalização do conceito de grafo em que uma aresta (chamada de hiperaresta) pode conectar mais de dois vértices.
+
+| Hipergrafo | Observações |
+| ---------- | ----------- |
+| <img src="../imgs/hipergrafo.png" style="max-height: 60vh;"/> | - Vértices: {1, 2, 3, 4}; <br> - Hiperarestas: {{1, 2, 4}, {1, 2, 3}, {3, 4}}. |

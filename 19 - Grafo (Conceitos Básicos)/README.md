@@ -13,7 +13,7 @@ Arestas podem ou não possuir direção, o que define diferentes tipos de grafos
 
 | Grafo simples | Dígrafo |
 | ------------- | ------- |
-| <img src="../imgs/grafo_simples.png" style="max-height: 60vh;"/> | <img src="../imgs/digrafo.png" style="max-height: 60vh;"/> |
+| <img src="../imgs/grafo_simples.png" style="max-height: 60vh; width: 80%;"/> | <img src="../imgs/digrafo.png" style="max-height: 60vh; width: 80%;"/> |
 
 - **Adjacência:** dois vértices são adjacentes quando existe uma aresta que os conecta. O mesmo vale para duas arestas que incidem sobre um mesmo vértice.
 
@@ -23,7 +23,7 @@ Arestas podem ou não possuir direção, o que define diferentes tipos de grafos
 
 | Grafo         | Observações |
 | ------------- | ----------- |
-| <img src="../imgs/adjacencia_grau.png" style="max-height: 60vh;" /> | - \(v1\) e \(v2\) são vértices adjacentes;<br> - \(a1\) e \(a4\) são arestas adjacentes;<br> - O vértice \(v1\) possui grau igual a 3. |
+| <img src="../imgs/adjacencia_grau.png" style="max-height: 60vh; width: 80%;" /> | - \(v1\) e \(v2\) são vértices adjacentes;<br> - \(a1\) e \(a4\) são arestas adjacentes;<br> - O vértice \(v1\) possui grau igual a 3. |
 
 - **Laço:** é uma aresta que conecta um vértice a ele mesmo.
 - **Arestas paralelas:** são duas ou mais arestas que conectam o mesmo par de vértices.
@@ -31,7 +31,7 @@ Arestas podem ou não possuir direção, o que define diferentes tipos de grafos
 
 | Grafo         | Observações |
 | ------------- | ----------- |
-| <img src="../imgs/multigrafo.png" style="max-height: 60vh;" /> | - \(a6\) é um laço;<br> - \(a2\) e \(a5\) são arestas paralelas;<br> - Trata-se de um multigrafo. |
+| <img src="../imgs/multigrafo.png" style="max-height: 60vh; width: 80%;" /> | - \(a6\) é um laço;<br> - \(a2\) e \(a5\) são arestas paralelas;<br> - Trata-se de um multigrafo. |
 
 - **Grafo completo:** é um grafo em que todos os vértices são adjacentes entre si, ou seja, há uma aresta entre cada par distinto de vértices. Em um grafo completo de ordem $n$, o número total de arestas é dado pela fórmula:
 
@@ -41,4 +41,4 @@ $$
 
 | Grafo | Observações |
 | ----- | ----------- |
-| <img src="../imgs/grafo_completo.png" style="max-height: 60vh;" /> | - $K_n$: grafo completo de ordem $n$.<br>- O grafo ao lado representa $K_4$.<br>- Como $n = 4$, então o número de arestas é $\frac{4(4 - 1)}{2} = 6$. |
+| <img src="../imgs/grafo_completo.png" style="max-height: 60vh; width: 80%;" /> | - $K_n$: grafo completo de ordem $n$.<br>- O grafo ao lado representa $K_4$.<br>- Como $n = 4$, então o número de arestas é $\frac{4(4 - 1)}{2} = 6$. |

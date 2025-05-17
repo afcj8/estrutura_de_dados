@@ -32,3 +32,9 @@ Arestas podem ou não possuir direção, o que define diferentes tipos de grafos
 | Grafo         | Observações |
 | ------------- | ----------- |
 | <img src="../imgs/multigrafo.png" width="50%" style="max-height: 60vh;" /> | - \(a6\) é um laço;<br> - \(a2\) e \(a5\) são arestas paralelas;<br> - Trata-se de um multigrafo. |
+
+- **Grafo completo:** é um grafo em que todos os vértices são adjacentes entre si, ou seja, há uma aresta entre cada par distinto de vértices.
+
+| Grafo         | Observações |
+| ------------- | ----------- |
+| <img src="../imgs/grafo_completo.png" width="50%" style="max-height: 60vh;" /> | - \(Kn\): grafo completo de ordem \(n\);<br> - O grafo ao lado representa \(K4\). |

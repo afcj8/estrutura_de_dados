@@ -17,7 +17,9 @@ Arestas podem ou não possuir direção, o que define diferentes tipos de grafos
 
 - **Adjacência:** dois vértices são adjacentes quando existe uma aresta que os conecta. O mesmo vale para duas arestas que incidem sobre um mesmo vértice.
 
-- **Grau de um vértice:** é o número de arestas que incidem sobre ele.
+- **Grau de um vértice:** é a quantidade de arestas que incidem sobre o vértice. Em um dígrafo:
+  - O grau de saída de um vértice \(v\) é o número de arestas que possuem \(v\) como ponta inicial.
+  - O grau de entrada de um vértice \(v\) é o número de arestas que possuem \(v\) como ponta final.
 
 | Grafo         | Observações |
 | ------------- | ----------- |
